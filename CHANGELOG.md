@@ -7,11 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+Same day as 0.1.0, and recorded separately because each entry changes a number or
+a claim that the 0.1.0 text states.
+
 ### Added
 
-- Nothing yet. Every entry below describes 0.1.0, which is **pre-publication**:
-  the version exists so that the changelog has a first row, not because a
-  release happened.
+- `tools/fit_affect_bridge.py` — fits the affect→construct bridge by ridge
+  regression and verifies **coefficient recovery** against a known synthetic
+  ground truth, judged against each coefficient's own standard error rather than
+  a hand-picked tolerance. Reports divergence from the hand map (mean |delta|
+  0.135, top-construct identity flips on 42.7% of grid inputs) and how often the
+  collapse detector changes verdict between the two bridges (10.1%).
+- `src/PSYCHE/data/affect_bridge.json` — the fitted coefficients, with the
+  synthetic-ground-truth provenance in the file itself.
+- `Project_ELIZA/tools/publicize.py` — materialises the public tree from the
+  allowlist and **verifies** it by running the package and both instruments in a
+  subprocess, not by checking that files were copied.
+- `pyproject.toml`, `.github/workflows/ci.yml`, `docs/tutorial.md`,
+  `MANIFEST_NOTES.md` — the package is installable and the tutorial's commands
+  and output blocks come from an actual run.
+
+### Changed
+
+- **Crisis detection replaced.** Exact phrases plus four fitted pattern families
+  were replaced by concept-coherence scoring over clinical item families. A fresh
+  holdout went from recall 0.00 to 0.83; a third holdout, written after the
+  detector was frozen, scored 0.18. The README now leads with the spread rather
+  than a single figure, because no single figure is honest.
+- `network.activation_from_pad` reads the fitted coefficients when present and
+  falls back to the hand map when not. `PersonNetwork` stamps
+  `activation_source`, so a graph carries the map that produced it.
+- Instruments resolve the corpus and the bridge from the **installed package**
+  rather than `ROOT/src/...`, which did not exist in the public tree.
+
+### Fixed
+
+- `eliza_release_gate.py` counted only manifest *sources* as declared, so every
+  materialised tree failed its own gate. A declared destination is declared.
+- `fit_affect_bridge.py` folded to `publicize.py`, `triage_eval.py`,
+  `test_psyche_affect.py` and `test_psyche_rt_channel.py` — all four resolved
+  paths by source layout and failed in a public checkout.
+- `test_no_demographic_inputs` scanned a hard-coded list of six modules and had
+  gone stale; it now discovers the package's modules, so it covers the four added
+  since the list was written.
 
 ## [0.1.0] - 2026-11-01
 
@@ -65,7 +103,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Known limitation
 
-- Crisis-router **holdout recall is 0.33** (dev 1.00, fitted). Precision on holdout
+- Crisis-router holdout recall was 0.33 at this release (dev 1.00, fitted); the
+  detector was replaced afterwards — see Unreleased. Precision on holdout
   is 1.00. This is documented in the README, asserted by a test, and is a release
   blocker rather than a backlog item.
 

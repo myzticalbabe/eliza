@@ -71,6 +71,7 @@ Decisions above were made first; these were made *because a number disagreed*.
 | a 0.15 penalty caps the dose under elevated risk | `reframe` still won, 0.75 vs 0.67 | cap the candidate set to low-dose stances |
 | an exact-phrase crisis list is adequate | recall 0.76, all three misses euphemisms | paraphrase patterns + attribution guard |
 | four patterns fixed it | dev 1.00, **holdout 0.33** | nothing — the holdout was not burned; the gap is published instead |
+| concept families replaced patterns | holdout2 **0.83**, holdout3 **0.18** | the single number does not exist yet; the spread is published instead of the mean |
 
 That last row is the most important thing in this repository. The improvement
 looked complete on the data it was built from. The holdout split is the only

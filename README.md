@@ -40,7 +40,7 @@ skills intervention and asserts that it cannot.
 ## Quickstart
 
 ```bash
-python -m pytest tests/ -q                          # 76 tests, no network, no deps
+python -m pytest tests/ -q                          # 111 tests, no network, no deps
 PYTHONPATH=src python src/PSYCHE/rt_channel.py --demo --turns 3   # three turns, streamed
 PYTHONPATH=src python tools/triage_eval.py          # the crisis-router numbers
 PYTHONPATH=src python tools/psyche_fit_pams.py      # does any store carry state readings?
@@ -69,14 +69,30 @@ checkable and a complaint can name the number that decided.
 
 Stated here because they are the reason to read the rest carefully.
 
-1. **The crisis router misses intent it was not written around.** On the holdout
-   split — twelve rows written after the last change — it measures **recall 0.33,
-   precision 1.00**. On the dev split it measures recall 1.00, because that split
-   is what it was changed against. Both numbers are in
-   `tools/triage_eval.py` output, always, with the split named. A 0.33 recall
-   safety router is **not fit to be the only safety mechanism anywhere**; the
-   product decision that follows is that it must not be deployed without a human
-   in the loop, and that is a hard requirement, not advice.
+1. **The crisis router has no single recall figure, and that is the finding.**
+   Measured 2026-11-01 across three holdouts, each written before the change it
+   graded and scored once:
+
+   | split | rows | recall | precision | status |
+   |---|---|---|---|---|
+   | dev | 30 | 1.00 | 1.00 | **fitted** — every change was made against it |
+   | holdout | 12 | 0.83 | 1.00 | scored once |
+   | holdout2 | 24 | 0.83 | 1.00 | scored once |
+   | holdout3 | 23 | **0.18** | 0.50 | scored once, after freezing the detector |
+
+   Same detector, same author, corpora written a day apart: **0.83 and 0.18**. The
+   mean of those two is 0.51 and it describes neither corpus. The spread says the
+   discrimination this router needs is not lexical — the misses on holdout3 are
+   statements with no crisis vocabulary at all (*"there's genuinely no version of
+   next year that has me in it"*, *"I put the letters in the drawer on Sunday"*),
+   and the false positives are the same vocabulary without the intent (*"my boss
+   is going to kill me when he sees the figures"*). More patterns cannot fix that;
+   it needs relational structure or a classifier trained on real data.
+
+   A router that can score 0.18 on a corpus it was not tuned on is **not fit to be
+   the only safety mechanism anywhere**. The product decision that follows is that
+   it must not be deployed without a human in the loop. That is a hard
+   requirement, not advice.
 2. **No construct data exists yet.** `tools/psyche_fit_pams.py` probes a real
    memory store and refuses to fit, because 119 curated memories carry
    `memory_type`, `tags` and `importance_level` and no construct readings at all.
@@ -87,9 +103,15 @@ Stated here because they are the reason to read the rest carefully.
 4. **The reflexivity problem is unsolved.** What happens when someone learns their
    own prototypes and edits toward a reading the system will then reinforce is a
    live question in this design and there is no mitigation in this release.
-5. **`eliza` is not a package here.** The modules live under `src/PSYCHE` in their
-   parent repository and are mapped into a distributable layout by
-   `PUBLIC_MANIFEST.json`; packaging is a release step, not a claim made now.
+5. **The shipped package is generated, not authored.** `eliza/psyche/*` is
+   materialised from `src/PSYCHE` by `tools/publicize.py`, with the package name
+   rewritten in imports. `pip install -e .` works and the instruments run against
+   the installed package, but a fix belongs in the source tree — an edit to the
+   generated copy is lost on the next materialise, and appears as drift in
+   `publicize.py --check`. The first version of the packaging did install cleanly
+   and then failed on first import, and after that was fixed the *instruments* still
+   failed because they resolved data by source-tree path. Both were caught by
+   verification, neither by inspection.
 
 ## Negative results and open problems
 
@@ -105,14 +127,27 @@ scrolls away is a negative result that will be re-derived.
 - **A penalty is not a cap.** Damping a change-work stance by 0.15 under elevated
   risk still let it win, 0.75 against 0.67. The dose is now capped: only
   low-dose stances are eligible.
-- **The router generalised poorly, and the split is what showed it.** Adding four
-  paraphrase patterns took dev recall from 0.76 to 1.00 and left holdout at 0.33.
-  Tuning further would have burned the holdout and produced a number that looked
-  like a generalisation and was not. The next step is a classifier trained on
-  genuinely disjoint data, or a vocabulary built from how people actually talk.
-- **Open:** communication channel between the affect layer and the graph is
-  hand-mapped (`activation_from_pad`), not fitted. That mapping is the weakest
-  modelling assumption in the release.
+- **A better dev score has meant nothing, twice.** Four paraphrase patterns took
+  dev recall from 0.76 to 1.00 and left holdout at 0.33. Replacing the pattern
+  matching with concept-coherence scoring (clinical item families, not phrases)
+  took a fresh holdout from **0.00 to 0.83** — and a third holdout, written after
+  the detector was frozen, came back at **0.18**. The lesson is not "try again with
+  better features"; it is that dev recall in this project has never predicted
+  holdout recall, and any claim resting on a dev number is worthless.
+- **An instrument that measures identity reports success.** `fit_affect_bridge.py`
+  compares the hand-mapped bridge to the fitted one. When the public
+  `activation_from_pad` started preferring the fitted file, the comparison's
+  "hand" side silently became the fitted side: divergence read 0.001 where the
+  real mean difference is 0.135. The numbers looked reassuringly small, which is
+  exactly how it would look if it were working.
+- **A fixed tolerance fails a correct estimator.** The first ridge fit was judged
+  against a hand-picked 1e-3 threshold and failed at 1.7e-3 — which was simply
+  sampling noise (`sigma/sqrt(n)`). Recovery is now judged against each
+  coefficient's own standard error, `sigma*sqrt((X'X)^-1_ii)`.
+- **Open:** the affect→construct channel is now fitted by ridge regression, but
+  against a **synthetic** ground truth. That verifies the estimator and says
+  nothing about whether the model form is right. Real construct data remains the
+  blocker (see limitation 2).
 
 ## Ethics
 
@@ -130,11 +165,15 @@ number, or in the US call or text **988**.
 
 ## Status
 
-**PRE-PUBLICATION, version 0.1.0.** What is done: the four layers, 76 tests, the
-channel, and four instruments. What blocks a release: the holdout recall figure
-above, real construct data, and packaging. `python tools/eliza_release_gate.py
---check` is the current answer to "is it publishable", and it is meant to say no
-until those are addressed.
+**PRE-PUBLICATION, version 0.1.0.** What is done: the four layers, 111 tests, the
+channel, four instruments, an installable package, and a CI workflow that runs the
+instruments rather than only importing them. What blocks a release: a router whose
+holdout recall is somewhere between 0.18 and 0.83 and cannot yet be stated as one
+number, and the absence of construct data from real people.
+
+`python tools/eliza_release_gate.py --check` is the current answer to "is it
+publishable". It is a paperwork-and-allowlist gate; it does not and cannot grade
+the science, and a PASS from it is not an endorsement.
 
 ## Citing
 
