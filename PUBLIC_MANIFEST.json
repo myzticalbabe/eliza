@@ -1,0 +1,78 @@
+{
+ "project": "eliza",
+ "version": "0.1.0",
+ "license": "Apache-2.0",
+ "status": "PRE-PUBLICATION",
+ "summary": "A therapeutic-agent loop, the psychological network it reasons over, the compiled-inference layer that makes it fast, and the evaluation instruments that grade all three. Published with its limitations, including a measured crisis-router holdout recall of 0.33.",
+ "ship_roots": [
+  "Project_ELIZA"
+ ],
+ "ship": [
+  {"from": "../src/PSYCHE/__init__.py", "to": "eliza/psyche/__init__.py", "kind": "code"},
+  {"from": "../src/PSYCHE/affect.py", "to": "eliza/psyche/affect.py", "kind": "code"},
+  {"from": "../src/PSYCHE/traits.py", "to": "eliza/psyche/traits.py", "kind": "code"},
+  {"from": "../src/PSYCHE/network.py", "to": "eliza/psyche/network.py", "kind": "code"},
+  {"from": "../src/PSYCHE/intuition.py", "to": "eliza/psyche/intuition.py", "kind": "code"},
+  {"from": "../src/PSYCHE/rt_agent.py", "to": "eliza/psyche/rt_agent.py", "kind": "code"},
+  {"from": "../src/PSYCHE/rt_channel.py", "to": "eliza/psyche/rt_channel.py", "kind": "code"},
+  {"from": "../src/PSYCHE/data/triage_corpus.jsonl", "to": "eliza/psyche/data/triage_corpus.jsonl", "kind": "data"},
+  {"from": "../tools/triage_eval.py", "to": "tools/triage_eval.py", "kind": "instrument"},
+  {"from": "../tools/psyche_fit_pams.py", "to": "tools/psyche_fit_pams.py", "kind": "instrument"},
+  {"from": "../tools/eliza_release_gate.py", "to": "tools/eliza_release_gate.py", "kind": "instrument"},
+  {"from": "../tests/test_psyche_network.py", "to": "tests/test_psyche_network.py", "kind": "test"},
+  {"from": "../tests/test_psyche_intuition.py", "to": "tests/test_psyche_intuition.py", "kind": "test"},
+  {"from": "../tests/test_psyche_rt_agent.py", "to": "tests/test_psyche_rt_agent.py", "kind": "test"},
+  {"from": "../tests/test_psyche_rt_channel.py", "to": "tests/test_psyche_rt_channel.py", "kind": "test"},
+  {"from": "../tests/test_psyche_affect.py", "to": "tests/test_psyche_affect.py", "kind": "test"},
+  {"from": "../tests/test_psyche_traits.py", "to": "tests/test_psyche_traits.py", "kind": "test"},
+  {"from": "../tests/test_triage_eval.py", "to": "tests/test_triage_eval.py", "kind": "test"},
+  {"from": "../tests/test_psyche_fit_pams.py", "to": "tests/test_psyche_fit_pams.py", "kind": "test"},
+
+  {"from": "README.md", "to": "README.md", "kind": "governance"},
+  {"from": "LICENSE", "to": "LICENSE", "kind": "governance"},
+  {"from": "NOTICE", "to": "NOTICE", "kind": "governance"},
+  {"from": "CONTRIBUTING.md", "to": "CONTRIBUTING.md", "kind": "governance"},
+  {"from": "CODE_OF_CONDUCT.md", "to": "CODE_OF_CONDUCT.md", "kind": "governance"},
+  {"from": "SECURITY.md", "to": "SECURITY.md", "kind": "governance"},
+  {"from": "CHANGELOG.md", "to": "CHANGELOG.md", "kind": "governance"},
+  {"from": "CITATION.cff", "to": "CITATION.cff", "kind": "governance"},
+  {"from": "DISCLOSURE_POLICY.md", "to": "DISCLOSURE_POLICY.md", "kind": "governance"},
+  {"from": "PUBLIC_MANIFEST.json", "to": "PUBLIC_MANIFEST.json", "kind": "governance"},
+  {"from": "docs/index.md", "to": "docs/index.md", "kind": "docs"},
+  {"from": "docs/reference/psyche.md", "to": "docs/reference/psyche.md", "kind": "docs"},
+  {"from": "docs/explanation/why-eliza.md", "to": "docs/explanation/why-eliza.md", "kind": "docs"},
+  {"from": ".github/PULL_REQUEST_TEMPLATE.md", "to": ".github/PULL_REQUEST_TEMPLATE.md", "kind": "governance"},
+  {"from": ".github/ISSUE_TEMPLATE/bug_report.yml", "to": ".github/ISSUE_TEMPLATE/bug_report.yml", "kind": "governance"},
+  {"from": ".github/ISSUE_TEMPLATE/feature_request.yml", "to": ".github/ISSUE_TEMPLATE/feature_request.yml", "kind": "governance"},
+  {"from": ".github/ISSUE_TEMPLATE/config.yml", "to": ".github/ISSUE_TEMPLATE/config.yml", "kind": "governance"}
+ ],
+ "never_ship": [
+  {"glob": "*.bcc_audit/*", "why": "raw forensic evidence: source documents, caches, screenshots"},
+  {"glob": "*_evidence*.json", "why": "assertion-to-source citational payloads for named parties"},
+  {"glob": "*_linkage*.json", "why": "entity-resolution output naming private individuals"},
+  {"glob": "bcc_*.json", "why": "investigation intermediate naming officers, tenants and clinicians"},
+  {"glob": "bcc_*.py", "why": "investigation scripts with hard-coded case identifiers"},
+  {"glob": "BCC_*.html", "why": "rendered findings about identified organisations"},
+  {"glob": "*findings*.md", "why": "narrative findings about identified people"},
+  {"glob": "*findings*.html", "why": "rendered findings about identified people"},
+  {"glob": "*person*.json", "why": "person-level records"},
+  {"glob": "SIGNED_*", "why": "executed legal instruments"},
+  {"glob": "*.eml", "why": "correspondence"},
+  {"glob": "*.pdf", "why": "primary documents: ship the quote and its hash, not the file"},
+  {"glob": "00_raw/*", "why": "raw fetch output, unsanitised"},
+  {"glob": "*.zip", "why": "archives of primary documents"}
+ ],
+ "deny_substrings": [
+  "bcc_audit",
+  "REINVESTIGATION",
+  "FETCH_LOG",
+  "edge_proof_ledger",
+  "identity_tiebreak",
+  "new_sources_log"
+ ],
+ "rationale": {
+  "why_allowlist": "A deny-list alone fails open: a new evidence directory ships unless someone remembers to add it. A manifest fails closed, and the gate refuses a path that is not declared.",
+  "why_never_ship_evidence": "This project's method is publishable; the allegations inside its original case are not. Named individuals in a corpus of mental-health, tenancy and employment records are not experiment data, and no licence can make republishing them lawful or decent. The methodology, the instruments and the aggregate counts ship; the primary documents do not. Ship the quote and its hash, and let a verifier re-fetch.",
+  "what_a_reader_can_verify_instead": "Every instrument in this repository runs against data the reader supplies. The evaluation numbers are reproducible from the labelled corpus; the forensic method is reproducible from its protocol documents."
+ }
+}
