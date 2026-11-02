@@ -1,5 +1,7 @@
 # Project ELIZA
 
+**BCC RE-INVESTIGATION MACHINERY — PUBLIC, FULLY EXECUTABLE.**
+
 A therapeutic agent that is honest about what it cannot do, plus the instruments
 that prove it.
 
@@ -23,6 +25,14 @@ Four layers, each in dependency order, each able to be run and measured alone:
 | intuition | `eliza/psyche/intuition.py` | repeated evaluation **compiled** into prototypes with support counts | **8.5 µs** fast vs **148.2 µs** deliberate, same answer |
 | loop | `eliza/psyche/rt_agent.py`, `rt_channel.py` | JITAI turn: sense → triage → stance → deliver, over a line protocol | 200 turns, median **0.025 ms** against a 50 ms budget |
 
+**BCC RE-INVESTIGATION EXTENSION (NEW):**
+
+| layer | module | what it does | measured |
+|---|---|---|---|
+| bypass | `tools/bcc_bypass.py` | Engineered web bypass chain: HTTP → curl_cffi → headless browser → archive replay | UJS, DOS, ProPublica, campaign finance, press — all public records |
+| ultra-loose | `tools/ultra_loose.py` | FLOCK-CANON-v1.3 ultra-loose source tutorial (any lawful source; tier decides grade) | 10 flocks, 4 tiers, proof standard |
+| concurrent | `WINDOWS_WSL_CONCURRENT.md` | Windows/WSL2/Kali concurrent execution guide for BCC investigation | 16-core free-threaded, PMB/PAMS shared |
+
 Two design choices carry most of the value:
 
 **Intuition is compiled inference, not a second "System 1".** The mechanism that
@@ -40,16 +50,89 @@ skills intervention and asserts that it cannot.
 ## Quickstart
 
 ```bash
-python -m pytest tests/ -q                          # 111 tests, no network, no deps
+# Core therapeutic agent (111 tests, no network, no deps)
+python -m pytest tests/ -q
 PYTHONPATH=src python src/PSYCHE/rt_channel.py --demo --turns 3   # three turns, streamed
 PYTHONPATH=src python tools/triage_eval.py          # the crisis-router numbers
 PYTHONPATH=src python tools/psyche_fit_pams.py      # does any store carry state readings?
 python tools/eliza_release_gate.py --check          # is this publishable at all
+
+# BCC RE-INVESTIGATION MACHINERY
+python tools/bcc_bypass.py --demo                   # demo fetch with full bypass chain
+python tools/bcc_bypass.py --url "https://ujsportal.pacourts.us/..." --tier A --edge-idx 42 --flock COURT
+python tools/ultra_loose.py                         # print ultra-loose source tutorial
+cat WINDOWS_WSL_CONCURRENT.md                       # Windows/WSL/Kali concurrent execution guide
 ```
 
 Nothing above needs an API key, a database, or an install step beyond Python 3.10.
 The loop is deterministic by design: same input, same stance, so an audit is
 checkable and a complaint can name the number that decided.
+
+### Install as Package
+
+```bash
+pip install -e .
+eliza-psyche --demo              # 3-turn demo via console script
+eliza-psyche --demo --turns 5    # 5-turn demo
+```
+
+## BCC RE-INVESTIGATION CAPABILITIES
+
+### 1. Engineered Web Bypass (`tools/bcc_bypass.py`)
+
+Operator-authorized bypass chain for public-records investigation:
+
+```
+HTTP (stealth headers) → curl_cffi (Chrome 131 impersonation) 
+  → Headless Browser (scrapling/playwright) → Archive Replay (Wayback/Archive.today)
+```
+
+**Features:**
+- Tiered trust: A (primary/VERIFIED-eligible) → B (official index) → C (credible secondary) → D (snippet/LEAD-only)
+- 10 Flocks: MONEY, GOVERN, CLINIC, SITE, COURT, SFI_NEG, UJS_NEG, FUNDER, PIPE, LEAD
+- Proof standard: raw+sha, granular quote, identity keys, universe label
+- FETCH_LOG.jsonl + new_sources_log.md for full provenance
+- LG3 held-primary admission (2026-10-28, choice a, executed)
+
+**Usage:**
+```bash
+# Single URL with full bypass
+python tools/bcc_bypass.py --url "https://ujsportal.pacourts.us/..." --tier A --edge-idx 42 --flock COURT
+
+# Process edge from stdin (JSON)
+echo '{"edge_idx":42,"flock":"MONEY","src_entity":"A","dst_entity":"B","claim":"$500k donation","tier":"A"}' | python tools/bcc_bypass.py --process-edge
+
+# Demo mode
+python tools/bcc_bypass.py --demo
+```
+
+### 2. Ultra-Loose Source Tutorial (`tools/ultra_loose.py`)
+
+Canonical tutorial for FLOCK-CANON-v1.3 ultra-loose posture:
+
+> **DOCTRINE:** "Any lawful source counts; tier decides grade, not eligibility."
+
+**Trust Tiers:** A primary → B official index → C credible secondary → D snippet/social/hearsay
+**10 Flocks:** MONEY, GOVERN, CLINIC, SITE, COURT, SFI_NEG, UJS_NEG, FUNDER, PIPE, LEAD
+**Proof Standard:** raw+sha, granular quote, identity keys, universe label
+
+```bash
+python tools/ultra_loose.py
+```
+
+### 3. Windows/WSL/Kali Concurrent Execution (`WINDOWS_WSL_CONCURRENT.md`)
+
+Full guide for running ELIZA on Windows with WSL2 Ubuntu and Kali workers:
+
+- **Windows Host**: Python 3.15t free-threaded, PMB daemon (:8765/:8766), PAMS (:21435)
+- **WSL2 Ubuntu**: scrapling/playwright, Node.js+Puppeteer, pmb_wsl.py client
+- **Kali Linux**: Full bypass tooling, same PMB/PAMS access
+- **Shared Filesystem**: C:\Users\clint\ ↔ /mnt/c/Users/clint
+- **Concurrent Patterns**: Controller on Windows, bypass workers on WSL/Kali, PMB sync across all
+
+```bash
+cat WINDOWS_WSL_CONCURRENT.md
+```
 
 ## What this is not
 
