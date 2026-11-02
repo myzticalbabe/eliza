@@ -49,6 +49,11 @@
    "kind": "code"
   },
   {
+   "from": "../src/PSYCHE/requiem.py",
+   "to": "eliza/psyche/requiem.py",
+   "kind": "code"
+  },
+  {
    "from": "../src/PSYCHE/data/triage_corpus.jsonl",
    "to": "eliza/psyche/data/triage_corpus.jsonl",
    "kind": "data"
@@ -86,6 +91,11 @@
   {
    "from": "../tests/test_psyche_rt_channel.py",
    "to": "tests/test_psyche_rt_channel.py",
+   "kind": "test"
+  },
+  {
+   "from": "../tests/test_psyche_requiem.py",
+   "to": "tests/test_psyche_requiem.py",
    "kind": "test"
   },
   {
