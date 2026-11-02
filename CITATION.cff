@@ -1,0 +1,49 @@
+cff-version: 1.2.0
+message: "If you use this software, cite it as below. If you cite a measured figure, cite the commit and the split it came from."
+title: "Project ELIZA: a forensic investigation suite with a disclose-not-distribute gate"
+version: 0.1.0
+date-released: "2026-11-01"
+license: Apache-2.0
+type: software
+abstract: >-
+  A forensic investigation suite: it keeps an investigation's claims tied to the
+  documents they rest on, and it refuses to publish the evidence those claims
+  came from. The centre of the design is an allowlist rather than a deny-list --
+  nothing ships that PUBLIC_MANIFEST.json does not name -- so a new evidence
+  directory cannot reach the public artifact by being forgotten about; the
+  release gate reads the same manifest and fails the build when a path crosses
+  the line. Material that stays home is enumerated, not implied: raw primary
+  documents, entity-resolution output, rendered findings, and correspondence
+  naming identified organisations and people. A reader verifies a claim by
+  re-fetching the source and comparing its SHA-256 rather than receiving the
+  case, which is why the instruments run against data the reader supplies. This
+  is the first project created and landed in the tree, and it is NOT the
+  therapeutic agent -- that is a separate project, Project Nurse Ratchet.
+  Named for Weizenbaum's ELIZA (1966): a system believed to be doing work that
+  nothing underneath was doing.
+authors:
+  - name: "Project ELIZA contributors"
+keywords:
+  - forensic investigation
+  - evidence provenance
+  - disclosure control
+  - allowlist release gate
+  - claim-to-source citation
+  - reproducible verification
+  - open science
+references:
+  - type: article
+    title: "ELIZA - a computer program for the study of natural language communication between man and machine"
+    authors:
+      - family-names: Weizenbaum
+    journal: "Communications of the ACM"
+    year: 1966
+    notes: "The cautionary tale this project is named after. No code from it is included."
+# The analytical instruments this suite carries implement the psychometric and
+# decision-model framing already cited in full by the sibling therapeutic
+# project (Project Nurse Ratchet, CITATION.cff). They are not re-cited here,
+# because a forensic citation that pointed at psychometrics would be describing
+# the wrong project -- the error this file previously contained.
+# repository-code, url and the author's identity are added at publication.
+# They are deliberately absent rather than guessed: a citation file that points
+# at a URL nobody has reserved is worse than one that says it will be added.

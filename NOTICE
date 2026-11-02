@@ -1,0 +1,49 @@
+Project ELIZA
+Copyright 2026 the Project ELIZA contributors
+
+This product is licensed under the Apache License, Version 2.0 (the "License").
+You may not use the files in this project except in compliance with the License.
+A copy of the License is in the file LICENSE.
+
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+
+--------------------------------------------------------------------------
+Attribution notes
+
+Project ELIZA is the forensic investigation suite: the layer that keeps an
+investigation's claims tied to the documents they rest on, and the gate that
+decides what may leave the machine. It is NOT the therapeutic agent in this
+tree -- that is a SEPARATE project, Project Nurse Ratchet, with its own package,
+its own release gate and its own citations. The two are not variants of one
+another and must not be described as one project.
+
+The name ELIZA refers to Joseph Weizenbaum's 1966 program (Communications of the
+ACM, 9(1):36-45). No code from that program is included here. The reference is
+to the cautionary lesson about a system that is trusted because it appears to be
+doing work that nothing underneath is doing -- the exact failure mode an
+investigation toolchain exists to make visible.
+
+What is held back, and where that rule lives
+
+`PUBLIC_MANIFEST.json` is an allowlist, not a deny-list: nothing ships that it
+does not name, and `tools/eliza_release_gate.py` fails the build when a path
+crosses the line the manifest declares. Its `never_ship` and `deny_substrings`
+sections name the material that stays home -- raw primary documents,
+entity-resolution output, rendered findings, and correspondence naming
+identified organisations and people. `DISCLOSURE_POLICY.md` states that line in
+prose; the manifest enforces it mechanically.
+
+No primary document about an identified person is distributed with this
+project. The investigation METHOD is published; the allegations inside the
+original case are not, because no licence makes republishing mental-health,
+tenancy or employment records about named people lawful or decent. A reader
+verifies a claim by re-fetching the source and comparing its SHA-256, which is
+why every instrument here runs against data the reader supplies rather than
+against a bundled case corpus.
+
+No third-party runtime dependency is bundled. The Contributor Covenant text in
+CODE_OF_CONDUCT.md is used under CC BY 4.0 with attribution retained in the
+Attribution section at the end of that file.
