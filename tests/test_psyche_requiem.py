@@ -10,16 +10,29 @@ asserting that a record still comes back and that nothing propagates.
 from __future__ import annotations
 
 import json
+import subprocess
 import sys
+import textwrap
+import threading
 from pathlib import Path
 
 import pytest
 
-SRC = Path(__file__).resolve().parents[1] / "src"
+ROOT = Path(__file__).resolve().parents[1]
+#: The same controls run in two places: the source tree (`src/PSYCHE`) and the
+#: materialised public tree (`Project_ELIZA/eliza/psyche`). Testing whichever copy
+#: is nearest is the point -- otherwise the shipped file is exercised by a test
+#: that imported the *other* one and a divergence passes silently.
+if (ROOT / "eliza" / "psyche" / "requiem.py").is_file():
+    SRC = ROOT
+    MODULE = "eliza.psyche.requiem"
+else:
+    SRC = ROOT / "src"
+    MODULE = "eliza.psyche.requiem"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-from eliza.psyche import requiem as rq  # noqa: E402
+rq = __import__(MODULE, fromlist=["requiem"])
 
 
 def _boom(depth: int = 0):
@@ -132,6 +145,81 @@ def test_the_epitaph_says_whether_it_was_recorded(tmp_path):
     except ValueError as exc:
         failed = rq.requiem(exc, unit="u", where="w", path=blocked)
     assert "NOT recorded" in rq.epitaph(failed)
+
+
+def test_scream_records_an_uncaught_death_without_changing_the_exit_code(tmp_path):
+    """The whole point: a dying process leaves a record AND still dies.
+
+    Run in a subprocess because this asserts on a real interpreter death -- a
+    crash handler that turns exit 1 into exit 0 would be a cover-up, and only an
+    observed exit status can tell the difference.
+    """
+    script = tmp_path / "dies.py"
+    grave_path = tmp_path / "requiem.jsonl"
+    script.write_text(textwrap.dedent('''
+        import sys
+        sys.path.insert(0, %r)
+        requiem = __import__(%r, fromlist=["requiem"])
+        requiem.scream(%r)
+        raise ValueError("the last scream")
+    ''' % (str(SRC), MODULE, str(grave_path))), encoding="utf-8")
+
+    done = subprocess.run([sys.executable, str(script)], capture_output=True,
+                          text=True, timeout=60)
+
+    assert done.returncode == 1, (done.returncode, done.stderr)
+    assert "ValueError: the last scream" in done.stderr, done.stderr
+    rows = rq.last(10, path=grave_path)
+    assert len(rows) == 1, rows
+    assert rows[0]["where"] == "uncaught"
+    assert rows[0]["unit"] == "dies.py"
+    assert rows[0]["error"]["message"] == "the last scream"
+    assert rows[0]["recorded"] is True
+
+
+def test_scream_records_a_worker_thread_death(tmp_path):
+    grave_path = tmp_path / "requiem.jsonl"
+    rq.scream(grave_path, fatal=False)
+    try:
+        def worker():
+            raise RuntimeError("thread died")
+
+        thread = threading.Thread(target=worker, name="worker-7")
+        thread.start()
+        thread.join(timeout=30)
+        rows = rq.last(10, path=grave_path)
+        assert len(rows) == 1, rows
+        assert rows[0]["where"] == "thread:worker-7"
+        assert rows[0]["error"]["type"] == "RuntimeError"
+    finally:
+        rq.hush()
+
+
+def test_scream_is_idempotent_and_hush_puts_the_process_back(tmp_path):
+    before = (sys.excepthook, threading.excepthook)
+    sys.stdout.flush()
+    first = rq.scream(tmp_path / "requiem.jsonl", fatal=False)
+    second = rq.scream(tmp_path / "requiem.jsonl", fatal=False)
+    try:
+        assert first["hooks"] == ["sys.excepthook", "threading.excepthook"]
+        assert second["hooks"] == [], "a second scream must not chain hooks twice"
+        assert rq.screaming() is True
+    finally:
+        rq.hush()
+    assert (sys.excepthook, threading.excepthook) == before
+    assert rq.screaming() is False
+    assert rq.grave() == rq.DEFAULT_PATH, "the grave must not outlive the scream"
+
+
+def test_a_grave_that_cannot_be_created_is_reported_not_raised(tmp_path):
+    blocked = tmp_path / "file-not-dir"
+    blocked.write_text("in the way", encoding="utf-8")
+    result = rq.scream(blocked / "requiem.jsonl", fatal=False)
+    try:
+        assert "write_error" in result
+        assert result["fatal"] is False
+    finally:
+        rq.hush()
 
 
 def test_the_environment_names_the_grave(monkeypatch, tmp_path):
