@@ -1,8 +1,7 @@
 # coding: utf-8
 """ORCHESTRATION / ORCHESTRATION/HORUS.py :: HORUSOutput -- INTAKE STUB. Not an implementation.
 
-Source: kali-linux ORCHESTRATION/HORUS.py (class HORUSOutput, 1286 lines in the module,
-23 public API entries)
+Source: kali-linux ORCHESTRATION/HORUS.py (class HORUSOutput, 1286 lines in the module, 23 public API entries)
 Atlas:  atlas_kali-linux.json, generated 2026-10-31
 Adopt:  python tools/shard_intake.py --adopt "kali:ORCHESTRATION/HORUS.py#HORUSOutput"
 
@@ -15,9 +14,11 @@ from __future__ import annotations
 
 WIRED = False
 SHARD_ID = "kali:ORCHESTRATION/HORUS.py#HORUSOutput"
+KIND = "class"
 SOURCE_ENVIRONMENT = "kali-linux"
 SOURCE_MODULE = "ORCHESTRATION/HORUS.py"
-CLASS_NAME = "HORUSOutput"
+CLASS_NAME = 'HORUSOutput'
+UNNAMED_CLASSES = 0
 TREE = "ORCHESTRATION"
 
 
@@ -25,9 +26,11 @@ def describe() -> dict:
     """What this shard is, where it came from, and whether it runs."""
     return {
         "shard_id": SHARD_ID,
+        "kind": KIND,
         "tree": TREE,
         "source_module": SOURCE_MODULE,
         "class_name": CLASS_NAME,
+        "unnamed_classes": UNNAMED_CLASSES,
         "environment": SOURCE_ENVIRONMENT,
         "wired": WIRED,
     }
@@ -38,5 +41,5 @@ def load(*args, **kwargs):
     raise NotImplementedError(
         "shard %s is an intake stub: %s is not implemented in ELIZA. "
         "Read the Kali source at %s, then see "
-        "docs/TUTORIAL_SHARD_DEV_2026-11-02.md" % (SHARD_ID, CLASS_NAME, SOURCE_MODULE)
+        "docs/TUTORIAL_SHARD_DEV_2026-11-02.md" % (SHARD_ID, SHARD_ID, SOURCE_MODULE)
     )

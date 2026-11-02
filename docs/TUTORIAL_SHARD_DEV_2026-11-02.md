@@ -1,8 +1,10 @@
 # Tutorial: adopting a Kali shard into ELIZA
 
-You have 1,131 named units from the Kali lane available under `shards/`.
-None of them runs. This walks one from "I wonder what that is" to "it is wired,
-tested and in the ledger", using the commands that actually exist.
+You have 1,183 shards covering all 1,274 classes the Kali lane's atlas counts:
+1,131 units named individually, plus 52 *residual* shards standing for the 143
+classes the atlas lists only as a count. None of them runs. This walks one from
+"I wonder what that is" to "it is wired, tested and in the ledger", using the
+commands that actually exist.
 
 Audience: a developer who knows Python and this repository, and has not read the
 surface before. Time: 20–60 minutes for a small unit, longer for anything that
@@ -18,25 +20,25 @@ python tools/shard_intake.py --list
 ```
 
 ```
-(root)                    104 shard(s)
+(root)                    109 shard(s)
 AOA                        30 shard(s)
 AZAZAEL_TOOLKIT             7 shard(s)
 CLI                         1 shard(s)
-CODEX                      44 shard(s)
-CORE                      548 shard(s)
+CODEX                      46 shard(s)
+CORE                      574 shard(s)
 DAEMONS                     1 shard(s)
 HYDRA                      12 shard(s)
 INTERPRETERS                6 shard(s)
-META                       56 shard(s)
+META                       58 shard(s)
 ML                          4 shard(s)
-ORCHESTRATION             199 shard(s)
+ORCHESTRATION             210 shard(s)
 SCRIPTS                    13 shard(s)
 TOOLS                       9 shard(s)
-UTILITIES                  37 shard(s)
-eve_unleashed              14 shard(s)
+UTILITIES                  40 shard(s)
+eve_unleashed              15 shard(s)
 scripts                    13 shard(s)
-tests                      33 shard(s)
-total                    1131
+tests                      35 shard(s)
+total                    1183
 ```
 
 Two entries look like duplicates: `SCRIPTS` and `scripts`. They are not — the
@@ -49,6 +51,13 @@ Narrow it:
 ```bash
 python tools/shard_intake.py --list --tree CORE
 ```
+
+One entry in that list is not a class. A shard whose id ends `#module` (for
+example `kali:CORE/config.py#module`) is a **residual**: the atlas counts nine
+classes in `CORE/config.py` but names only six, so the seventh through ninth have
+no identifier to stub. The residual shard says so in its own header and carries
+`CLASS_NAME = None`, `UNNAMED_CLASSES = 9`. Adopting it means adopting the module
+and deciding, from the source, which class you actually wanted.
 
 ## Step 1 — read the provenance before the code
 
@@ -70,10 +79,14 @@ Or from Python, without importing anything:
 ```python
 import shards
 shards.describe("kali:UTILITIES/PERSEPHONE/persephone.py#PathTranslator")
-# {'shard_id': ..., 'tree': 'UTILITIES', 'module': 'UTILITIES/PERSEPHONE/persephone.py',
-#  'class': 'PathTranslator', 'path': 'shards/utilities/...',
-#  'wired': False, 'source_environment': 'kali-linux'}
+# {'shard_id': ..., 'kind': 'class', 'tree': 'UTILITIES',
+#  'module': 'UTILITIES/PERSEPHONE/persephone.py', 'class': 'PathTranslator',
+#  'unnamed': 0, 'path': 'shards/utilities/...', 'wired': False, 'test': None,
+#  'source_environment': 'kali-linux'}
 ```
+
+`wired` is read from `shards/WIRED.json`, not assumed: adopt the shard in step 5
+and the same call starts returning `wired: True` with the test that backs it.
 
 `wired: False` is not decoration. It means the only thing you can get from this
 shard today is the sentence its `load()` raises:
@@ -177,7 +190,7 @@ It never touches `WIRED.json`.
 
 Reversing an adoption is three edits: delete the ledger entry, delete or revert
 the implementation, `--write` to restore the stub. Nothing else in the surface
-depended on your choice, which is the property that makes 1,131 units adoptable
+depended on your choice, which is the property that makes 1,183 units adoptable
 without a migration plan.
 
 ---
@@ -218,9 +231,11 @@ ledger, five filenames, and `--check` proves the surface still matches the atlas
 - **`is in the index but not the atlas (stale stub)`** — the atlas moved and the
   surface has not. `--write` regenerates from the current atlas; check what
   disappeared before you do.
-- **A unit you need is not listed** — it is either not in `top_classes` (see §2 of
-  the whitepaper) or belongs to a tree the census did not include. Ask for the
-  atlas, not for a guessed stub.
+- **A unit you need is not listed by name** — check its module for a `#module`
+  residual shard first (the class is counted but unnamed; §2 of the whitepaper).
+  If the module has no shard at all, it either declares no class — 279 modules,
+  1,785 functions, outside this surface's unit — or belongs to a tree the census
+  did not include. Ask for the atlas, not for a guessed stub.
 
 ## Rules for this surface, in one paragraph
 

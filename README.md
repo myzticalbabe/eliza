@@ -136,11 +136,13 @@ cat WINDOWS_WSL_CONCURRENT.md
 
 ## The Kali shard surface
 
-1,131 named class units from the Kali lane, addressable here and **none of them
-running**. Each is a generated stub that carries its provenance and refuses:
+1,183 shards covering all 1,274 classes the Kali lane's atlas counts — 1,131
+named units plus 52 residuals for the modules whose class list the atlas
+truncates — addressable here and **none of them running**. Each is a generated
+stub that carries its provenance and refuses:
 
 ```bash
-python tools/shard_intake.py --list                # 1,131 shards, 18 trees
+python tools/shard_intake.py --list                # 1,183 shards, 18 trees
 python tools/shard_intake.py --check               # the gate: drift and fakes
 python tools/shard_intake.py --adopt "kali:CORE/paths.py#Paths"
 

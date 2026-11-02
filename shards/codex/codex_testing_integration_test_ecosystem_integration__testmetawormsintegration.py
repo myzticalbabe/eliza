@@ -1,8 +1,7 @@
 # coding: utf-8
 """CODEX / CODEX/TESTING/INTEGRATION/test_ecosystem_integration.py :: TestMetaWormsIntegration -- INTAKE STUB. Not an implementation.
 
-Source: kali-linux CODEX/TESTING/INTEGRATION/test_ecosystem_integration.py (class TestMetaWormsIntegration, 79 lines in the module,
-3 public API entries)
+Source: kali-linux CODEX/TESTING/INTEGRATION/test_ecosystem_integration.py (class TestMetaWormsIntegration, 79 lines in the module, 3 public API entries)
 Atlas:  atlas_kali-linux.json, generated 2026-10-31
 Adopt:  python tools/shard_intake.py --adopt "kali:CODEX/TESTING/INTEGRATION/test_ecosystem_integration.py#TestMetaWormsIntegration"
 
@@ -15,9 +14,11 @@ from __future__ import annotations
 
 WIRED = False
 SHARD_ID = "kali:CODEX/TESTING/INTEGRATION/test_ecosystem_integration.py#TestMetaWormsIntegration"
+KIND = "class"
 SOURCE_ENVIRONMENT = "kali-linux"
 SOURCE_MODULE = "CODEX/TESTING/INTEGRATION/test_ecosystem_integration.py"
-CLASS_NAME = "TestMetaWormsIntegration"
+CLASS_NAME = 'TestMetaWormsIntegration'
+UNNAMED_CLASSES = 0
 TREE = "CODEX"
 
 
@@ -25,9 +26,11 @@ def describe() -> dict:
     """What this shard is, where it came from, and whether it runs."""
     return {
         "shard_id": SHARD_ID,
+        "kind": KIND,
         "tree": TREE,
         "source_module": SOURCE_MODULE,
         "class_name": CLASS_NAME,
+        "unnamed_classes": UNNAMED_CLASSES,
         "environment": SOURCE_ENVIRONMENT,
         "wired": WIRED,
     }
@@ -38,5 +41,5 @@ def load(*args, **kwargs):
     raise NotImplementedError(
         "shard %s is an intake stub: %s is not implemented in ELIZA. "
         "Read the Kali source at %s, then see "
-        "docs/TUTORIAL_SHARD_DEV_2026-11-02.md" % (SHARD_ID, CLASS_NAME, SOURCE_MODULE)
+        "docs/TUTORIAL_SHARD_DEV_2026-11-02.md" % (SHARD_ID, SHARD_ID, SOURCE_MODULE)
     )

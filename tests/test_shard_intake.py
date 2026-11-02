@@ -58,6 +58,36 @@ def test_every_unit_in_the_atlas_has_a_stub():
 
 
 @needs_atlas
+def test_every_class_the_atlas_counts_is_reachable_through_a_shard():
+    """The atlas names at most six classes per module; the rest must not vanish.
+
+    Without this, the surface silently describes itself as complete while 143
+    classes sit behind 52 module boundaries with no address, and the counter a
+    reader trusts (the shard total) cannot reveal it.
+    """
+    atlas = intake.read_atlas(ATLAS)
+    entries = intake.units(atlas)
+    named = sum(1 for entry in entries if entry["kind"] == "class")
+    residual = sum(entry["unnamed"] for entry in entries if entry["kind"] == "module")
+    declared = sum(int(module.get("classes") or 0)
+                   for module in (atlas.get("modules") or {}).values())
+    assert named + residual == declared, (named, residual, declared)
+
+
+@needs_atlas
+def test_a_residual_shard_names_its_count_instead_of_inventing_a_class():
+    entries = intake.units(intake.read_atlas(ATLAS))
+    residual = [entry for entry in entries if entry["kind"] == "module"]
+    assert residual, "the atlas has truncated class lists; residuals must exist"
+    for entry in residual:
+        assert entry["class"] is None, entry
+        assert entry["unnamed"] > 0, entry
+    text = (intake.REPO / residual[0]["path"]).read_text(encoding="utf-8")
+    assert "CLASS_NAME = None" in text
+    assert "UNNAMED_CLASSES = " in text
+
+
+@needs_atlas
 def test_no_two_shards_share_a_path_on_a_case_insensitive_disk():
     """Kali carries both SCRIPTS/ and scripts/; Windows collapses them."""
     paths = [entry["path"].lower() for entry in intake.units(intake.read_atlas(ATLAS))]

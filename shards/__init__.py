@@ -1,17 +1,19 @@
 # coding: utf-8
 """The Kali shard surface: addressable, adoptable, and deliberately inert.
 
-ELIZA ships 1,131 intake stubs, one per named class unit in the Kali lane's
-atlas (`atlas_kali-linux.json`: 679 modules, 18 trees). Each stub is a *name with
-provenance*, not an implementation -- `WIRED = False` and a `load()` that raises.
-The surface exists so a forward developer can see what is available, choose a
-unit, and wire it as a reviewable change instead of copying from a tree they
-cannot inspect.
+ELIZA ships 1,183 intake stubs covering all 1,274 classes the Kali lane's atlas
+counts (`atlas_kali-linux.json`: 679 modules, 18 trees). 1,131 are named units;
+52 are *residual* shards for modules whose class list the atlas truncates at six,
+carrying `CLASS_NAME = None` and the count it stands for. Each stub is a *name
+with provenance*, not an implementation -- `WIRED = False` and a `load()` that
+raises. The surface exists so a forward developer can see what is available,
+choose a unit, and wire it as a reviewable change instead of copying from a tree
+they cannot inspect.
 
 Read it as an inventory, never as a dependency:
 
     import shards
-    len(shards.index())                        # 1131
+    len(shards.index())                        # 1183
     shards.trees()["CORE"]                     # how many units CORE offers
     shards.describe("kali:CORE/paths.py#Paths")  # provenance, and wired: False
     shards.load("kali:CORE/paths.py#Paths")      # NotImplementedError, with why
@@ -29,6 +31,10 @@ from typing import Dict, List, Optional, Sequence
 
 SHARDS_DIR = Path(__file__).resolve().parent
 INDEX = SHARDS_DIR / "SHARD_INDEX.json"
+#: The hand-written adoption ledger. `describe()` reads it rather than assuming
+#: nothing is wired: a hard-coded False would keep saying "stub" about a module
+#: that already has an implementation and a test behind it.
+WIRED_FILE = SHARDS_DIR / "WIRED.json"
 #: Project root. The surface is a tracked sibling of `eliza/` (which is generated
 #: by tools/publicize.py), so index paths are `shards/<tree>/<file>.py`.
 REPO = SHARDS_DIR.parent
@@ -89,18 +95,32 @@ def load(shard_id: str):
     return module
 
 
+def wired_ledger() -> Dict[str, Dict]:
+    """Shard id -> {test, commit} for every adoption a human recorded."""
+    if not WIRED_FILE.is_file():
+        return {}
+    try:
+        return json.loads(WIRED_FILE.read_text(encoding="utf-8")).get("wired") or {}
+    except json.JSONDecodeError:
+        return {}
+
+
 def describe(shard_id: str) -> Dict:
     """What the shard is and where it came from -- without importing it."""
     entry = find(shard_id)
     if entry is None:
         raise ShardError("no shard %r in the index" % shard_id)
     described = {key: entry[key] for key in
-                 ("shard_id", "tree", "module", "class", "path")}
-    described["wired"] = False
+                 ("shard_id", "kind", "tree", "module", "class", "unnamed", "path")}
+    claim = wired_ledger().get(shard_id)
+    described["wired"] = claim is not None
+    described["test"] = (claim or {}).get("test")
     described["source_environment"] = "kali-linux"
     return described
 
 
 def unwired(entries: Sequence[Dict] = ()) -> List[str]:
-    """Shard ids that are still stubs. Every one of them, until someone wires it."""
-    return [entry["shard_id"] for entry in (entries or index())]
+    """Shard ids that are still stubs: everything the ledger does not claim."""
+    assigned = wired_ledger()
+    return [entry["shard_id"] for entry in (entries or index())
+            if entry["shard_id"] not in assigned]
