@@ -1,0 +1,5 @@
+{
+ "schema": "eliza.shard-intake/1",
+ "note": "Shard id -> {test, commit}. A shard listed here has been wired into ELIZA behind its stub path; the test is the evidence. Edit by hand, in the adopting commit.",
+ "wired": {}
+}

@@ -134,6 +134,25 @@ Full guide for running ELIZA on Windows with WSL2 Ubuntu and Kali workers:
 cat WINDOWS_WSL_CONCURRENT.md
 ```
 
+## The Kali shard surface
+
+1,131 named class units from the Kali lane, addressable here and **none of them
+running**. Each is a generated stub that carries its provenance and refuses:
+
+```bash
+python tools/shard_intake.py --list                # 1,131 shards, 18 trees
+python tools/shard_intake.py --check               # the gate: drift and fakes
+python tools/shard_intake.py --adopt "kali:CORE/paths.py#Paths"
+
+python -c "import shards; print(shards.trees()['CORE'])"
+```
+
+A stub declares `WIRED = False` and its `load()` raises with the reason; adoption
+is recorded in `shards/WIRED.json` against a test that must exist. Nothing
+in the therapeutic loop imports the surface. Read the argument in
+`docs/WHITEPAPER_SHARD_SUBSTRATE_2026-11-02.md` and the procedure in
+`docs/TUTORIAL_SHARD_DEV_2026-11-02.md`.
+
 ## What this is not
 
 - **Not a therapist, and not a substitute for one.** It does not diagnose, does

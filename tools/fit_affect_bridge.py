@@ -72,6 +72,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 from eliza.psyche.affect import clamp  # noqa: E402
 from eliza.psyche.network import hand_activation_from_pad  # noqa: E402
+from eliza.psyche.rt_agent import triage  # noqa: E402
 import eliza.psyche as _psyche_pkg  # noqa: E402
 
 #: Resolved from the INSTALLED package rather than the source layout, so the same
@@ -191,13 +192,6 @@ def standard_errors(design: Sequence[Sequence[float]], lam: float = RIDGE_LAMBDA
     return out
 
 
-
-try:
-    from CORE.failure_ledger import note_failure
-except ImportError:                               # never break the host
-    def note_failure(where, exc=None):
-        pass  # ledger missing; the swallow is still named at the call site
-
 def r_squared(actual: Sequence[Sequence[float]], predicted: Sequence[Sequence[float]]) -> float:
     flat_a = [v for row in actual for v in row]
     flat_p = [v for row in predicted for v in row]
@@ -313,7 +307,7 @@ def downstream(coeffs: List[List[float]], grid_step: float = 0.5) -> Dict[str, o
     what a stance decision is gated on, which is why this is the part worth
     measuring rather than an invented "stance agreement" score.
     """
-    from eliza.psyche.rt_agent import triage  # local: keeps import cost off --check
+    # triage is imported at module level (see imports)
 
     values = [i * grid_step for i in range(int(-1 / grid_step), int(1 / grid_step) + 1)]
     changed = 0
@@ -482,7 +476,7 @@ def fit_from_records(rows: Sequence[Dict[str, object]]) -> Dict[str, object]:
         try:
             held = ridge_fit(train_x, train_y)
         except ValueError as exc:
-            note_failure("Project_ELIZA/tools/fit_affect_bridge.py", exc)
+            print(f"[fit_affect_bridge] ridge_fit failed for hold {hold}: {exc}", file=sys.stderr)
             continue
         for i in range(len(targets)):
             loo_errors.append(abs(sum(c * f for c, f in

@@ -181,13 +181,6 @@ def probe(path: Path) -> Dict:
 def probe_elicitation(path: Path) -> Dict:
     """Find construct readings in an elicitation store (JSONL, one session per line).
 
-
-try:
-    from CORE.failure_ledger import note_failure
-except ImportError:                               # never break the host
-    def note_failure(where, exc=None):
-        pass  # ledger missing; the swallow is still named at the call site
-
     Returns an explicit negative when the file is absent rather than an empty
     success: "no store" and "a store with no rows" need different remedies, and a
     probe that reports both as zero teaches the reader to ignore it.
@@ -243,7 +236,7 @@ def readings_from_records(path: Path) -> List[Dict[str, float]]:
         try:
             row = json.loads(line)
         except ValueError as exc:
-            note_failure("Project_ELIZA/tools/psyche_fit_pams.py", exc)
+            print(f"[psyche_fit_pams] skipping invalid JSON line: {exc}", file=sys.stderr)
             continue
         constructs = row.get("constructs") if isinstance(row, dict) else None
         if not isinstance(constructs, dict):
