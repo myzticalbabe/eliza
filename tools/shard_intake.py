@@ -121,15 +121,28 @@ INDEX_KEYS = ("shard_id", "kind", "tree", "module", "class", "lines",
               "public_api", "unnamed", "path")
 
 
+class AtlasUnavailable(RuntimeError):
+    """The census this gate READS is absent or unreadable -- not drift.
+
+    The atlas lives outside the repo (``~/yggdrasil_forest/atlas_kali-linux.json``,
+    written by ``tools/domain_trees.py`` on the Kali lane), so a host that has
+    never run that census cannot judge the stub surface at all. That state used to
+    arrive as ``SystemExit`` -- exit 1, the same code as real drift -- so the only
+    two available readings were "the stubs are wrong" and "the gate is broken",
+    and the truthful third ("nothing was judged") had no way to be said. It is a
+    separate exception so ``main`` can exit 2: could not perform the run.
+    """
+
+
 def read_atlas(path: Path) -> Dict:
     if not path.is_file():
-        raise SystemExit("atlas not found: %s\n"
-                         "Pass --atlas, or run tools/domain_trees.py on the Kali lane."
-                         % path)
+        raise AtlasUnavailable("atlas not found: %s\n"
+                               "Pass --atlas, or run tools/domain_trees.py on the Kali lane."
+                               % path)
     try:
         return json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
-        raise SystemExit("%s is not valid JSON: %s" % (path, exc))
+        raise AtlasUnavailable("%s is not valid JSON: %s" % (path, exc))
 
 
 def units(atlas: Dict) -> List[Dict]:
@@ -403,7 +416,15 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--adopt", metavar="SHARD_ID")
     args = parser.parse_args(argv)
 
-    atlas = read_atlas(Path(args.atlas))
+    # Exit 2, not 1: `2` means "the run could not be performed", which is neither
+    # a pass nor a verdict on the tree. Collapsing it into 1 let a missing input
+    # read as a drifted surface, and the commit gate would then refuse a healthy
+    # tree for a reason that has nothing to do with the tree.
+    try:
+        atlas = read_atlas(Path(args.atlas))
+    except AtlasUnavailable as exc:
+        print("CANNOT JUDGE: %s" % exc, file=sys.stderr)
+        return 2
     entries = units(atlas)
 
     if args.write:

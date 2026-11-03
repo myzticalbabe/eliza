@@ -39,6 +39,28 @@ needs_atlas = pytest.mark.skipif(
            "against the tree it describes" % ATLAS)
 
 
+def test_an_absent_census_is_exit_2_not_drift(tmp_path, capsys):
+    """The control for the third state, and the reason it exists.
+
+    The atlas lives outside the repo, so a host that never ran the Kali census
+    cannot judge this surface. That used to arrive as ``SystemExit`` -- exit 1,
+    byte-identical to "the stubs disagree with the atlas" -- and the commit gate
+    would have refused a healthy tree for a reason that was about the host. Exit 2
+    means COULD NOT PERFORM THE RUN, and it has to stay distinguishable from the
+    drift exit for the tier stanza to tell the reader which one happened.
+    """
+    absent = tmp_path / "no_atlas_here.json"
+    assert intake.main(["--atlas", str(absent), "--check"]) == 2
+    assert "CANNOT JUDGE" in capsys.readouterr().err
+
+
+def test_an_unreadable_census_is_also_exit_2(tmp_path):
+    """Corrupt input is a missing judgement, not a drifted surface."""
+    broken = tmp_path / "atlas.json"
+    broken.write_text("{not json", encoding="utf-8")
+    assert intake.main(["--atlas", str(broken), "--check"]) == 2
+
+
 @needs_atlas
 def test_the_surface_is_clean_against_the_real_atlas():
     ok, problems, counts = intake.check(intake.read_atlas(ATLAS))
