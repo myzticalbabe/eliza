@@ -281,7 +281,8 @@ the science, and a PASS from it is not an endorsement.
 
 ## Citing
 
-See `CITATION.cff`. Licensed Apache-2.0; see `NOTICE` for attribution.
+See `CITATION.cff`. Licensed CDDL-1.1; see `NOTICE` for attribution.
+License ruling: commit b49dfc2fef0178d1984437de577bfa00de8a4c32 (2026-11-03); see docs/LICENSE_PRECEDENT_CDDL11_2026-11-03.md.
 
 ## Contributing
 
