@@ -37,6 +37,8 @@ def describe() -> dict:
 
 
 def load(*args, **kwargs):
-    """Return the adopted implementation, not a sentence about it."""
-    from adopted.aoa.event_bus import AOEvent
-    return AOEvent
+    """Return the vendored unit. Importing the module is the adoption."""
+    import importlib
+
+    vendored = importlib.import_module('adopted.aoa.event_bus')
+    return vendored if CLASS_NAME is None else getattr(vendored, CLASS_NAME)

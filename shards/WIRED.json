@@ -2,25 +2,5765 @@
  "schema": "eliza.shard-intake/1",
  "note": "Shard id -> {test, commit}. A shard listed here has been wired into ELIZA behind its stub path; the test is the evidence. Edit by hand, in the adopting commit.",
  "wired": {
+  "kali:AOA/aoa_monitor.py#AOAState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/arm_registry.py#ArmCapability": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/arm_registry.py#ArmMetadata": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/arm_registry.py#ArmRegistry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/arm_registry.py#BaseArm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/contracts.py#ArmResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/contracts.py#ContractReport": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/delegation_spec.py#DelegationSpec": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/router.py#CrossArmRouter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/router.py#StepStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/router.py#WorkflowDAG": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/router.py#WorkflowStep": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/session_manager.py#Milestone": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/session_manager.py#MilestoneStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/session_manager.py#SessionManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/core/session_manager.py#SessionState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AUTO_DOC_GENERATOR.py#DocumentationGenerator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_Inference_Studio.py#EmotionEngine": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_Inference_Studio.py#EmotionalState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_Inference_Studio.py#FWStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_Inference_Studio.py#Framework": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_Inference_Studio.py#GPUInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_Inference_Studio.py#HardwareProfile": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_Inference_Studio.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_TOOLKIT/AzazaelDynamicLogger.py#DynamicLogger": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_TOOLKIT/AzazaelDynamicLogger.py#LogLevel": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_TOOLKIT/COMPREHENSIVE_FIX.py#ComprehensiveFix": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_TOOLKIT/QL_ANALYSIS.py#QLearningAnalyzer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_TOOLKIT/REAL_FRAMEWORK_TEST.py#RealFrameworkTest": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_TOOLKIT/environment_manager.py#EnvironmentManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/arms/azazael_arm.py#AzazaelArm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/arms/codex_arm.py#CodexArm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/arms/eve_arm.py#EveArm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/arms/kali_arm.py#KaliArm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/arms/libra_arm.py#LibraArm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/arms/support_arms.py#AgentSelectorArm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/arms/support_arms.py#LlamaServerArm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/arms/support_arms.py#PamsArm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AOA/arms/support_arms.py#PerformanceMonitorArm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AZAZAEL_TOOLKIT/math_certainty.py#BinaryComparator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AzazaelDynamicLogger.py#DynamicLogger": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:AzazaelDynamicLogger.py#LogLevel": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CODEX_Studio.py#CODEXStudio": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CODEX_Studio.py#HTMLSceneExtractor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CODEX_Studio.py#HTMLTextExtractor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/AUTO_DOC_GENERATOR.py#DocumentationGenerator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/AUTO_DOWNLOADER.py#DownloadProgress": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/AUTO_DOWNLOADER.py#DownloadState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/AUTO_DOWNLOADER.py#FrameworkInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/AUTO_DOWNLOADER.py#FrameworkPlugin": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/AUTO_DOWNLOADER.py#InstallationResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/AUTO_DOWNLOADER.py#PersistentState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/AUTO_DOWNLOADER.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/ascii_flowchart.py#AsciiFlowchart": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/ascii_flowchart.py#Node": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/emoji_maker.py#Category": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/emoji_maker.py#EmojiDef": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/emoji_maker.py#EmojiMaker": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/emoji_maker.py#Emotion": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/emoji_maker.py#Mood": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/CORE/enhanced_animations.py#AnimationDef": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/POPUPS/POPUP_CLICKABLE.py#AzazaelPopup": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/POPUPS/POPUP_RICH.py#RichPopup": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/POPUPS/POPUP_WORKING.py#AnimatedCard": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/POPUPS/POPUP_WORKING.py#AzazaelPopup": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/POPUPS/POPUP_WORKING.py#TIER_LABELS": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/TESTING/INTEGRATION/test_ecosystem_integration.py#TestKLINKIntegration": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/TESTING/INTEGRATION/test_ecosystem_integration.py#TestMetaWormsIntegration": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/TESTING/INTEGRATION/test_ecosystem_integration.py#TestWORMZHydraIntegration": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/TESTING/PERFORMANCE/test_performance.py#PerformanceBenchmarks": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/TESTING/UNIT/test_hydra.py#TestHYDRACluster": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/TESTING/UNIT/test_hydra.py#TestHYDRADataClasses": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/TESTING/UNIT/test_metaworms.py#TestHYDRAMETA": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/TESTING/UNIT/test_metaworms.py#TestMetaWormConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/TESTING/UNIT/test_metaworms.py#TestMetaWormResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/TESTING/UNIT/test_wormz.py#TestFunctionalWorms": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/TESTING/UNIT/test_wormz.py#TestWORMZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/VIDEOS/create_azazael_educational_video.py#AzazaelEducationalVideo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/VIDEOS/create_dual_pane_popup.py#DualPanePopup": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CODEX/VIDEOS/generate_dashboard_video.py#DashboardCardDataExtractor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:DAEMONS/parallax_validator.py#ParallaxHandler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA/hydra_launcher.py#HydraLauncher": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA/hydra_launcher.py#ProtocolResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA/hydra_protocols.py#ConflictEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA/hydra_protocols.py#ConflictType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA/hydra_protocols.py#HydraProtocols": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA/hydra_protocols.py#ProtocolResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA/ml_platforms/config.py#LexiconUpdater": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA/ml_platforms/config.py#MLPlatformConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA/pipeline_specs.py#ModelType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA/pipeline_specs.py#PIPELINES": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA/pipeline_specs.py#PipelineConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA/pipeline_specs.py#PipelineType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRAMETA.py#HYDRAMETA": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRAMETA.py#HYDRAMETAConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRAMETA.py#HYDRAOptimizer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRAMETA.py#PersistenceManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRAMETA.py#TrialResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRAMETA.py#WormPerformance": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:INTERPRETERS/__init__.py#RunResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:INTERPRETERS/go_runner.py#GoResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:INTERPRETERS/go_runner.py#GoRunner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:INTERPRETERS/rust_runner.py#RustEdition": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:INTERPRETERS/rust_runner.py#RustResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:INTERPRETERS/rust_runner.py#RustRunner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/DOCKERZ.py#ContainerInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/DOCKERZ.py#DOCKERZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/DOCKERZ.py#DOCKERZConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/DOCKERZ.py#ImageInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HEALTHZ.py#HEALTHZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HEALTHZ.py#HealthStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRAMETA.py#HYDRAMETA": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRAMETA.py#HYDRAMETAConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRAMETA.py#HYDRAOptimizer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRAMETA.py#PersistenceManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRAMETA.py#TrialResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRAMETA.py#WormPerformance": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRAMETA_UV.py#HYDRAMETA_UV": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRAMETA_UV.py#HYDRAMETA_UVConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRAMETA_UV.py#UVTrialResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRAMETA_UV.py#UVWormPerformance": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRA_CONTAINER.py#ClusterContainerConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRA_CONTAINER.py#ContainerExecution": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRA_CONTAINER.py#HYDRA_CONTAINER": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/HYDRA_CONTAINER.py#HYDRA_CONTAINERConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/METAWORMS.py#DEADZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/METAWORMS.py#DEPENDZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/METAWORMS.py#METAZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/METAWORMS.py#MetaWormConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/METAWORMS.py#VALIDZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/METAWORMS.py#WormResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/METAWORMS.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/METRICZ.py#ExecutionRecord": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/METRICZ.py#METRICZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/METRICZ.py#METRICZConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/METRICZ.py#MetricPoint": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/METRICZ.py#PerformanceSummary": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/MetaWormSpawner.py#CurativePool": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/OPTIMIZ.py#OPTIMIZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/OPTIMIZ.py#OptimizationResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/TELEMETRYZ.py#CallPath": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/TELEMETRYZ.py#FunctionStats": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/TELEMETRYZ.py#TELEMETRYZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/TELEMETRYZ.py#TELEMETRYZConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/TELEMETRYZ.py#TraceEvent": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/UVZ.py#UVResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/UVZ.py#UVZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ML/autodiff.py#Dual": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ML/estimators.py#EstimatorSpec": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ML/gosp.py#SessionOutcomeLearner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ML/nsga.py#NSGA2": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ADLP_FusionCore.py#FusionCore": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ADLP_FusionCore.py#LVL": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ADLP_FusionCore.py#TIER": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ADLP_MLOrchestrator.py#MLOrchestrator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ADLP_MLOrchestrator.py#MLStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ADLP_MLOrchestrator.py#MLTask": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ADLP_MLOrchestrator.py#MLTaskType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ADLP_SystemTools.py#AssistantLogProtocol": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ADLP_SystemTools.py#LogCategory": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ADLP_SystemTools.py#LogEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ADLP_SystemTools.py#LogLevel": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ADLP_SystemTools.py#SystemToolExecutor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ADLP_SystemTools.py#SystemToolResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/AssistantLogProtocol.py#AssistantLogProtocol": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/AssistantLogProtocol.py#LogCategory": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/AssistantLogProtocol.py#LogEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/AssistantLogProtocol.py#LogLevel": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/AssistantLogProtocol.py#SystemSnapshot": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/AssistantLogProtocol_Enhanced.py#AssistantLogProtocol": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/AssistantLogProtocol_Enhanced.py#AsyncLogWriter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/AssistantLogProtocol_Enhanced.py#ConversationContext": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/AssistantLogProtocol_Enhanced.py#LogCategory": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/AssistantLogProtocol_Enhanced.py#LogEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/AssistantLogProtocol_Enhanced.py#LogLevel": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/BIBL/bibl_map.py#Location": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/BIBL/bibl_map.py#Node": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/FusionHealer.py#FusionHealer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HYDRA.py#ClusterConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HYDRA.py#ClusterNode": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HYDRA.py#HYDRACluster": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HYDRA.py#ProcessingStage": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HYDRA.py#StageResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/MathCertainty.py#CertaintyLevel": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/MathCertainty.py#HashChain": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/MathCertainty.py#MathematicalCertaintySystem": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/MathCertainty.py#MerkleTree": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/MathCertainty.py#ProofType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SelfImprovingGUI.py#GUISelfImprovement": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SelfImprovingGUI.py#GUIStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SelfImprovingGUI.py#SelfImprovingGUI": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SelfImprovingGUI.py#WidgetCluster": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SelfImprovingGUI.py#WidgetMetrics": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SelfImprovingGUI.py#WormCanvas": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SystemManager.py#DiskCrawler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SystemManager.py#HealthStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SystemManager.py#ProcessCrawler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SystemManager.py#PythonCrawler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SystemManager.py#SystemComponent": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SystemManager.py#SystemCrawler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SystemManager.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SystemManagerGUI.py#ADLPClient": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SystemManagerGUI.py#FileNode": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SystemManagerGUI.py#NodeType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SystemManagerGUI.py#SystemManagerGUI": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/SystemManagerGUI.py#WormCanvas": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/TotalFusion.py#ModuleFusion": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/TotalFusion.py#TotalFusion": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/config.py#LexiconUpdater": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/config.py#MLPlatformConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/framework_activator.py#Answer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/framework_activator.py#Framework": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/framework_activator.py#MLFrameworkQA": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/framework_activator.py#QState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/framework_activator.py#QuestionType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/health_monitor.py#Alert": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/health_monitor.py#HealthCheck": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/health_monitor.py#HealthStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/health_monitor.py#PlatformHealthMonitor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/deep_learning_qlearning.py#DLFramework": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/deep_learning_qlearning.py#DLQTable": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/deep_learning_qlearning.py#DLTaskType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/deep_learning_qlearning.py#DLTransition": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/deep_learning_qlearning.py#ExperienceReplayBuffer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/deep_learning_qlearning.py#HardwareType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/deep_learning_qlearning.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/enhanced_qlearning.py#HyperparameterTuner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/enhanced_qlearning.py#MultiAgentQLearning": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/enhanced_qlearning.py#PrioritizedReplay": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/enhanced_qlearning.py#SumTree": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/enhanced_qlearning.py#TaskType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/enhanced_qlearning.py#Transition": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/enhanced_qlearning.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/metrics_tracker.py#MetricEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/metrics_tracker.py#MetricsTracker": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/metrics_tracker.py#PerformanceBenchmark": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/metrics_tracker.py#PerformanceMetrics": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/metrics_tracker.py#SuccessRateTracker": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/ml_integration.py#FrameworkGroups": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/ml_integration.py#FrameworkInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/ml_integration.py#FrameworkType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/ml_integration.py#IntegrationPathways": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/ml_integration.py#SuccessiveComputation": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/ml_integration.py#TaskType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/ml_integration.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/mlflow_integration.py#MLflowLogger": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/mlflow_integration.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/onnx_integration.py#ONNXExporter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/onnx_integration.py#OpenVINOInference": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/qlearning_table.py#ExperienceReplay": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/qlearning_table.py#ExtendedQLearningTable": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/qlearning_table.py#FrameworkState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/qlearning_table.py#TargetNetwork": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/qlearning_table.py#TaskType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/qlearning_table.py#Transition": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/qlearning_table.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/qualitative_improvements.py#AnomalyDetector": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/qualitative_improvements.py#ContextAwareScheduler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/qualitative_improvements.py#EnsembleRecommender": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/qualitative_improvements.py#MemoryManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/qualitative_improvements.py#NeuralPredictor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/qualitative_improvements.py#PerformanceMetrics": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/ray_integration.py#DistributedTrainer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/ray_integration.py#RayIntegration": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/strategic_intelligence.py#AutoDocumentation": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/strategic_intelligence.py#AzazaelIntelligence": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/strategic_intelligence.py#PerformanceProfiler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/strategic_intelligence.py#SmartCache": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/strategic_intelligence.py#WorkflowEvent": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/vectorize_utils.py#VectorizationUtils": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/weakness_testing.py#AzazaelIntelligenceHardened": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/weakness_testing.py#TestResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/weakness_testing.py#TestSuite": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/improvements/weakness_testing.py#WeaknessTester": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/install_manager.py#CompatibilityRule": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/install_manager.py#InstallRecord": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/install_manager.py#InstallStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/install_manager.py#UnifiedInstaller": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/installation_debug.py#CompatibilityChecker": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/installation_debug.py#InstallationDebugger": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/installation_debug.py#InstallationStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/installation_debug.py#PackageInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/lm_studio_client.py#ChatMessage": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/lm_studio_client.py#LMStudioClient": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/lm_studio_client.py#ModelInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/lm_studio_client.py#OllamaClient": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/universal_converter.py#ConversionLogger": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/universal_converter.py#ConversionResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/universal_converter.py#ConversionStep": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/universal_converter.py#GGUFAnalyzer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/universal_converter.py#LogLevel": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/universal_converter.py#ModelMetadata": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/universal_converter.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/verify_moe.py#DeepLearningQAnalyzer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ml_platforms/verify_moe.py#FrameworkCompatibilityMatrix": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/azazael_wsa.py#WSAApp": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/azazael_wsa.py#WSAClient": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/azazael_wsa.py#WSAConnectionState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/azazael_wsa.py#WSAPerformance": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/azazael_wsa.py#WSARestAPI": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/bat_analysis.py#BatCommand": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/bat_analysis.py#BatFile": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/bat_analysis.py#BatParser": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/bat_analysis.py#ExtendedQLearningAnalyzer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/bat_analysis.py#InteroperabilityGraph": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/bat_analysis.py#TaskType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/bat_analysis.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/check_links.py#LinkChecker": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/complete_module_analysis.py#CompleteModuleAnalyzer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/complete_module_analysis.py#CompleteModuleFinder": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/complete_module_analysis.py#DependencyAnalyzer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/complete_module_analysis.py#DirectoryStats": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/complete_module_analysis.py#FullModuleInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/complete_module_analysis.py#ModuleTester": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/complete_module_analysis.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/comprehensive_analysis.py#FixResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/comprehensive_analysis.py#ModuleAnalyzer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/comprehensive_analysis.py#ModuleInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/comprehensive_analysis.py#ModuleTester": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/comprehensive_analysis.py#PythonModuleFinder": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/comprehensive_analysis.py#TestResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/comprehensive_analysis.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/consistency_checker.py#ConsistencyIssue": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/test_enhancements.py#TestConcurrencyProperties": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/test_enhancements.py#TestFuzzing": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/test_enhancements.py#TestQTableProperties": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/test_enhancements.py#TestTransitionProperties": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/validate_docs.py#APIDocGenerator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/validate_docs.py#BreadcrumbGenerator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/validate_docs.py#ContributorsSection": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/validate_docs.py#DocumentationSearchIndex": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/validate_docs.py#DocumentationValidator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/validate_docs.py#VersionTracker": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:QL_FILE_OPTIMIZER.py#DesktopScanner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:QL_FILE_OPTIMIZER.py#FileFeatures": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:QL_FILE_OPTIMIZER.py#QLearningFileOptimizer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:QL_FILE_OPTIMIZER.py#QTableEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:REAL_FRAMEWORK_TEST.py#RealFrameworkTest": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:SCRIPTS/environ_updater.py#AzazaelEnvironment": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:SCRIPTS/environ_updater.py#Conflict": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:SCRIPTS/environ_updater.py#ConflictType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:SCRIPTS/environ_updater.py#EnvironmentStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:SCRIPTS/environ_updater.py#MLPatternMatcher": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:SCRIPTS/environ_updater.py#SpawnResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:SCRIPTS/sync_skills.py#SkillsSync": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:SCRIPTS/test_auto_sync.py#TestAutoSync": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:SCRIPTS/test_generate_telemetry.py#TestGenerateTelemetry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TOOLS/AzazaelDynamicLogger.py#DynamicLogger": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TOOLS/AzazaelDynamicLogger.py#LogLevel": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TOOLS/COMPREHENSIVE_FIX.py#ComprehensiveFix": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TOOLS/PythonMapper_Quick.py#QuickMapper": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TOOLS/PythonSystemMapper.py#PythonSystemMapper": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TOOLS/PythonSystemMapper_Full.py#FullSystemPythonMapper": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TOOLS/archive_system.py#ArchiveSystem": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TOOLS/debug_runner.py#DebugRunner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TOOLS/debug_runner.py#TestResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/AzazaelDynamicLogger.py#DynamicLogger": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/AzazaelDynamicLogger.py#LogLevel": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/PERSEPHONE/lib/environment.py#EnvVar": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/PERSEPHONE/lib/environment.py#EnvironmentManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/PERSEPHONE/lib/path_manager.py#PathInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/PERSEPHONE/lib/path_manager.py#PathManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/PERSEPHONE/lib/sync_manager.py#SyncManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/PERSEPHONE/lib/sync_manager.py#SyncResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/PERSEPHONE/lib/sync_manager.py#SyncStats": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/PERSEPHONE/persephone.py#CrossPath": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/PERSEPHONE/persephone.py#PathTranslator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/PERSEPHONE/persephone.py#Persephone": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/PERSEPHONE/persephone.py#PersephoneConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/PERSEPHONE/persephone.py#Platform": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/tarbaby_enhanced.py#BinaryConflict": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/tarbaby_enhanced.py#BinaryFormat": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/tarbaby_enhanced.py#CompatibilityReport": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/tarbaby_enhanced.py#ConflictResolution": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/tarbaby_enhanced.py#ConflictType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/tarbaby_enhanced.py#ReverseEngineeredPattern": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/tarbaby_enhanced.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TERENCE/TERENCE.py#Fix": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TERENCE/TERENCE.py#FixStats": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TERENCE/TERENCE.py#TERENCE": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TERENCE/terence_enhanced.py#ConflictCategory": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TERENCE/terence_enhanced.py#ConflictGraph": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TERENCE/terence_enhanced.py#ConflictReport": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TERENCE/terence_enhanced.py#ConflictSeverity": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TERENCE/terence_enhanced.py#Incompatability": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TERENCE/terence_enhanced.py#ResolutionPattern": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TERENCE/terence_enhanced.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UVZ.py#UVResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UVZ.py#UVZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:enrichment_display.py#AnimationConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:enrichment_display.py#AnimationState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:enrichment_display.py#EnrichmentDisplay": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:enrichment_display.py#EnrichmentField": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:enrichment_display.py#EnrichmentType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/cache.py#InferenceCache": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/config.py#EveConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/core.py#ModelLoader": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/engine.py#InferenceEngine": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/model_registry.py#ModelRecord": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/model_registry.py#ModelRegistry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/models/qwen35_ssm.py#Qwen35Attention": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/models/qwen35_ssm.py#Qwen35MLP": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/models/qwen35_ssm.py#Qwen35SSM": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/models/qwen35_ssm.py#Qwen35SSMConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/models/qwen35_ssm.py#RMSNorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/models/qwen35_ssm.py#RotaryEmbedding": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/models/qwen35_ssm.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/streaming.py#StreamResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:eve_unleashed/streaming.py#StreamToken": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:matrix_animation.py#MatrixDrop": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:memory_status.py#MemoryStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:memory_status.py#SystemStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:performance_monitor.py#Alert": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:performance_monitor.py#DBHealthSnapshot": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:performance_monitor.py#PerformanceMonitor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:performance_monitor.py#ProcessSnapshot": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:performance_monitor.py#ServiceHealth": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:performance_monitor.py#SystemSnapshot": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:persistent_memory.py#Community": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:persistent_memory.py#CommunitySummary": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:persistent_memory.py#Edge": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:persistent_memory.py#Flow": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:persistent_memory.py#FlowMembership": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:persistent_memory.py#Node": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:persistent_memory.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:session_memory.py#Decision": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:session_memory.py#FileChange": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:session_memory.py#Goal": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:session_memory.py#Lesson": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:session_memory.py#SessionMemory": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:session_memory.py#SessionRecord": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ecosystem.py#TestCONCURRENCY": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ecosystem.py#TestDebugZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ecosystem.py#TestDistillZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ecosystem.py#TestInferenceBridge": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ecosystem.py#TestMetaWormSpawner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ecosystem.py#TestWORMZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ecosystem.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ml_autodiff.py#TestBackprop": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ml_autodiff.py#TestForward": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ml_autodiff.py#TestHVP": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ml_autodiff.py#TestOptimizers": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ml_estimators.py#TestFunctional": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ml_estimators.py#TestRegistry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ml_gosp.py#TestGosp": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ml_gosp.py#TestTorchBridge": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ml_nsga.py#TestDominance": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_ml_nsga.py#TestZDT1": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CHANGELOG_GENERATOR.py#ChangelogGenerator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CLI/azazael_cli.py#AzazaelCLI": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/Agent.py#AgentConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/Agent.py#AgentTask": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/Agent.py#FreeThreadedAgent": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/AgentPool.py#AgentPool": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/AgentPool.py#PoolStats": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/AgentPool.py#PoolTask": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/ERROR_SCAN_WORM.py#FastErrorScanner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/FREETHREAD_UPGRADE.py#ClusterRunResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/FREETHREAD_UPGRADE.py#ClusterRunner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/FREETHREAD_UPGRADE.py#TaskResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/FREETHREAD_UPGRADE.py#WormPool": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/FreeThreadedAgent.py#FreeThreadedAgent": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/LaneMessageBoard.py#LaneMessageBoard": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/LaneMessageBoard.py#LaneTask": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/MemoryBus.py#BusMessage": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/MemoryBus.py#MemoryBus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/NeuralPipeline.py#NeuralPipeline": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/PYTHON_MANAGER.py#PythonInstallation": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/PYTHON_MANAGER.py#PythonManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/PamsBusBridge.py#PamsBusBridge": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/PamsRecorder.py#PamsRecorder": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/STRESS_TEST.py#AzazaelStressTest": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/STRESS_TEST.py#StressResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/STRUCTURE.py#Category": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/STRUCTURE.py#ModuleSpec": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/STRUCTURE.py#ModuleType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/STRUCTURE.py#Tier": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/BENCHMARK_WORM.py#BenchmarkWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/BINARY_ANALYSIS.py#BinaryAnalysis": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/BINARY_ANALYSIS_TYPES.py#ElfHeaders": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/BINARY_ANALYSIS_TYPES.py#EntropyResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/BINARY_ANALYSIS_TYPES.py#PeHeaders": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/BINARY_ANALYSIS_TYPES.py#SectionHeader": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/BINARY_ANALYSIS_TYPES.py#SymbolEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CAIN_WORM.py#CainWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLAWBOT.py#CLAWBOT": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLOCKZ.py#CLOCKZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLOCKZ.py#ScheduledTask": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLUSTERWORMS.py#ClusterResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLUSTERWORMS.py#ClusterState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLUSTERWORMS.py#ClusterWORMZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLUSTERWORMS.py#WormConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLUSTERWORMS.py#WormExecutor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLUSTERWORMS.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLUSTER_INSPECTOR.py#EnvironmentalVariableInspector": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLUSTER_INSPECTOR.py#InspectionResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLUSTER_INSPECTOR.py#MarkdownFileInspector": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLUSTER_INSPECTOR.py#PathwayValidator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLUSTER_INSPECTOR.py#PowerShellInspector": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLUSTER_INSPECTOR.py#TextFileInspector": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CLUSTER_INSPECTOR.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CODEX_TOOLS.py#AutoDownloaderWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CODEX_TOOLS.py#CainAnalyzerWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CODEX_TOOLS.py#EmojiMakerWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CODEX_TOOLS.py#EnhancedAnimationsWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CONCURRENCY.py#ClusterExecutor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CONCURRENCY.py#ConcurrencyConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CONCURRENCY.py#ConcurrencyManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CONCURRENCY.py#ExecutionResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CONCURRENCY.py#TaskManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/CONCURRENCY.py#WormExecutor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/DEPENDZ.py#DEPENDZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/DIAGNOSTIC_WORM.py#DiagnosticWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/DISKZ.py#DISKZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/DISKZ.py#DiskUsage": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/DNSWORM.py#DnsWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/ERROR_SCAN_WORM.py#FastErrorScanner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/INFERENCE_SUBSCRIBER.py#InferenceSubscriberWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/INFERENCE_WORM.py#InferenceWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/KALIWORMS.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/METAZ.py#METAZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/MORPHING_WORM.py#MorphingWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/MORPHING_WORM.py#WormGenome": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/MORPHING_WORM_V2.py#MorphingWormV2": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/NETWORK_DIAG.py#MtrHop": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/NETWORK_DIAG.py#MtrResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/NETWORK_DIAG.py#NetstatEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/NETWORK_DIAG.py#OpenFileEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/NETWORK_DIAG.py#PingResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/NETWORK_DIAG.py#TracerouteHop": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/NETWORK_DIAG.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/NETWORXZ.py#NETWORXZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/NETWORXZ.py#NetworkInterface": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/NIM_INFERENCE.py#NimInferenceWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/OMNI_WORM_V2.py#OMNIV2": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/OS_CONGRUENCY.py#DiskPartition": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/OS_CONGRUENCY.py#OSCongruency": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/OS_CONGRUENCY.py#StartupItem": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/OS_CONGRUENCY.py#SystemStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/OS_CONGRUENCY.py#WindowsService": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/PARALLEL_INFERENCE_WORM.py#ParallelInferenceWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/PROCESSZ.py#PROCESSZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/PROCESSZ.py#ProcessInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/REVERSE_TOOLS.py#GhidraAnalysis": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/REVERSE_TOOLS.py#Radare2Analysis": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/REVERSE_TOOLS.py#ReverseTools": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/REVERSE_TOOLS.py#ToolStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/SYSTEMZ.py#SystemStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/SYSTEMZ.py#SystemZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/VIDEO_ANALYZER_WORM.py#VideoAnalyzerWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/WORMZ.py#BIBLEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/WORMZ.py#CrawlResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/WORMZ.py#WORMZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/WORMZ.py#WORMZConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/WORM_FLEET.py#WormFleet": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/WORM_SELECTOR.py#WormSelectorWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/WSL_RECOVERY_WORM.py#WSLRecovery": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/dead_letter_queue.py#DeadLetter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/dead_letter_queue.py#DeadLetterQueue": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/ablation_study.py#AblationComponent": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/ablation_study.py#AblationConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/ablation_study.py#AblationResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/ablation_study.py#AblationStudy": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/ablation_study.py#AblationSummary": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/algorithm_observers.py#AlgorithmLabWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/algorithm_observers.py#MetaEvolutionWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/allocation.py#LinUCBAllocator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/allocation.py#MCTSPlanner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/allocation.py#SuccessiveHalvingPruner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/allocation.py#ThompsonAllocator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/anchor_retrieval.py#AnchorRetrievalWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/anchor_retrieval.py#Anchors": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/arena.py#Arena": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/arena.py#ArenaWorld": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/arena.py#Environment": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/axon.py#LatencyCompensatorWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/axon.py#MyelinSheathWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/axon.py#SaltatoryRouterWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/axon.py#SpikeEncoderWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/backup.py#CheckpointWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/backup.py#ColdArchivist": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/backup.py#IncrementalBackupWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/backup.py#RecoveryTester": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/backup.py#StateSnapshotter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/berks.py#BerksAlert": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/berks.py#BerksMonitorWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/berks.py#BerksSiteSnapshot": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/chaos.py#ChaosWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/chorus.py#Chorus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/chorus.py#FailureDigest": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/code_audit.py#CodeAuditConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/code_audit.py#WeeklyCodeAuditWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/communication.py#IPCBridge": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/communication.py#MessageBroker": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/communication.py#ProtocolNegotiator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/communication.py#RPCEndpoint": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/communication.py#WebhookRelay": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/config.py#ConfigLinter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/config.py#DotfileSync": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/config.py#EnvValidator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/config.py#FeatureFlagCtrl": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/config.py#SecretRotator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/consensus.py#LeaderElectorWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/consensus.py#QuorumVoterWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/consensus.py#SplitBrainResolverWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/consolidation.py#DreamCriticWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/consolidation.py#EngramIndexerWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/consolidation.py#SharpWaveReplayWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/consolidation.py#SleepConsolidatorWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/container.py#ComposeValidator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/container.py#ContainerOrch": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/container.py#ImageAuditor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/container.py#RegistryPoller": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/container.py#ResourceQuotaWatch": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/cppn.py#CPPNGenome": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/cutting_edge_model.py#AttentionBlock": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/cutting_edge_model.py#CuttingEdgeConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/cutting_edge_model.py#FFNBlock": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/cutting_edge_model.py#NullsMaskRegistry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/cutting_edge_model.py#SelectiveSSM": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/cutting_edge_model.py#SparseMoE": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/cutting_edge_model.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/db_monitor.py#DatabaseMonitorWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/db_monitor.py#DbAlert": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/db_monitor.py#DbHealthSnapshot": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/delegation.py#ClarificationTimeout": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/delegation.py#NeedsClarification": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/dendrite.py#AttentionGateWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/dendrite.py#ContextConcatWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/dendrite.py#DendriteAggregatorWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/dendrite.py#SensoryFuseWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/diversity.py#Individual": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/diversity.py#NSGAIII": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/diversity.py#NoveltySearch": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/diversity.py#PersistentMAPElites": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/dreaming.py#Dream": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/dreaming.py#DreamingModule": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/driver.py#GemmaDriverWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/engram.py#CoherenceValidatorWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/engram.py#DreamConsolidatorWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/engram.py#RecallRouterWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/engram.py#VectorShardWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/engram.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/envmesh.py#BarePassthroughWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/envmesh.py#EnvBeaconV2Worm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/envmesh.py#GDriveLoomWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/envmesh.py#WinBridgeWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/envmesh.py#WslKaliWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/envmesh.py#WslUbuntuWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/error_recovery.py#ErrorRecoveryOrchestrator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/error_recovery.py#RecoveryEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/evidence.py#EraEvidence": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/evolution.py#DifferentialEvolution": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/evolution.py#EvolutionEngine": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/evolution.py#GeneticOptimizer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/evolution.py#Genome": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/evolution.py#SepCMAES": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/evolution.py#TPESurrogate": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/evolution_audit.py#EvolutionAuditConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/evolution_audit.py#EvolutionIntegrityWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/exmachina.py#EProcess": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/exmachina.py#MoodTracker": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/exmachina_operators.py#EchoState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/exmachina_operators.py#HDC": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/exmachina_operators.py#KAN": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/exmachina_operators.py#SparseMoE": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/exmachina_operators.py#SquaredExponentialGP": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/exmachina_operators.py#TrustRegionBO": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/federated.py#FederatedAggregatorWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/federated.py#NASMeshSearcherWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/federated.py#RewardShaperMeshWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/fencing.py#Fence": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/glia.py#AstrocyteWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/glia.py#EpendymalWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/glia.py#MicrogliaWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/glia.py#OligodendrocyteWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/hybrid_rewards.py#HybridRewardComputer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/hybrid_rewards.py#RewardConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/hybrid_rewards.py#RewardSource": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/immune.py#AttestationWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/immune.py#AutoencoderAnomalyWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/immune.py#ImmuneSentinelWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/immune.py#QuarantineWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/immune.py#SelfHealWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/jev_advisor.py#JevAdvisor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/jev_advisor.py#JevAnswer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/jev_advisor.py#JevError": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/jev_advisor.py#JevUnavailable": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/lazy_replan.py#LazyReplanner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/lazy_replan.py#PlanState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/lazy_replan.py#ReplanConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/lazy_replan.py#ReplanTrigger": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/learning_ab.py#ABTestRunner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/learning_features.py#FeatureEngineer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/learning_features.py#SchemaAwareFeatureExtractor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/learning_grpo.py#ABTestRunner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/learning_grpo.py#GRPOTrainer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/learning_pipeline.py#DataPipelineWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/learning_rl.py#RLTrainLoop": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/learning_versioner.py#ModelVersioner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/liveness.py#LivenessLedger": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/liveness.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/loom.py#NoveltyDrive": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/mars_claims.py#MarsClaim": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/mars_claims.py#MarsPolicy": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/mars_claims.py#MarsVerdict": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/mesh.py#EnvBeaconWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/mesh.py#GossipSyncWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/mesh.py#MeshRouterWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/mesh.py#PartitionHealerWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/meta_cognition.py#MetaCognitionWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/metabolic.py#PowerBudgetWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/metabolic.py#QuotaEnforcerWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/metabolic.py#ThermalThrottleWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/migration.py#CodeMigrator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/migration.py#DepUpgrader": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/migration.py#ImportPathFixWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/migration.py#LegacyShimGen": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/migration.py#SchemaVersioner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/morph.py#GeneSpec": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/morph.py#Genome": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/nerve.py#Neuromodulator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/nerve.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/nuclei.py#NucleiBridge": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/oracle.py#FitnessOracle": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/plasticity.py#ElasticConsolidationWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/plasticity.py#ForgettingCurveWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/plasticity.py#HebbianUpdaterWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/plasticity.py#STDPClockWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/policy_optimization.py#PolicyEvidence": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/policy_optimization.py#SPOTracker": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/policy_optimization.py#TokenTrace": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/profiling.py#CPUFlameProfiler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/profiling.py#CodeProfiler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/profiling.py#GILContentionProbe": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/profiling.py#IOBottleneckFinder": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/profiling.py#MemoryLeakDetector": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/queens.py#BlackQueenWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/queens.py#GrayQueenWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/queens.py#ScoutBeeWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/race_detector.py#RaceConditionDetector": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/race_detector.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/remediation_env.py#RemediationEnv": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/rl_gene_bounds.py#GeneCheck": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/scheduling.py#DbMonitorRun": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/scheduling.py#DbMonitorScheduleConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/scheduling.py#ScheduleConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/scheduling.py#ScheduledDbMonitorWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/scheduling.py#ScheduledTrainingWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/scheduling.py#TrainingRun": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/scheduling.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/schema_instruction_channel.py#InstructionChannel": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/schema_instruction_channel.py#InstructionSchema": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/schema_instruction_channel.py#InstructionSchemaError": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/schema_instruction_channel.py#InstructionShape": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/security.py#CertMonitor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/security.py#FirewallAudit": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/security.py#PermissionScanner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/security.py#PortAuditor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/security.py#VulnScanner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/servemesh.py#InferenceLoadBalancerWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/servemesh.py#ModelShardServerWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/servemesh.py#ProviderFailoverMeshWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/session_state.py#SessionStateManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/silence.py#SilenceLedger": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/silence.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/spawn_credit.py#SpawnCredit": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/spawn_credit.py#WormOutcome": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/spine.py#EligibilityTraceTable": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/spine.py#HomeostatWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/spine.py#PlasticityEngineWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/spine.py#RedQueenWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/spine.py#SpineGossipWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/spine.py#SpineMapperWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/spine.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/synapse.py#ActivationRouterWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/synapse.py#AttentionRouterWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/synapse.py#MoEDispatcherWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/synapse.py#SSMSequenceWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/synapse.py#SynapseWeightWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/telemetry.py#AlertEscalator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/telemetry.py#EventRouter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/telemetry.py#LogStreamer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/telemetry.py#MetricAggregator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/telemetry.py#SpanTracer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/tensorgene.py#TensorGene": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/tensorgene.py#TensorGenome": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/thalamus.py#ArousalSwitchWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/thalamus.py#SensoryRelayWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/thalamus.py#ThalamicGateWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/threatmon.py#ThreatAlert": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/threatmon.py#ThreatIntelMonitorWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/threatmon.py#ThreatSnapshot": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/trainers_v2.py#GRPOTrainerV2": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/trainers_v2.py#HookAwareTrainer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/trainers_v2.py#RLTrainLoopV2": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/trainers_v2.py#SB3TrainerV2": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/trainers_v2.py#TrainerContext": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/utility_guided_orchestration.py#OrchestrationAction": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/utility_guided_orchestration.py#OrchestrationContext": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/utility_guided_orchestration.py#UtilityEngine": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/utility_guided_orchestration.py#UtilityEstimate": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/utility_guided_orchestration.py#UtilityGuidedOrchestrator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/visualization.py#DashboardGen": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/visualization.py#GraphRenderer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/visualization.py#HeatmapBuilder": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/visualization.py#ReportCompiler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/visualization.py#TimelineViz": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/wiring_audit.py#WiringAuditConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/wiring_audit.py#WiringAuditWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/wiring_genome.py#WiringGenome": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/xenomorph.py#ChestbursterWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/xenomorph.py#DroneWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/xenomorph.py#FacehuggerWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/xenomorph.py#Lilith": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/xenomorph.py#OvomorphWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/xenomorph.py#PraetorianWorm": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/xenomorph.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/xmemory_decouple_aggregate.py#ConflictRecord": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/xmemory_decouple_aggregate.py#MemoryBank": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/xmemory_decouple_aggregate.py#MemoryOp": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/xmemory_decouple_aggregate.py#OperationType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/xmemory_decouple_aggregate.py#VersionVector": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/xmemory_decouple_aggregate.py#XMemoryDecoupler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORM_FLEET.py#WormFleet": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/Widgets/BasePopupMonitor.py#BasePopupMonitor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/Widgets/BasePopupMonitor.py#QueueMessage": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/Widgets/BasePopupMonitor.py#SubprocessError": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/agent_registry.py#AgentHealth": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/agent_registry.py#AgentHealthReporter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/algorithm_qualification.py#QualificationEvidence": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/audit_trail.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/azazael_logging.py#JsonFormatter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/azazael_logging.py#LogEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/azazael_logging.py#StructuredLogger": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/backend_bandit.py#BackendBandit": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/cascade.py#CascadeRouter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/cd2_verifier.py#PurePythonVerifier": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/cd2_verifier.py#SMTVerifier": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/cd3_exporter.py#SQLiteSpanExporter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/cd4_pipeline.py#NuitkaBuildPipeline": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/circuit_breaker.py#BreakerRegistry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/circuit_breaker.py#CircuitBreaker": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/circuit_breaker.py#CircuitConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/circuit_breaker.py#CircuitState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/circuit_breaker.py#DeadLetter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/codebase_graph.py#CodebaseGraph": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/codebase_graph.py#GraphEdge": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/codebase_graph.py#GraphNode": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/codebuff_tracker.py#CodebuffTracker": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/codebuff_tracker.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/broker.py#GateViolationError": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/governance.py#BehavioralGraphAnalyzer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/governance.py#ConfidenceGate": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/governance.py#DualLedgerValidator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/governance.py#JudgeVerdict": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/governance.py#MultiAgentJudge": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/governance.py#RealtimeAuditPipeline": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/heuristic_recorder.py#HeuristicErrorRecorder": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/orchestrator.py#ComplianceOrchestrator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/orchestrator.py#ComplianceResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/policy.py#BrokerInterceptor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/policy.py#PolicyEffect": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/policy.py#PolicyEngine": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/policy.py#PolicyRule": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/pre_action_gate.py#PreActionGate": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/scanner.py#ASTAntiPatternScanner": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/scanner.py#AntiPatternResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/scanner_db.py#FindingsDB": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/state_machine.py#ComplianceState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/state_machine.py#ComplianceStateMachine": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/state_machine.py#FormalVerifier": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/state_machine.py#StateMachineError": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/telemetry.py#ComplianceTelemetry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/telemetry.py#TelemetryEvent": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/validating.py#ComplianceScorer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance/validating.py#SchemaValidator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance_auditor.py#ComplianceAuditor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance_auditor.py#ComplianceError": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/compliance_auditor.py#EcaHttpServer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/config.py#CircuitBreakerConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/config.py#ClustersConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/config.py#MemoryBusConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/config.py#NatureConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/config.py#PamsConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/config.py#PathsConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/config.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/direct_memory.py#DirectMemory": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/direct_memory.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/embedding_backend.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/enforcement_harness.py#ComplianceError": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/error_triage.py#ErrorEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/error_triage.py#ErrorTriageSystem": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/freethreading.py#CancellationToken": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/freethreading.py#FreeThreadPool": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/freethreading.py#TaskCancelledError": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/freethreading.py#ThreadSafeCounter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/freethreading.py#ThreadSafeDict": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/freethreading.py#ThreadSafeList": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/freethreading.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/health_server.py#HealthServer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/health_server.py#PrometheusServer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/hlc.py#HybridLogicalClock": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/api_client.py#APIClient": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/api_client.py#AuthError": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/api_client.py#InferenceError": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/api_client.py#RateLimitError": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/api_client.py#ThreadSafeCall": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/api_client.py#TimeoutError": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/bus_utils.py#InferenceBusPublisher": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/cloud_tab.py#CloudTab": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/hyper_optimizer.py#BatchResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/hyper_optimizer.py#HyperOptimizer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/hyper_optimizer.py#HyperResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/hyper_optimizer.py#ModelMetrics": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/hyper_optimizer.py#ResponseCache": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/nim_client.py#NimClient": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/nim_client.py#NimConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/nim_client.py#NimModel": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/parallel.py#BroadcastResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/parallel.py#EnsembleResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/parallel.py#ParallelInferenceEngine": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/parallel.py#PipelineResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/parallel.py#PipelineStep": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/parallel.py#ProviderResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/providers.py#ModelInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/providers.py#NativeAPIProvider": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/providers.py#NativeFrameworkConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/providers.py#OllamaNativeFrameworkProvider": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/providers.py#OpenAIProvider": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/providers.py#ProviderConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/providers.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/query_loop.py#LoopRound": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/query_loop.py#QueryInLoop": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/query_loop.py#ResolutionResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/sequential_analyzer.py#AnalysisResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/sequential_analyzer.py#ChainStep": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/sequential_analyzer.py#ModelResponse": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/sequential_analyzer.py#SequentialAnalyzer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference/threaded.py#ThreadedInferenceEngine": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/inference_pool.py#InferencePool": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/league.py#League": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/local_memory.py#LocalMemoryStore": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/logging.py#StructuredLogger": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/logging.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/logging_config.py#JSONFormatter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/logging_config.py#LogConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/logging_config.py#SlowQueryFilter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/mesh_transport.py#MeshTransport": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/meta_evolution.py#Candidate": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/meta_evolution.py#Lifecycle": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/meta_evolution.py#MetaEvolutionError": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/metrics.py#DriftAlert": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/metrics.py#HealthCheck": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/metrics.py#MetricsCollector": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/metrics.py#MetricsHandler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/metrics.py#MetricsRegistry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/metrics.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/neural_loop.py#Loop": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/neural_loop.py#LoopContext": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/neural_loop.py#StageResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/postgres_memory.py#PostgresMemoryStore": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/project_atlas.py#AtlasFile": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/project_atlas.py#AtlasProject": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/project_atlas.py#ProjectAtlas": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/record_session.py#SessionRecorder": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/redteam.py#HackCritic": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/safe_sql.py#Interpolation": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/safe_sql.py#SafeStatement": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/safe_sql.py#Token": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/safe_sql.py#TokenKind": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/sb3_agent.py#SB3Agent": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/sb3_agent.py#SB3AgentPool": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/secrets_manager.py#SecretsManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/spine_registry.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/threading_utils.py#AtomicCounter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/threading_utils.py#SnapshotDict": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/threading_utils.py#ThreadSafeList": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/threading_utils.py#atomic_property": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/threading_utils.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/ttcompute.py#ComputeBandit": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/web_dashboard.py#WebDashboardHandler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/web_dashboard.py#WebDashboardServer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/web_search.py#FetchResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/web_search.py#SearchResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/web_search.py#WikipediaProvider": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/workflow.py#ConditionalRouter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/workflow.py#StepStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/workflow.py#Workflow": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/workflow.py#WorkflowResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/workflow.py#WorkflowStep": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/workflow.py#WorkflowTemplate": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/workflow.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/worm_governance.py#DedupMatch": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/worm_governance.py#DedupReport": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/worm_governance.py#LifecycleEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/worm_governance.py#LifecycleState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/worm_governance.py#NamingReport": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/worm_governance.py#ValidationResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/worm_governance.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/worm_health.py#WormHealthScorer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/worm_registry.py#BaseWormMixin": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/worm_registry.py#SpawnDiversityEngine": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/worm_registry.py#SpawnRecord": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:DOCKERZ.py#ContainerInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:DOCKERZ.py#DOCKERZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:DOCKERZ.py#DOCKERZConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:DOCKERZ.py#ImageInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ECOSYSTEM_HEALTH_CHECK.py#EcosystemHealthCheck": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HEALTHZ.py#HEALTHZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HEALTHZ.py#HealthStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA_CONTAINER.py#ClusterContainerConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA_CONTAINER.py#ContainerExecution": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA_CONTAINER.py#HYDRA_CONTAINER": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRA_CONTAINER.py#HYDRA_CONTAINERConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/ERRORZ.py#ERRORZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/ERRORZ.py#ERRORZConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/ERRORZ.py#ErrorEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/ERRORZ.py#ErrorReport": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/TRIMZ.py#BIBLIntegrator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/TRIMZ.py#BiblEntryRef": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/TRIMZ.py#TRIMZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/TRIMZ.py#TrimResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:META/TRIMZ.py#TrimzConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:METRICZ.py#ExecutionRecord": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:METRICZ.py#METRICZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:METRICZ.py#METRICZConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:METRICZ.py#MetricPoint": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:METRICZ.py#PerformanceSummary": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:MISSING_TOOLS.py#CodeComplexityAnalyzer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:MISSING_TOOLS.py#DeadCodeDetector": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:MISSING_TOOLS.py#DependencyAuditor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:MISSING_TOOLS.py#DocCoverageChecker": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:MISSING_TOOLS.py#ImportGraphBuilder": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:MISSING_TOOLS.py#TypeAnnotationChecker": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:MISSING_TOOLS.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:OPTIMIZ.py#OPTIMIZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:OPTIMIZ.py#OptimizationResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ECOSYSTEM_CRAWLER_LAUNCHER.py#CrawlerResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ECOSYSTEM_CRAWLER_LAUNCHER.py#EcosystemCrawlerLauncher": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HORUS.py#HORUSOutput": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HORUS.py#MLGroup": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HORUS.py#OutputConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HORUS.py#OutputDestination": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HORUS.py#OutputFormat": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HORUS.py#ResultEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HORUS.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/hydra_bridge.py#HydraBridge": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/hydra_bridge.py#PipelineReport": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/azazael_cli.py#AzazaelCLI": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/azazael_cli.py#AzazaelConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/azazael_cli.py#OutputStyle": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/scripts/azazael_cli.py#PluginManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:SCRIPTS/gate_bash.py#GateBash": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:SCRIPTS/gate_str_replace.py#GateStrReplace": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:SCRIPTS/gate_write_file.py#GateWriteFile": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:SCRIPTS/sentinel_gate.py#SentinelValidator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TELEMETRYZ.py#CallPath": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TELEMETRYZ.py#FunctionStats": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TELEMETRYZ.py#TELEMETRYZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TELEMETRYZ.py#TELEMETRYZConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TELEMETRYZ.py#TraceEvent": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_evolution_accuracy.py#TestImportSafety": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_evolution_accuracy.py#TestPersistFalseNoWrite": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_evolution_accuracy.py#TestPromotionPath": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_evolution_accuracy.py#TestRewardModelAccuracy": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_learning_loop.py#TestAdoptConfidenceGate": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_learning_loop.py#TestEvidenceRecommendations": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_learning_loop.py#TestLearningSplitShim": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_learning_loop.py#TestRewardGradient": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_learning_loop.py#TestStatePersistence": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_learning_loop.py#TestSteeringWiring": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_nuclei_bridge.py#TestAvailability": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_nuclei_bridge.py#TestFeedState": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_nuclei_bridge.py#TestScanParsing": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_nuclei_bridge.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_worm_registry.py#TestDiscovery": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_worm_registry.py#TestRegisterWormDecorator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_worm_registry.py#TestRegistryConvenienceFunctions": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:tests/test_worm_registry.py#TestSpawnDiversityEngine": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/NODE.py#AzazaelNode": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/SMARTDISK.py#DiskAlert": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/SMARTDISK.py#DiskHealth": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/SMARTDISK.py#SMARTAttribute": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/SMARTDISK.py#SMARTDISK": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/SMARTDISK.py#SMARTDISKConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/SYSTEMZ_ML.py#AnomalyResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/SYSTEMZ_ML.py#ResourcePrediction": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/SYSTEMZ_ML.py#SYSTEMZ_ML": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/SYSTEMZ_ML.py#SYSTEMZ_MLConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/SYSTEMZ_ML.py#SystemSnapshot": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/WORMZ_ML.py#CrawlPrediction": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/WORMZ_ML.py#MLEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/WORMZ_ML.py#WORMZ_ML": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/WORMZ_ML.py#WORMZ_MLConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ERRORZ.py#ERRORZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ERRORZ.py#ERRORZConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ERRORZ.py#ErrorEntry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ERRORZ.py#ErrorReport": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HORUS_INTEGRATION.py#HORUSAnimationBridge": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRAMETA_UV.py#HYDRAMETA_UV": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRAMETA_UV.py#HYDRAMETA_UVConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRAMETA_UV.py#UVTrialResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:HYDRAMETA_UV.py#UVWormPerformance": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:METAWORMS_ENRICHED.py#Colors": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:METAWORMS_ENRICHED.py#DEPENDZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:METAWORMS_ENRICHED.py#METAZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:METAWORMS_ENRICHED.py#MetaWormConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:METAWORMS_ENRICHED.py#RichOutput": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:METAWORMS_ENRICHED.py#WormResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:METAWORMS_ENRICHED.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ECOSYSTEM_OPTIMIZER.py#AzazaelOptimizer": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/ECOSYSTEM_OPTIMIZER.py#OptimizationResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HORUS_LIVE_MONITOR.py#CompInfo": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/HORUS_LIVE_MONITOR.py#HORUSLiveMonitor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/TARBABY.py#BuildConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/TARBABY.py#BuildFormat": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/TARBABY.py#BuildStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/TARBABY.py#BuildTask": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/TARBABY.py#PopupMonitor": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:ORCHESTRATION/TARBABY.py#TARBABYCompiler": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TRIMZ.py#BIBLIntegrator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TRIMZ.py#BiblEntryRef": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TRIMZ.py#TRIMZ": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TRIMZ.py#TrimResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:TRIMZ.py#TrimzConfig": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/TARBABY.py#BinaryConverter": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/TARBABY.py#BinaryFormat": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/TARBABY.py#BinaryMetadata": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/TARBABY.py#MigrationResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/TARBABY.py#PythonVersion": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/TARBABY.py#VersionManager": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:UTILITIES/TARBABY/TARBABY.py#module": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:CORE/WORMS/expansion/rcpd_early_exit.py#RCPDEarlyExit": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:scripts/environ_updater.py#AzazaelEnvironment": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:scripts/environ_updater.py#Conflict": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:scripts/environ_updater.py#ConflictType": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:scripts/environ_updater.py#EnvironmentStatus": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:scripts/environ_updater.py#MLPatternMatcher": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:scripts/environ_updater.py#SpawnResult": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:scripts/gate_bash.py#GateBash": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:scripts/gate_str_replace.py#GateStrReplace": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:scripts/gate_write_file.py#GateWriteFile": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:scripts/sentinel_gate.py#SentinelValidator": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:scripts/sync_skills.py#SkillsSync": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:scripts/test_generate_telemetry.py#TestGenerateTelemetry": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
+  "kali:scripts/test_auto_sync.py#TestAutoSync": {
+   "test": "tests/test_adopted_kali_vendored.py",
+   "commit": "vendored",
+   "mode": "vendored"
+  },
   "kali:AOA/core/event_bus.py#EventBus": {
    "test": "tests/test_adopted_event_bus.py",
-   "commit": "PENDING"
+   "commit": "256722e3",
+   "mode": "adopted"
   },
   "kali:AOA/core/event_bus.py#AOEvent": {
    "test": "tests/test_adopted_event_bus.py",
-   "commit": "PENDING"
+   "commit": "256722e3",
+   "mode": "adopted"
   },
   "kali:AOA/core/event_bus.py#AOEventType": {
    "test": "tests/test_adopted_event_bus.py",
-   "commit": "PENDING"
+   "commit": "256722e3",
+   "mode": "adopted"
   },
   "kali:AOA/core/event_bus.py#EventPipeline": {
    "test": "tests/test_adopted_event_bus.py",
-   "commit": "PENDING"
+   "commit": "256722e3",
+   "mode": "adopted"
   },
   "kali:AOA/core/event_bus.py#EventPriority": {
    "test": "tests/test_adopted_event_bus.py",
-   "commit": "PENDING"
+   "commit": "256722e3",
+   "mode": "adopted"
   }
  }
 }
