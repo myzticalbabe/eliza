@@ -12,7 +12,7 @@ the Kali source rather than to import this module.
 """
 from __future__ import annotations
 
-WIRED = False
+WIRED = True
 SHARD_ID = "kali:AOA/core/event_bus.py#EventPriority"
 KIND = "class"
 SOURCE_ENVIRONMENT = "kali-linux"
@@ -37,9 +37,6 @@ def describe() -> dict:
 
 
 def load(*args, **kwargs):
-    """Refuse, loudly, with the reason and the place to start reading."""
-    raise NotImplementedError(
-        "shard %s is an intake stub: %s is not implemented in ELIZA. "
-        "Read the Kali source at %s, then see "
-        "docs/TUTORIAL_SHARD_DEV_2026-11-02.md" % (SHARD_ID, SHARD_ID, SOURCE_MODULE)
-    )
+    """Return the adopted implementation, not a sentence about it."""
+    from adopted.aoa.event_bus import EventPriority
+    return EventPriority

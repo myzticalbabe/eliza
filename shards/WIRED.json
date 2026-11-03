@@ -1,5 +1,26 @@
 {
  "schema": "eliza.shard-intake/1",
  "note": "Shard id -> {test, commit}. A shard listed here has been wired into ELIZA behind its stub path; the test is the evidence. Edit by hand, in the adopting commit.",
- "wired": {}
+ "wired": {
+  "kali:AOA/core/event_bus.py#EventBus": {
+   "test": "tests/test_adopted_event_bus.py",
+   "commit": "PENDING"
+  },
+  "kali:AOA/core/event_bus.py#AOEvent": {
+   "test": "tests/test_adopted_event_bus.py",
+   "commit": "PENDING"
+  },
+  "kali:AOA/core/event_bus.py#AOEventType": {
+   "test": "tests/test_adopted_event_bus.py",
+   "commit": "PENDING"
+  },
+  "kali:AOA/core/event_bus.py#EventPipeline": {
+   "test": "tests/test_adopted_event_bus.py",
+   "commit": "PENDING"
+  },
+  "kali:AOA/core/event_bus.py#EventPriority": {
+   "test": "tests/test_adopted_event_bus.py",
+   "commit": "PENDING"
+  }
+ }
 }
