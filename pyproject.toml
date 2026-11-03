@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "BCC Re-Investigation Machinery + Therapeutic Agent — public, fully executable."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "Apache-2.0" }
+license = { text = "CDDL-1.1" }
 # No runtime dependencies, deliberately. The package is stdlib-only: a therapeutic
 # loop that pulls in a numerical stack to map three numbers onto eight nodes has
 # added an attack surface and a licence obligation for arithmetic. Ridge fitting
@@ -18,7 +18,6 @@ dependencies = []
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Science/Research",
-  "License :: OSI Approved :: Apache Software License",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",

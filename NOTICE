@@ -1,9 +1,10 @@
 Project ELIZA
 Copyright 2026 the Project ELIZA contributors
 
-This product is licensed under the Apache License, Version 2.0 (the "License").
+This product is licensed under the Common Development and Distribution License (CDDL), Version 1.1 (the "License").
 You may not use the files in this project except in compliance with the License.
 A copy of the License is in the file LICENSE.
+License ruling: commit b49dfc2fef0178d1984437de577bfa00de8a4c32 (2026-11-03) changed this project from Apache-2.0 to CDDL-1.1; see docs/LICENSE_PRECEDENT_CDDL11_2026-11-03.md.
 
 Unless required by applicable law or agreed to in writing, software distributed
 under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
