@@ -4,6 +4,12 @@
 # materialise. The CI workflow materialises before installing.
 /eliza/
 
+# The Kali mirror (adopted/kali/) is vendored by tools/adopt_queue.py --vendor, and
+# adopted/src is a junction to it so Kali's own root detection finds <root>/src.
+# Both are rebuildable: one command from the recorded source, never hand-edited.
+/adopted/kali/
+/adopted/src
+
 __pycache__/
 *.py[cod]
 *.egg-info/
