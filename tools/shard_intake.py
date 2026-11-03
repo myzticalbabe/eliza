@@ -346,6 +346,7 @@ def check(atlas: Dict) -> Tuple[bool, List[str], Dict]:
     index = json.loads(INDEX.read_text(encoding="utf-8"))
     on_disk = {entry["path"]: {key: entry.get(key) for key in INDEX_KEYS}
                for entry in index.get("shards", [])}
+    units_by_path = {entry["path"]: entry for entry in units(atlas)}
     expected = {entry["path"]: {key: entry[key] for key in INDEX_KEYS}
                 for entry in units(atlas)}
     for path in sorted(set(expected) - set(on_disk)):
@@ -363,8 +364,14 @@ def check(atlas: Dict) -> Tuple[bool, List[str], Dict]:
             continue
         problems.extend(_stub_problems(file_path, entry,
                                        assigned.get(entry["shard_id"])))
+    #: The surface index above is keyed by PATH; a ledger entry is an ID.
+    #: Comparing the id to that dict reported every wired shard as "not in the
+    #: atlas", which no gate run could catch while the ledger was empty -- the
+    #: first adoption exercised the branch (measured 2026-11-03: five real ids,
+    #: five false defects).
+    unit_ids = {entry["shard_id"] for entry in units_by_path.values()}
     for shard_id, claim in sorted(assigned.items()):
-        if shard_id not in expected:
+        if shard_id not in unit_ids:
             problems.append("WIRED.json names %r, which is not in the atlas" % shard_id)
             continue
         test = claim.get("test") if isinstance(claim, dict) else None
