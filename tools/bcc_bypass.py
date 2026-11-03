@@ -478,7 +478,7 @@ async def main():
 
     if args.demo:
         # Demo: fetch a UJS docket
-        demo_url = "https://ujsportal.pacourts.us/DocketSheets/Report.aspx?DocketNumber=CP-06-CR-0001234-2023"
+        demo_url = "https://ujsportal.pacourts.us/DocketSheets/Report.aspx?DocketNumber=CP-XX-XXXX-XXXXXX-XXXX"
         print(f"Demo: fetching {demo_url} with full bypass chain...")
         result = await engine.fetch_with_bypass(
             demo_url, tier="A", edge_idx=999, flock="COURT"
