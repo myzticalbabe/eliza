@@ -176,6 +176,34 @@ def test_a_wired_shard_is_allowed_to_return(tmp_path):
 
 
 @needs_atlas
+def test_a_wired_shard_may_import_the_module_it_points_at(tmp_path):
+    """The no-imports rule is about stubs, not about adopted shards.
+
+    Adoption has two documented shapes, and the preferred one implements in a
+    proper module and lets ``load()`` return it. A gate that refuses that import
+    refuses the documented path, while still accepting a shard that returns a
+    literal -- which is the shape a fake has. Measured 2026-11-03: the import
+    walk ran for wired and unwired shards alike, so both shapes were refused.
+    """
+    entry = intake.units(intake.read_atlas(ATLAS))[0]
+    fake = tmp_path / "wired_import.py"
+    source = (
+        "WIRED = True\nSHARD_ID = %r\nCLASS_NAME = %r\n\n"
+        "def load(*a, **k):\n"
+        "    from eliza.psyche import affect\n"
+        "    return affect\n" % (entry["shard_id"], entry["class"]))
+    fake.write_text(source, encoding="utf-8")
+
+    wired = intake._stub_problems(
+        fake, entry, {"test": "tests/test_shard_intake.py", "commit": "0" * 7})
+    assert not [p for p in wired if "imports" in p], wired
+
+    # ...and the identical file with no ledger claim is still a stub, so the
+    # dependency rule still holds where it was written to hold.
+    assert any("imports" in p for p in intake._stub_problems(fake, entry))
+
+
+@needs_atlas
 def test_an_unknown_shard_is_refused_and_close_names_are_offered(capsys):
     assert intake.adopt("kali:NOPE/absent.py#Nothing", intake.read_atlas(ATLAS)) == 1
     assert "no shard" in capsys.readouterr().err

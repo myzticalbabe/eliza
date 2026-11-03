@@ -319,15 +319,22 @@ def _stub_problems(path: Path, entry: Dict, wired: Optional[Dict] = None) -> Lis
                                for node in ast.walk(loader[0])):
         problems.append("%s load() does not raise: a stub that returns is a fake"
                         % entry["path"])
-    imports = [node for node in ast.walk(tree)
-               if isinstance(node, (ast.Import, ast.ImportFrom))]
-    for node in imports:
-        names = [alias.name for alias in node.names] if isinstance(node, ast.Import) \
-            else [node.module or ""]
-        for name in names:
-            if name.split(".")[0] not in ("", "__future__"):
-                problems.append("%s imports %r: a stub drags no dependencies"
-                                % (entry["path"], name))
+    #: Only an UNWIRED stub is held to "imports nothing". That rule exists so a
+    #: generated stub cannot smuggle a copy in behind a name -- it was never a
+    #: ban on an adopted shard reaching its implementation, and applying it to
+    #: wired shards made the documented adoption shape (implement in a module,
+    #: point load() at it) impossible to pass. Measured 2026-11-03: both a
+    #: deferred and a module-level import were refused for a wired shard.
+    if not wired:
+        imports = [node for node in ast.walk(tree)
+                   if isinstance(node, (ast.Import, ast.ImportFrom))]
+        for node in imports:
+            names = [alias.name for alias in node.names] \
+                if isinstance(node, ast.Import) else [node.module or ""]
+            for name in names:
+                if name.split(".")[0] not in ("", "__future__"):
+                    problems.append("%s imports %r: a stub drags no dependencies"
+                                    % (entry["path"], name))
     return problems
 
 

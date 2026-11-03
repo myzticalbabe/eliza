@@ -109,8 +109,13 @@ came from, so a reader can tell which census produced the surface.
 3. **Inertness.** An unwired stub declares `WIRED = False` and its `load()` body
    raises. A stub that returns a value is a fake, and the check says so in that
    word.
-4. **No dependencies.** Stubs import nothing but `__future__`. A stub that imports
-   `requests` is a copy wearing a stub's clothes.
+4. **No dependencies, while unwired.** An *unwired* stub imports nothing but
+   `__future__`; a stub that imports `requests` is a copy wearing a stub's
+   clothes. The rule stops at the ledger line: an adopted shard is expected to
+   reach its implementation, and forbidding it would make the documented
+   adoption shape unpublishable. (Measured 2026-11-03: the check applied the
+   rule to wired shards as well, which is why `bf422f4f`'s rule and
+   `test_a_wired_shard_is_allowed_to_return` disagreed.)
 
 The adoption ledger `WIRED.json` is the one hand-written file in the directory,
 and it is where state change happens: a shard listed there must declare
