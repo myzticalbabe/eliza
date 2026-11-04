@@ -216,10 +216,12 @@ def test_the_registry_describes_a_shard_without_importing_it():
     import shards
     entries = shards.index()
     assert len(entries) > 1000
-    described = shards.describe(entries[0]["shard_id"])
+    unwired = [e for e in entries if not shards.describe(e["shard_id"]).get("wired", False)]
+    assert unwired, "no unwired shards to test"
+    described = shards.describe(unwired[0]["shard_id"])
     assert described["wired"] is False
     assert described["source_environment"] == "kali-linux"
-    module = shards.load(entries[0]["shard_id"])
+    module = shards.load(unwired[0]["shard_id"])
     assert module.WIRED is False
     with pytest.raises(NotImplementedError):
         module.load()
