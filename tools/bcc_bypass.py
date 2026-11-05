@@ -17,6 +17,7 @@ Proof standard: raw+sha · granular quote · identity keys · universe label.
 from __future__ import annotations
 
 import asyncio
+import gzip
 import hashlib
 import json
 import os
@@ -27,6 +28,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import zlib
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -41,13 +43,69 @@ RAW_DIR.mkdir(parents=True, exist_ok=True)
 FETCH_LOG = RAW_DIR / "FETCH_LOG.jsonl"
 NEW_SOURCES_LOG = RAW_DIR / "new_sources_log.md"
 
+def _brotli_decoder():
+    """Return a decompress function for brotli, or None when none is installed."""
+    try:
+        import brotli
+
+        return brotli.decompress
+    except ImportError:
+        pass
+    try:
+        import brotlicffi
+
+        return brotlicffi.decompress
+    except ImportError:
+        return None
+
+
+def _accept_encoding() -> str:
+    """Advertise only encodings this interpreter can undo.
+
+    The header used to be the constant "gzip, deflate, br" while `resp.read()`
+    was stored undecoded, so every compressed response was written to the raw
+    tree as bytes that are not the document -- and sha256 was taken over those
+    bytes, so the FETCH_LOG evidence pointed at a blob. Measured 2026-11-05 in
+    the 3.15t venv: brotli and brotlicffi are both absent, so `br` was the one
+    encoding guaranteed to be undecodable.
+    """
+    encodings = ["gzip", "deflate"]
+    if _brotli_decoder() is not None:
+        encodings.append("br")
+    return ", ".join(encodings)
+
+
+def _decode_body(content: bytes, encoding: str) -> bytes:
+    """Undo a Content-Encoding header. Raises ValueError when it cannot.
+
+    Raising is deliberate: returning the compressed bytes would silently store
+    a non-document, which is the defect this function exists to close.
+    """
+    enc = (encoding or "").strip().lower()
+    if enc in ("", "identity"):
+        return content
+    if enc in ("gzip", "x-gzip"):
+        return gzip.decompress(content)
+    if enc == "deflate":
+        try:
+            return zlib.decompress(content)
+        except zlib.error:
+            return zlib.decompress(content, -zlib.MAX_WBITS)
+    if enc == "br":
+        decoder = _brotli_decoder()
+        if decoder is None:
+            raise ValueError("br: no brotli decoder installed (brotli or brotlicffi)")
+        return decoder(content)
+    raise ValueError(f"unsupported Content-Encoding {encoding!r}")
+
+
 # Default headers for stealth
 STEALTH_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                   "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.9",
-    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Encoding": _accept_encoding(),
     "Connection": "keep-alive",
     "Upgrade-Insecure-Requests": "1",
     "Sec-Fetch-Dest": "document",
@@ -70,6 +128,7 @@ class FetchResult:
     sha256: str
     raw_path: Path
     fetched_at: str
+    encoding: Optional[str] = None  # Content-Encoding that was decoded, if any
     edge_idx: Optional[int] = None
     flock: Optional[str] = None
     error: Optional[str] = None
@@ -157,6 +216,8 @@ class BCCFetchEngine:
             "edge_idx": result.edge_idx,
             "flock": result.flock,
         }
+        if result.encoding:
+            log_entry["encoding"] = result.encoding
         if result.error:
             log_entry["error"] = result.error
 
@@ -178,14 +239,16 @@ class BCCFetchEngine:
         fetched_at = time.strftime("%Y-%m-%dT%H:%M:%S")
         try:
             with urllib.request.urlopen(req, timeout=30) as resp:
-                content = resp.read()
+                encoding = resp.headers.get("Content-Encoding", "")
+                content = _decode_body(resp.read(), encoding)
                 status = resp.status
                 raw_path = self._write_raw(url, content, tier)
                 sha = self._sha256(content)
                 result = FetchResult(
                     url=url, tier=tier, method="http", status=status,
                     bytes=len(content), sha256=sha, raw_path=raw_path,
-                    fetched_at=fetched_at, edge_idx=edge_idx, flock=flock
+                    fetched_at=fetched_at, encoding=encoding.strip().lower() or None,
+                    edge_idx=edge_idx, flock=flock
                 )
         except urllib.error.HTTPError as e:
             result = FetchResult(
