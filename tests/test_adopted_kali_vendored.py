@@ -48,9 +48,10 @@ ENTRIES = _entries()
 BATCHES = [ENTRIES[start:start + BATCH] for start in range(0, len(ENTRIES), BATCH)]
 
 pytestmark = pytest.mark.skipif(
-    not ENTRIES,
-    reason="no vendored adoptions yet; run python tools/adopt_queue.py --vendor "
-           "then --run N")
+    not ENTRIES or not (ELIZA / "adopted" / "kali").is_dir(),
+    reason="no vendored adoptions on this checkout: the Kali mirror at adopted/kali is "
+           "gitignored and rebuilt with python tools/adopt_queue.py --vendor, so nothing "
+           "the ledger names can be imported here")
 
 
 def test_the_ledger_entry_names_this_file_for_every_vendored_row():
