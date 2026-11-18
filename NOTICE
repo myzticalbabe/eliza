@@ -1,50 +1,44 @@
-Project ELIZA
-Copyright 2026 the Project ELIZA contributors
+# NOTICE
 
-This product is licensed under the Common Development and Distribution License (CDDL), Version 1.1 (the "License").
-You may not use the files in this project except in compliance with the License.
-A copy of the License is in the file LICENSE.
-License ruling: commit b49dfc2fef0178d1984437de577bfa00de8a4c32 (2026-11-03) changed this project from Apache-2.0 to CDDL-1.1; see docs/LICENSE_PRECEDENT_CDDL11_2026-11-03.md.
+Eliza — Conversational AI Framework
+Copyright 2026 Azazael Contributors
 
-Unless required by applicable law or agreed to in writing, software distributed
-under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-CONDITIONS OF ANY KIND, either express or implied. See the License for the
-specific language governing permissions and limitations under the License.
+This product includes software developed by the Azazael project (https://github.com/myzticalbabe/azazael).
 
---------------------------------------------------------------------------
-Attribution notes
+## Third-Party Licenses
 
-Project ELIZA is the forensic investigation suite: the layer that keeps an
-investigation's claims tied to the documents they rest on, and the gate that
-decides what may leave the machine. It is NOT the therapeutic agent in this
-tree -- that is a SEPARATE project, Project Nurse Ratchet, with its own package,
-its own release gate and its own citations. The two are not variants of one
-another and must not be described as one project.
+This software may include or depend on the following third-party components:
 
-The name ELIZA refers to Joseph Weizenbaum's 1966 program (Communications of the
-ACM, 9(1):36-45). No code from that program is included here. The reference is
-to the cautionary lesson about a system that is trusted because it appears to be
-doing work that nothing underneath is doing -- the exact failure mode an
-investigation toolchain exists to make visible.
+### Python Standard Library
+- Licensed under the Python Software Foundation License Version 2
+- https://docs.python.org/3/license.html
 
-What is held back, and where that rule lives
+### PyYAML
+- Licensed under the MIT License
+- https://github.com/yaml/pyyaml/blob/master/LICENSE
 
-`PUBLIC_MANIFEST.json` is an allowlist, not a deny-list: nothing ships that it
-does not name, and `tools/eliza_release_gate.py` fails the build when a path
-crosses the line the manifest declares. Its `never_ship` and `deny_substrings`
-sections name the material that stays home -- raw primary documents,
-entity-resolution output, rendered findings, and correspondence naming
-identified organisations and people. `DISCLOSURE_POLICY.md` states that line in
-prose; the manifest enforces it mechanically.
+### pytest
+- Licensed under the MIT License
+- https://github.com/pytest-dev/pytest/blob/main/LICENSE
 
-No primary document about an identified person is distributed with this
-project. The investigation METHOD is published; the allegations inside the
-original case are not, because no licence makes republishing mental-health,
-tenancy or employment records about named people lawful or decent. A reader
-verifies a claim by re-fetching the source and comparing its SHA-256, which is
-why every instrument here runs against data the reader supplies rather than
-against a bundled case corpus.
+### GitPython
+- Licensed under the BSD 3-Clause License
+- https://github.com/gitpython-developers/GitPython/blob/main/LICENSE
 
-No third-party runtime dependency is bundled. The Contributor Covenant text in
-CODE_OF_CONDUCT.md is used under CC BY 4.0 with attribution retained in the
-Attribution section at the end of that file.
+### Click
+- Licensed under the BSD 3-Clause License
+- https://github.com/pallets/click/blob/main/LICENSE
+
+### Transformers
+- Licensed under the Apache-2.0 License
+- https://github.com/huggingface/transformers/blob/main/LICENSE
+
+## Attribution
+
+Portions of this software are derived from the AZAZAEL project, which is licensed under the Common Development and Distribution License (CDDL) Version 1.1.
+
+The CDDL license text is included in the LICENSE file in this distribution.
+
+## Trademarks
+
+"Eliza" and the Eliza logo are trademarks of the Azazael Contributors. All other trademarks are the property of their respective owners.
