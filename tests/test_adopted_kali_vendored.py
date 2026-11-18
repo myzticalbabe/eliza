@@ -20,6 +20,7 @@ instead of taking the suite with it.
 Skips when nothing is vendored yet, so a checkout that has not run `--vendor`
 still passes the suite instead of failing for a reason about the host.
 """
+
 from __future__ import annotations
 
 import sys
@@ -39,19 +40,22 @@ BATCH = 40
 
 
 def _entries():
-    return sorted(shard_id for shard_id, claim
-                  in shards.wired_ledger().items()
-                  if isinstance(claim, dict) and claim.get("test") == VENDORED_TEST)
+    return sorted(
+        shard_id
+        for shard_id, claim in shards.wired_ledger().items()
+        if isinstance(claim, dict) and claim.get("test") == VENDORED_TEST
+    )
 
 
 ENTRIES = _entries()
-BATCHES = [ENTRIES[start:start + BATCH] for start in range(0, len(ENTRIES), BATCH)]
+BATCHES = [ENTRIES[start : start + BATCH] for start in range(0, len(ENTRIES), BATCH)]
 
 pytestmark = pytest.mark.skipif(
     not ENTRIES or not (ELIZA / "adopted" / "kali").is_dir(),
     reason="no vendored adoptions on this checkout: the Kali mirror at adopted/kali is "
-           "gitignored and rebuilt with python tools/adopt_queue.py --vendor, so nothing "
-           "the ledger names can be imported here")
+    "gitignored and rebuilt with python tools/adopt_queue.py --vendor, so nothing "
+    "the ledger names can be imported here",
+)
 
 
 def test_the_ledger_entry_names_this_file_for_every_vendored_row():
@@ -61,14 +65,21 @@ def test_the_ledger_entry_names_this_file_for_every_vendored_row():
             assert claim["test"] == VENDORED_TEST, shard_id
 
 
-@pytest.mark.parametrize("batch", BATCHES,
-                         ids=lambda batch: "%d shard(s) from %s" % (len(batch), batch[0]))
+@pytest.mark.parametrize(
+    "batch", BATCHES, ids=lambda batch: "%d shard(s) from %s" % (len(batch), batch[0])
+)
 def test_each_batch_returns_the_units_its_shards_name(batch):
     report = check_shards(batch, batch=BATCH)
-    failures = {shard_id: report[shard_id]["error"]
-                for shard_id in batch
-                if not report.get(shard_id, {}).get("ok")}
+    failures = {
+        shard_id: report[shard_id]["error"]
+        for shard_id in batch
+        if not report.get(shard_id, {}).get("ok")
+    }
     assert not failures, "%d of %d shard(s) failed:\n%s" % (
-        len(failures), len(batch),
-        "\n".join("  %s -- %s" % (shard_id, failures[shard_id])
-                  for shard_id in sorted(failures)))
+        len(failures),
+        len(batch),
+        "\n".join(
+            "  %s -- %s" % (shard_id, failures[shard_id])
+            for shard_id in sorted(failures)
+        ),
+    )

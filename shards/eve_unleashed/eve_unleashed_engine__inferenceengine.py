@@ -10,6 +10,7 @@ behaviour: `load()` raises. Wiring it is a deliberate change, made against the
 tutorial in docs/TUTORIAL_SHARD_DEV_2026-11-02.md, and the first step is to read
 the Kali source rather than to import this module.
 """
+
 from __future__ import annotations
 
 WIRED = True
@@ -17,7 +18,7 @@ SHARD_ID = "kali:eve_unleashed/engine.py#InferenceEngine"
 KIND = "class"
 SOURCE_ENVIRONMENT = "kali-linux"
 SOURCE_MODULE = "eve_unleashed/engine.py"
-CLASS_NAME = 'InferenceEngine'
+CLASS_NAME = "InferenceEngine"
 UNNAMED_CLASSES = 0
 TREE = "eve_unleashed"
 
@@ -40,5 +41,5 @@ def load(*args, **kwargs):
     """Return the vendored unit. Importing the module is the adoption."""
     import importlib
 
-    vendored = importlib.import_module('adopted.kali.eve_unleashed.engine')
+    vendored = importlib.import_module("adopted.kali.eve_unleashed.engine")
     return vendored if CLASS_NAME is None else getattr(vendored, CLASS_NAME)

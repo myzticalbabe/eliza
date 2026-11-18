@@ -10,6 +10,7 @@ behaviour: `load()` raises. Wiring it is a deliberate change, made against the
 tutorial in docs/TUTORIAL_SHARD_DEV_2026-11-02.md, and the first step is to read
 the Kali source rather than to import this module.
 """
+
 from __future__ import annotations
 
 WIRED = False
@@ -17,7 +18,7 @@ SHARD_ID = "kali:CODEX/CORE/azazael_pygame.py#Badge"
 KIND = "class"
 SOURCE_ENVIRONMENT = "kali-linux"
 SOURCE_MODULE = "CODEX/CORE/azazael_pygame.py"
-CLASS_NAME = 'Badge'
+CLASS_NAME = "Badge"
 UNNAMED_CLASSES = 0
 TREE = "CODEX"
 

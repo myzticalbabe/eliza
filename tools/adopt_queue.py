@@ -32,6 +32,7 @@ start threads, open sockets or read `/root`; a hang must cost one row's timeout,
 not the worker. A worker that dies mid-row leaves the row `pending` -- the queue
 is the state, and re-running it is safe because adoption is idempotent.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -148,7 +149,9 @@ def _module_path(parts: Sequence[str]) -> Optional[str]:
 def _dotted(module: str) -> str:
     parts = module[:-3].split("/") if module.endswith(".py") else module.split("/")
     real = _module_path(parts)
-    return "adopted.kali." + (real if real is not None else module[:-3]).replace("/", ".")
+    return "adopted.kali." + (real if real is not None else module[:-3]).replace(
+        "/", "."
+    )
 
 
 SOURCE_ROOT = "/root/azazael/src"
@@ -170,15 +173,26 @@ def _shards_by_module() -> Dict[str, Dict]:
     atlas = intake.read_atlas(intake.DEFAULT_ATLAS)
     grouped: Dict[str, Dict] = {}
     for entry in intake.units(atlas):
-        row = grouped.setdefault(entry["module"], {
-            "module": entry["module"], "tree": entry["tree"],
-            "shards": [], "status": "pending", "attempts": 0, "note": "",
-        })
-        row["shards"].append({
-            "shard_id": entry["shard_id"], "kind": entry["kind"],
-            "class_name": entry["class"], "unnamed": entry.get("unnamed", 0),
-            "path": entry["path"],
-        })
+        row = grouped.setdefault(
+            entry["module"],
+            {
+                "module": entry["module"],
+                "tree": entry["tree"],
+                "shards": [],
+                "status": "pending",
+                "attempts": 0,
+                "note": "",
+            },
+        )
+        row["shards"].append(
+            {
+                "shard_id": entry["shard_id"],
+                "kind": entry["kind"],
+                "class_name": entry["class"],
+                "unnamed": entry.get("unnamed", 0),
+                "path": entry["path"],
+            }
+        )
     return grouped
 
 
@@ -198,14 +212,22 @@ def build() -> int:
         rows.append(fresh)
     payload = {
         "schema": "eliza.adoption-queue/1",
-        "note": ("One row per Kali module. `run` adopts a row by vendoring the tree "
-                 "and importing the module in a subprocess; blocked rows name why."),
-        "counts": {"rows": len(rows),
-                   "shards": sum(len(row["shards"]) for row in rows)},
+        "note": (
+            "One row per Kali module. `run` adopts a row by vendoring the tree "
+            "and importing the module in a subprocess; blocked rows name why."
+        ),
+        "counts": {
+            "rows": len(rows),
+            "shards": sum(len(row["shards"]) for row in rows),
+        },
         "rows": rows,
     }
-    QUEUE.write_text(json.dumps(payload, indent=1) + "\n", encoding="utf-8", newline="\n")
-    print("queued %(rows)d module row(s) covering %(shards)d shard(s)" % payload["counts"])
+    QUEUE.write_text(
+        json.dumps(payload, indent=1) + "\n", encoding="utf-8", newline="\n"
+    )
+    print(
+        "queued %(rows)d module row(s) covering %(shards)d shard(s)" % payload["counts"]
+    )
     return 0
 
 
@@ -214,7 +236,9 @@ def read_queue() -> Dict:
 
 
 def write_queue(payload: Dict) -> None:
-    QUEUE.write_text(json.dumps(payload, indent=1) + "\n", encoding="utf-8", newline="\n")
+    QUEUE.write_text(
+        json.dumps(payload, indent=1) + "\n", encoding="utf-8", newline="\n"
+    )
 
 
 def status() -> int:
@@ -225,12 +249,19 @@ def status() -> int:
         counts[row["status"]] = counts.get(row["status"], 0) + 1
     wired = intake.wired_registry()
     adopted_shards = sum(len(row["shards"]) for row in rows if row["status"] == "done")
-    print("rows: %d  shards: %d  ledger: %d wired"
-          % (len(rows), payload["counts"]["shards"], len(wired)))
+    print(
+        "rows: %d  shards: %d  ledger: %d wired"
+        % (len(rows), payload["counts"]["shards"], len(wired))
+    )
     for state in ("done", "blocked", "pending"):
-        print("  %-8s %4d row(s), %4d shard(s)"
-              % (state, counts.get(state, 0),
-                 sum(len(row["shards"]) for row in rows if row["status"] == state)))
+        print(
+            "  %-8s %4d row(s), %4d shard(s)"
+            % (
+                state,
+                counts.get(state, 0),
+                sum(len(row["shards"]) for row in rows if row["status"] == state),
+            )
+        )
     print("  queue-adopted shards: %d (ledger has %d)" % (adopted_shards, len(wired)))
     blocked = [row for row in rows if row["status"] == "blocked"][:5]
     for row in blocked:
@@ -247,7 +278,7 @@ def status() -> int:
     return 0
 
 
-CHECK_SNIPPET = r'''import json, sys, types
+CHECK_SNIPPET = r"""import json, sys, types
 from pathlib import Path
 sys.path.insert(0, sys.argv[1])
 import shards
@@ -279,11 +310,12 @@ for sid in sys.argv[2:]:
         print(json.dumps({"id": sid, "ok": False,
                           "error": ("%s: %s" % (type(error).__name__, error))[:200]}),
               flush=True)
-'''
+"""
 
 
-def check_shards(shard_ids: Sequence[str], batch: int = 40,
-                 timeout: int = 300) -> Dict[str, Dict]:
+def check_shards(
+    shard_ids: Sequence[str], batch: int = 40, timeout: int = 300
+) -> Dict[str, Dict]:
     """Does every shard, through its stub, return the unit the atlas names?
 
     **In child processes, in batches.** Importing Kali code is executing it, and
@@ -302,14 +334,22 @@ def check_shards(shard_ids: Sequence[str], batch: int = 40,
     env.setdefault("AZAZAEL_ROOT", str(REPO / "adopted"))
     ids = list(shard_ids)
     for start in range(0, len(ids), batch):
-        chunk = ids[start:start + batch]
+        chunk = ids[start : start + batch]
         try:
             child = subprocess.run(
                 [sys.executable, "-c", CHECK_SNIPPET, str(REPO), *chunk],
-                cwd=str(REPO), capture_output=True, text=True, timeout=timeout, env=env)
+                cwd=str(REPO),
+                capture_output=True,
+                text=True,
+                timeout=timeout,
+                env=env,
+            )
         except subprocess.TimeoutExpired:
             for shard_id in chunk:
-                report[shard_id] = {"ok": False, "error": "batch exceeded %ds" % timeout}
+                report[shard_id] = {
+                    "ok": False,
+                    "error": "batch exceeded %ds" % timeout,
+                }
             continue
         for line in (child.stdout or "").splitlines():
             line = line.strip()
@@ -318,22 +358,28 @@ def check_shards(shard_ids: Sequence[str], batch: int = 40,
             try:
                 item = json.loads(line)
             except ValueError as error:
-                print("unparseable child line (%s): %s" % (error, line[:120]),
-                      file=sys.stderr)
+                print(
+                    "unparseable child line (%s): %s" % (error, line[:120]),
+                    file=sys.stderr,
+                )
                 continue
-            report[item["id"]] = {"ok": bool(item.get("ok")),
-                                  "error": item.get("error", "")}
+            report[item["id"]] = {
+                "ok": bool(item.get("ok")),
+                "error": item.get("error", ""),
+            }
         missing = [shard_id for shard_id in chunk if shard_id not in report]
         for shard_id in missing:
-            tail = (child.stderr or "").strip().splitlines()[-1:] or ["exit %d" % child.returncode]
+            tail = (child.stderr or "").strip().splitlines()[-1:] or [
+                "exit %d" % child.returncode
+            ]
             report[shard_id] = {"ok": False, "error": "child died: " + tail[0][:160]}
     return report
 
 
-UNWIRED_TAIL = '''def load(*args, **kwargs):
+UNWIRED_TAIL = """def load(*args, **kwargs):
     raise NotImplementedError(
         {reason!r} + " -- not adopted; see shards/ADOPTION_QUEUE.json")
-'''
+"""
 
 
 def _unwire(shard: Dict, reason: str) -> None:
@@ -342,17 +388,28 @@ def _unwire(shard: Dict, reason: str) -> None:
     text = path.read_text(encoding="utf-8")
     head, _, _ = text.partition("def load(")
     head = head.replace("WIRED = True", "WIRED = False", 1)
-    path.write_text(head + UNWIRED_TAIL.format(reason=reason),
-                    encoding="utf-8", newline="\n")
+    path.write_text(
+        head + UNWIRED_TAIL.format(reason=reason), encoding="utf-8", newline="\n"
+    )
     ledger = intake.wired_registry()
     ledger.pop(shard["shard_id"], None)
-    intake.WIRED.write_text(json.dumps({
-        "schema": intake.SCHEMA,
-        "note": ("Shard id -> {test, commit}. A shard listed here has been wired "
-                 "into ELIZA behind its stub path; the test is the evidence. "
-                 "Edit by hand, in the adopting commit."),
-        "wired": ledger,
-    }, indent=1) + "\n", encoding="utf-8", newline="\n")
+    intake.WIRED.write_text(
+        json.dumps(
+            {
+                "schema": intake.SCHEMA,
+                "note": (
+                    "Shard id -> {test, commit}. A shard listed here has been wired "
+                    "into ELIZA behind its stub path; the test is the evidence. "
+                    "Edit by hand, in the adopting commit."
+                ),
+                "wired": ledger,
+            },
+            indent=1,
+        )
+        + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
 
 
 def verify() -> int:
@@ -372,8 +429,12 @@ def verify() -> int:
     # adoption (measured 2026-11-03), so they are excluded here, exactly as
     # run() exempts wired rows.
     ledger = intake.wired_registry()
-    ids = [shard["shard_id"] for row in adopted for shard in row["shards"]
-           if ledger.get(shard["shard_id"], {}).get("mode") == "vendored"]
+    ids = [
+        shard["shard_id"]
+        for row in adopted
+        for shard in row["shards"]
+        if ledger.get(shard["shard_id"], {}).get("mode") == "vendored"
+    ]
     report = check_shards(ids)
     bad = {shard_id: item for shard_id, item in report.items() if not item["ok"]}
     for row in adopted:
@@ -399,8 +460,10 @@ def verify() -> int:
     if strays:
         print("unwired %d stray shard(s) from rows that are not done" % strays)
     write_queue(payload)
-    print("checked %d shard(s) through their stubs; %d failed and were demoted"
-          % (len(ids), len(bad)))
+    print(
+        "checked %d shard(s) through their stubs; %d failed and were demoted"
+        % (len(ids), len(bad))
+    )
     for shard_id, item in sorted(bad.items())[:6]:
         print("  %s -- %s" % (shard_id, item["error"][:110]))
     return status()
@@ -408,7 +471,8 @@ def verify() -> int:
 
 STDLIB = set(sys.stdlib_module_names)
 FROM_LINE = re.compile(
-    r"(?m)^(?P<indent>[ \t]*)from +(?P<name>[A-Za-z_][\w.]*)(?= +import )")
+    r"(?m)^(?P<indent>[ \t]*)from +(?P<name>[A-Za-z_][\w.]*)(?= +import )"
+)
 IMPORT_LINE = re.compile(r"(?m)^(?P<indent>[ \t]*)import +(?P<body>[^\n#]+)")
 
 
@@ -498,7 +562,9 @@ def _normalise(text: str, relative_dir: str = "") -> str:
             if not piece:
                 continue
             parts = piece.split(" as ")
-            module, alias = parts[0].strip(), (parts[1].strip() if len(parts) > 1 else "")
+            module, alias = parts[0].strip(), (
+                parts[1].strip() if len(parts) > 1 else ""
+            )
             target = _retarget(module, roots)
             if target is None:
                 segments.append(piece)
@@ -515,17 +581,38 @@ def vendor() -> int:
     """Mirror /root/azazael/src into adopted/kali and normalise its imports."""
     VENDOR.mkdir(parents=True, exist_ok=True)
     tar = subprocess.run(
-        ["wsl.exe", "-d", "kali-linux", "--", "tar", "-C", _source_root(),
-         "-cf", "-", "--exclude=__pycache__", "."],
-        capture_output=True, check=True, timeout=600)
-    subprocess.run(["tar", "-C", str(VENDOR), "-xf", "-"], input=tar.stdout,
-                   check=True, timeout=600)
+        [
+            "wsl.exe",
+            "-d",
+            "kali-linux",
+            "--",
+            "tar",
+            "-C",
+            _source_root(),
+            "-cf",
+            "-",
+            "--exclude=__pycache__",
+            ".",
+        ],
+        capture_output=True,
+        check=True,
+        timeout=600,
+    )
+    subprocess.run(
+        ["tar", "-C", str(VENDOR), "-xf", "-"],
+        input=tar.stdout,
+        check=True,
+        timeout=600,
+    )
     (VENDOR / "__init__.py").write_text(
         '# coding: utf-8\n"""Verbatim Kali source, imports normalised by tools/adopt_queue.py.\n\n'
         "Vendored, not re-implemented: the units are the Kali code, reachable from\n"
         "ELIZA through `shards/<tree>/...load()`. Regenerate with `--vendor`; do not\n"
         'hand-edit -- a fix belongs in Kali and comes back through this step."""\n'
-        "from __future__ import annotations\n", encoding="utf-8", newline="\n")
+        "from __future__ import annotations\n",
+        encoding="utf-8",
+        newline="\n",
+    )
     changed = 0
     for path in VENDOR.rglob("*.py"):
         original = path.read_text(encoding="utf-8", errors="replace")
@@ -536,8 +623,10 @@ def vendor() -> int:
             path.write_text(normalised, encoding="utf-8", newline="\n")
             changed += 1
     _link_src()
-    print("vendored %d module(s) from %s; normalised %d"
-          % (sum(1 for _ in VENDOR.rglob("*.py")), _source_root(), changed))
+    print(
+        "vendored %d module(s) from %s; normalised %d"
+        % (sum(1 for _ in VENDOR.rglob("*.py")), _source_root(), changed)
+    )
     return 0
 
 
@@ -556,11 +645,18 @@ def _link_src() -> None:
     if link.exists():
         return
     try:
-        subprocess.run(["cmd", "/c", "mklink", "/J", str(link), str(VENDOR)],
-                       capture_output=True, check=True, timeout=30)
+        subprocess.run(
+            ["cmd", "/c", "mklink", "/J", str(link), str(VENDOR)],
+            capture_output=True,
+            check=True,
+            timeout=30,
+        )
     except (OSError, subprocess.CalledProcessError) as error:
-        print("could not link adopted/src (%s); root-detecting modules will block"
-              % error, file=sys.stderr)
+        print(
+            "could not link adopted/src (%s); root-detecting modules will block"
+            % error,
+            file=sys.stderr,
+        )
 
 
 def _probe(dotted: str, timeout: int = 20) -> Optional[str]:
@@ -575,7 +671,12 @@ def _probe(dotted: str, timeout: int = 20) -> Optional[str]:
     try:
         done = subprocess.run(
             [sys.executable, "-c", "import %s" % dotted],
-            cwd=str(REPO), capture_output=True, text=True, timeout=timeout, env=env)
+            cwd=str(REPO),
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            env=env,
+        )
     except subprocess.TimeoutExpired:
         return "import exceeded %ds" % timeout
     if done.returncode == 0:
@@ -591,17 +692,33 @@ def _wire(row: Dict) -> None:
         text = path.read_text(encoding="utf-8")
         head, _, _ = text.partition("def load(")
         head = head.replace("WIRED = False", "WIRED = True", 1)
-        path.write_text(head + LOAD_TAIL.format(dotted=_dotted(row["module"])),
-                        encoding="utf-8", newline="\n")
-        ledger[shard["shard_id"]] = {"test": SHARED_TEST,
-                                     "commit": "vendored", "mode": "vendored"}
-    intake.WIRED.write_text(json.dumps({
-        "schema": intake.SCHEMA,
-        "note": ("Shard id -> {test, commit}. A shard listed here has been wired "
-                 "into ELIZA behind its stub path; the test is the evidence. "
-                 "Edit by hand, in the adopting commit."),
-        "wired": ledger,
-    }, indent=1) + "\n", encoding="utf-8", newline="\n")
+        path.write_text(
+            head + LOAD_TAIL.format(dotted=_dotted(row["module"])),
+            encoding="utf-8",
+            newline="\n",
+        )
+        ledger[shard["shard_id"]] = {
+            "test": SHARED_TEST,
+            "commit": "vendored",
+            "mode": "vendored",
+        }
+    intake.WIRED.write_text(
+        json.dumps(
+            {
+                "schema": intake.SCHEMA,
+                "note": (
+                    "Shard id -> {test, commit}. A shard listed here has been wired "
+                    "into ELIZA behind its stub path; the test is the evidence. "
+                    "Edit by hand, in the adopting commit."
+                ),
+                "wired": ledger,
+            },
+            indent=1,
+        )
+        + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
 
 
 def run(limit: int, retry_blocked: bool = False) -> int:
@@ -632,7 +749,7 @@ def run(limit: int, retry_blocked: bool = False) -> int:
             row["status"] = "blocked"
             row["note"] = reason
         done += 1
-        write_queue(payload)          # durable per row: a crash costs one row
+        write_queue(payload)  # durable per row: a crash costs one row
     write_queue(payload)
     print("processed %d row(s)" % done)
     return status()

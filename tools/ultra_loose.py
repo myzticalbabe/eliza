@@ -98,15 +98,17 @@ Integration with ELIZA/BCC:
 This is the BCC re-investigation methodology. Use it freely.
 """
 
+
 def main():
     """Entry point for console script."""
     import sys
+
     # Handle Windows cp1252 encoding issues
     try:
         print(__doc__)
     except UnicodeEncodeError:
-        sys.stdout.buffer.write(__doc__.encode('utf-8', errors='replace'))
-        sys.stdout.buffer.write(b'\n')
+        sys.stdout.buffer.write(__doc__.encode("utf-8", errors="replace"))
+        sys.stdout.buffer.write(b"\n")
 
 
 if __name__ == "__main__":

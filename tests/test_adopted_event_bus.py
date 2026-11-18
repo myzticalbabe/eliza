@@ -11,6 +11,7 @@ Two questions per shard, and they are different:
 The second half is the one a flag flip cannot fake: it imports through the
 surface, so a stub that lies about its state fails here.
 """
+
 from __future__ import annotations
 
 import sys
@@ -23,7 +24,12 @@ if str(ELIZA) not in sys.path:
     sys.path.insert(0, str(ELIZA))
 
 from adopted.aoa.event_bus import (  # noqa: E402
-    AOEvent, AOEventType, EventBus, EventPipeline, EventPriority, get_event_bus,
+    AOEvent,
+    AOEventType,
+    EventBus,
+    EventPipeline,
+    EventPriority,
+    get_event_bus,
 )
 
 SHARD_IDS = (
@@ -36,8 +42,13 @@ SHARD_IDS = (
 
 
 def test_priority_values_match_the_source_including_the_medium_alias():
-    assert (EventPriority.LOW, EventPriority.NORMAL, EventPriority.MEDIUM,
-            EventPriority.HIGH, EventPriority.CRITICAL) == (0, 1, 1, 2, 3)
+    assert (
+        EventPriority.LOW,
+        EventPriority.NORMAL,
+        EventPriority.MEDIUM,
+        EventPriority.HIGH,
+        EventPriority.CRITICAL,
+    ) == (0, 1, 1, 2, 3)
 
 
 def test_publish_delivers_to_an_exact_pattern_and_counts_the_delivery():
@@ -45,20 +56,24 @@ def test_publish_delivers_to_an_exact_pattern_and_counts_the_delivery():
     seen = []
     bus.subscribe(AOEventType.ARM_INITIALIZED, seen.append)
 
-    delivered = bus.publish(AOEvent(event_type=AOEventType.ARM_INITIALIZED,
-                                    source_arm="azazael"))
+    delivered = bus.publish(
+        AOEvent(event_type=AOEventType.ARM_INITIALIZED, source_arm="azazael")
+    )
 
     assert delivered == 1
     assert [event.source_arm for event in seen] == ["azazael"]
 
 
-@pytest.mark.parametrize("pattern, event_type, expected", [
-    ("*", "anything.at.all", True),
-    ("azazael.*", "azazael.worm.executed", True),
-    ("*.executed", "azazael.worm.executed", True),
-    ("azazael.*", "codex.render.started", False),
-    ("*.executed", "azazael.worm.skipped", False),
-])
+@pytest.mark.parametrize(
+    "pattern, event_type, expected",
+    [
+        ("*", "anything.at.all", True),
+        ("azazael.*", "azazael.worm.executed", True),
+        ("*.executed", "azazael.worm.executed", True),
+        ("azazael.*", "codex.render.started", False),
+        ("*.executed", "azazael.worm.skipped", False),
+    ],
+)
 def test_the_three_wildcard_forms(pattern, event_type, expected):
     assert EventBus._match_pattern(pattern, event_type) is expected
 
@@ -85,8 +100,13 @@ def test_a_failing_subscriber_is_isolated_counted_and_named():
 def test_history_is_bounded_and_filterable_and_correlation_is_addressable():
     bus = EventBus(max_history=3)
     for index in range(5):
-        bus.publish(AOEvent(event_type="tick", source_arm="a",
-                            correlation_id="run-1" if index % 2 else "run-2"))
+        bus.publish(
+            AOEvent(
+                event_type="tick",
+                source_arm="a",
+                correlation_id="run-1" if index % 2 else "run-2",
+            )
+        )
 
     assert bus.history_count == 3, "the cap is a cap, not a hint"
     assert len(bus.get_history(source_arm="a", limit=2)) == 2
@@ -113,15 +133,21 @@ def test_unsubscribe_removes_only_the_named_callback():
 def test_a_pipeline_folds_and_reports_the_failing_step():
     bus = EventBus()
     pipeline = EventPipeline(bus, name="demo")
-    pipeline.add_step(lambda event: AOEvent(event_type="step.one",
-                                            correlation_id=event.correlation_id))
+    pipeline.add_step(
+        lambda event: AOEvent(
+            event_type="step.one", correlation_id=event.correlation_id
+        )
+    )
     pipeline.add_step(lambda event: (_ for _ in ()).throw(ValueError("boom")))
     pipeline.add_step(lambda event: AOEvent(event_type="unreachable"))
 
     results = pipeline.execute(AOEvent(event_type="start", correlation_id="c1"))
 
     assert [event.event_type for event in results] == [
-        "start", "step.one", AOEventType.WORKFLOW_FAILED]
+        "start",
+        "step.one",
+        AOEventType.WORKFLOW_FAILED,
+    ]
     failure = results[-1]
     assert failure.payload == {"step": 1, "error": "boom"}
     assert failure.priority == EventPriority.CRITICAL
@@ -134,7 +160,9 @@ def test_a_pipeline_stops_on_a_none_step_instead_of_appending_null():
     pipeline.add_step(lambda event: None)
     pipeline.add_step(lambda event: AOEvent(event_type="never"))
 
-    assert [event.event_type for event in pipeline.execute(AOEvent(event_type="s"))] == ["s"]
+    assert [
+        event.event_type for event in pipeline.execute(AOEvent(event_type="s"))
+    ] == ["s"]
 
 
 def test_get_event_bus_is_a_lazy_singleton():
@@ -149,7 +177,11 @@ def test_each_shard_returns_its_adopted_object(shard_id):
     assert entry["wired"] is True, "%s is not in WIRED.json" % shard_id
 
     returned = shards.load(shard_id).load()
-    expected = {"EventBus": EventBus, "AOEvent": AOEvent,
-                "AOEventType": AOEventType, "EventPipeline": EventPipeline,
-                "EventPriority": EventPriority}[entry["class"]]
+    expected = {
+        "EventBus": EventBus,
+        "AOEvent": AOEvent,
+        "AOEventType": AOEventType,
+        "EventPipeline": EventPipeline,
+        "EventPriority": EventPriority,
+    }[entry["class"]]
     assert returned is expected

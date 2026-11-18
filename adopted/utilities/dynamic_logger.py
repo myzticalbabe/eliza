@@ -21,6 +21,7 @@ two side effects explicit:
 `get_logger()` is the singleton accessor. `DynamicLogger()` is still a singleton
 per process, as in the source, so a second call returns the same object.
 """
+
 from __future__ import annotations
 
 import threading
@@ -77,7 +78,9 @@ class DynamicLogger:
         self.output_enabled = True
         self._lock = threading.Lock()
 
-    def log(self, message: str, level: str = LogLevel.INFO, tag: str = "") -> Dict[str, str]:
+    def log(
+        self, message: str, level: str = LogLevel.INFO, tag: str = ""
+    ) -> Dict[str, str]:
         """Record one line. Returns the record, so a caller can assert on it."""
         timestamp = datetime.now().isoformat()
         text = ("%s %s" % (tag, message)).strip() if tag else message
@@ -87,8 +90,10 @@ class DynamicLogger:
         with self._lock:
             self.history.append(record)
             if self.output_enabled:
-                print("%s %s %s" % (_SYMBOLS.get(level, "[?]"), timestamp[11:19], text),
-                      flush=True)
+                print(
+                    "%s %s %s" % (_SYMBOLS.get(level, "[?]"), timestamp[11:19], text),
+                    flush=True,
+                )
             if self.sink is not None:
                 self.sink.parent.mkdir(parents=True, exist_ok=True)
                 with self.sink.open("a", encoding="utf-8") as handle:

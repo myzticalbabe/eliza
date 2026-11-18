@@ -10,14 +10,17 @@ behaviour: `load()` raises. Wiring it is a deliberate change, made against the
 tutorial in docs/TUTORIAL_SHARD_DEV_2026-11-02.md, and the first step is to read
 the Kali source rather than to import this module.
 """
+
 from __future__ import annotations
 
 WIRED = False
-SHARD_ID = "kali:ORCHESTRATION/ml_platforms/improvements/tensor_utils.py#TensorConverter"
+SHARD_ID = (
+    "kali:ORCHESTRATION/ml_platforms/improvements/tensor_utils.py#TensorConverter"
+)
 KIND = "class"
 SOURCE_ENVIRONMENT = "kali-linux"
 SOURCE_MODULE = "ORCHESTRATION/ml_platforms/improvements/tensor_utils.py"
-CLASS_NAME = 'TensorConverter'
+CLASS_NAME = "TensorConverter"
 UNNAMED_CLASSES = 0
 TREE = "ORCHESTRATION"
 

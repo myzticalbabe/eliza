@@ -22,8 +22,6 @@ import hashlib
 import json
 import os
 import re
-import subprocess
-import sys
 import time
 import urllib.error
 import urllib.parse
@@ -31,7 +29,7 @@ import urllib.request
 import zlib
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import List, Optional
 
 # ──────────────────────────────────────────────────────────────────────────────
 # CONFIG
@@ -42,6 +40,7 @@ RAW_DIR.mkdir(parents=True, exist_ok=True)
 
 FETCH_LOG = RAW_DIR / "FETCH_LOG.jsonl"
 NEW_SOURCES_LOG = RAW_DIR / "new_sources_log.md"
+
 
 def _brotli_decoder():
     """Return a decompress function for brotli, or None when none is installed."""
@@ -102,7 +101,7 @@ def _decode_body(content: bytes, encoding: str) -> bytes:
 # Default headers for stealth
 STEALTH_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                  "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.9",
     "Accept-Encoding": _accept_encoding(),
@@ -117,6 +116,7 @@ STEALTH_HEADERS = {
 # ──────────────────────────────────────────────────────────────────────────────
 # DATA CLASSES
 # ──────────────────────────────────────────────────────────────────────────────
+
 
 @dataclass
 class FetchResult:
@@ -133,9 +133,11 @@ class FetchResult:
     flock: Optional[str] = None
     error: Optional[str] = None
 
+
 @dataclass
 class BCCEdge:
     """BCC re-investigation edge with flock grading."""
+
     edge_idx: int
     flock: str
     src_entity: str
@@ -145,6 +147,7 @@ class BCCEdge:
     evidence: List[FetchResult] = field(default_factory=list)
     grade: str = "LEAD"  # VERIFIED, LEAD, CUT, UNPROOFED
     proof_state: str = ""
+
 
 # ──────────────────────────────────────────────────────────────────────────────
 # FLOCK CANON (FLOCK-CANON-v1.3)
@@ -182,6 +185,7 @@ PROOF_REQUIREMENTS = [
 # FETCH ENGINE
 # ──────────────────────────────────────────────────────────────────────────────
 
+
 class BCCFetchEngine:
     """Fetch with bypass chain: HTTP → curl_cffi → headless browser → archive."""
 
@@ -195,7 +199,7 @@ class BCCFetchEngine:
 
     def _write_raw(self, url: str, content: bytes, tier: str) -> Path:
         """Save raw content with beam-prefixed filename."""
-        safe_url = re.sub(r'[^a-zA-Z0-9]+', '_', url)[:80]
+        safe_url = re.sub(r"[^a-zA-Z0-9]+", "_", url)[:80]
         ts = time.strftime("%Y%m%d_%H%M%S")
         fname = f"beam1_{ts}_{tier}_{safe_url}.html"
         path = self.raw_dir / fname
@@ -226,14 +230,20 @@ class BCCFetchEngine:
 
         # Also log to markdown for human review
         with NEW_SOURCES_LOG.open("a", encoding="utf-8") as f:
-            f.write(f"| {result.fetched_at} | {result.tier} | {result.method} | "
-                    f"{result.status} | {result.bytes} | {result.sha256[:16]} | "
-                    f"{result.raw_path.name} | {result.edge_idx or '-'} | "
-                    f"{result.flock or '-'} |\n")
+            f.write(
+                f"| {result.fetched_at} | {result.tier} | {result.method} | "
+                f"{result.status} | {result.bytes} | {result.sha256[:16]} | "
+                f"{result.raw_path.name} | {result.edge_idx or '-'} | "
+                f"{result.flock or '-'} |\n"
+            )
 
-    async def fetch_http(self, url: str, tier: str = "C",
-                         edge_idx: Optional[int] = None,
-                         flock: Optional[str] = None) -> FetchResult:
+    async def fetch_http(
+        self,
+        url: str,
+        tier: str = "C",
+        edge_idx: Optional[int] = None,
+        flock: Optional[str] = None,
+    ) -> FetchResult:
         """Tier 1: Standard HTTP with stealth headers."""
         req = urllib.request.Request(url, headers=STEALTH_HEADERS)
         fetched_at = time.strftime("%Y-%m-%dT%H:%M:%S")
@@ -245,81 +255,139 @@ class BCCFetchEngine:
                 raw_path = self._write_raw(url, content, tier)
                 sha = self._sha256(content)
                 result = FetchResult(
-                    url=url, tier=tier, method="http", status=status,
-                    bytes=len(content), sha256=sha, raw_path=raw_path,
-                    fetched_at=fetched_at, encoding=encoding.strip().lower() or None,
-                    edge_idx=edge_idx, flock=flock
+                    url=url,
+                    tier=tier,
+                    method="http",
+                    status=status,
+                    bytes=len(content),
+                    sha256=sha,
+                    raw_path=raw_path,
+                    fetched_at=fetched_at,
+                    encoding=encoding.strip().lower() or None,
+                    edge_idx=edge_idx,
+                    flock=flock,
                 )
         except urllib.error.HTTPError as e:
             result = FetchResult(
-                url=url, tier=tier, method="http", status=e.code,
-                bytes=0, sha256="", raw_path=Path(""),
-                fetched_at=fetched_at, edge_idx=edge_idx, flock=flock,
-                error=f"HTTP {e.code}: {e.reason}"
+                url=url,
+                tier=tier,
+                method="http",
+                status=e.code,
+                bytes=0,
+                sha256="",
+                raw_path=Path(""),
+                fetched_at=fetched_at,
+                edge_idx=edge_idx,
+                flock=flock,
+                error=f"HTTP {e.code}: {e.reason}",
             )
         except Exception as e:
             result = FetchResult(
-                url=url, tier=tier, method="http", status=0,
-                bytes=0, sha256="", raw_path=Path(""),
-                fetched_at=fetched_at, edge_idx=edge_idx, flock=flock,
-                error=str(e)
+                url=url,
+                tier=tier,
+                method="http",
+                status=0,
+                bytes=0,
+                sha256="",
+                raw_path=Path(""),
+                fetched_at=fetched_at,
+                edge_idx=edge_idx,
+                flock=flock,
+                error=str(e),
             )
         self._log_fetch(result)
         return result
 
-    async def fetch_curl_cffi(self, url: str, tier: str = "C",
-                               edge_idx: Optional[int] = None,
-                               flock: Optional[str] = None) -> FetchResult:
+    async def fetch_curl_cffi(
+        self,
+        url: str,
+        tier: str = "C",
+        edge_idx: Optional[int] = None,
+        flock: Optional[str] = None,
+    ) -> FetchResult:
         """Tier 2: curl_cffi with Chrome impersonation."""
         try:
             import curl_cffi.requests as cffi_requests
         except ImportError:
             return FetchResult(
-                url=url, tier=tier, method="curl_cffi", status=0,
-                bytes=0, sha256="", raw_path=Path(""),
+                url=url,
+                tier=tier,
+                method="curl_cffi",
+                status=0,
+                bytes=0,
+                sha256="",
+                raw_path=Path(""),
                 fetched_at=time.strftime("%Y-%m-%dT%H:%M:%S"),
-                edge_idx=edge_idx, flock=flock,
-                error="curl_cffi not installed"
+                edge_idx=edge_idx,
+                flock=flock,
+                error="curl_cffi not installed",
             )
 
         fetched_at = time.strftime("%Y-%m-%dT%H:%M:%S")
         try:
             resp = cffi_requests.get(
-                url, impersonate="chrome131", headers=STEALTH_HEADERS,
-                timeout=30, allow_redirects=True
+                url,
+                impersonate="chrome131",
+                headers=STEALTH_HEADERS,
+                timeout=30,
+                allow_redirects=True,
             )
             content = resp.content
             status = resp.status_code
             raw_path = self._write_raw(url, content, tier)
             sha = self._sha256(content)
             result = FetchResult(
-                url=url, tier=tier, method="curl_cffi", status=status,
-                bytes=len(content), sha256=sha, raw_path=raw_path,
-                fetched_at=fetched_at, edge_idx=edge_idx, flock=flock
+                url=url,
+                tier=tier,
+                method="curl_cffi",
+                status=status,
+                bytes=len(content),
+                sha256=sha,
+                raw_path=raw_path,
+                fetched_at=fetched_at,
+                edge_idx=edge_idx,
+                flock=flock,
             )
         except Exception as e:
             result = FetchResult(
-                url=url, tier=tier, method="curl_cffi", status=0,
-                bytes=0, sha256="", raw_path=Path(""),
-                fetched_at=fetched_at, edge_idx=edge_idx, flock=flock,
-                error=str(e)
+                url=url,
+                tier=tier,
+                method="curl_cffi",
+                status=0,
+                bytes=0,
+                sha256="",
+                raw_path=Path(""),
+                fetched_at=fetched_at,
+                edge_idx=edge_idx,
+                flock=flock,
+                error=str(e),
             )
         self._log_fetch(result)
         return result
 
-    async def fetch_browser(self, url: str, tier: str = "C",
-                             edge_idx: Optional[int] = None,
-                             flock: Optional[str] = None) -> FetchResult:
+    async def fetch_browser(
+        self,
+        url: str,
+        tier: str = "C",
+        edge_idx: Optional[int] = None,
+        flock: Optional[str] = None,
+    ) -> FetchResult:
         """Tier 3: Headless browser via scrapling/playwright."""
         try:
             from scrapling import Browser
         except ImportError:
             return FetchResult(
-                url=url, tier=tier, method="browser", status=0,
-                bytes=0, sha256="", raw_path=Path(""),
+                url=url,
+                tier=tier,
+                method="browser",
+                status=0,
+                bytes=0,
+                sha256="",
+                raw_path=Path(""),
                 fetched_at=time.strftime("%Y-%m-%dT%H:%M:%S"),
-                edge_idx=edge_idx, flock=flock,
-                error="scrapling not installed"
+                edge_idx=edge_idx,
+                flock=flock,
+                error="scrapling not installed",
             )
 
         fetched_at = time.strftime("%Y-%m-%dT%H:%M:%S")
@@ -331,23 +399,41 @@ class BCCFetchEngine:
                 raw_path = self._write_raw(url, content, tier)
                 sha = self._sha256(content)
                 result = FetchResult(
-                    url=url, tier=tier, method="browser", status=status,
-                    bytes=len(content), sha256=sha, raw_path=raw_path,
-                    fetched_at=fetched_at, edge_idx=edge_idx, flock=flock
+                    url=url,
+                    tier=tier,
+                    method="browser",
+                    status=status,
+                    bytes=len(content),
+                    sha256=sha,
+                    raw_path=raw_path,
+                    fetched_at=fetched_at,
+                    edge_idx=edge_idx,
+                    flock=flock,
                 )
         except Exception as e:
             result = FetchResult(
-                url=url, tier=tier, method="browser", status=0,
-                bytes=0, sha256="", raw_path=Path(""),
-                fetched_at=fetched_at, edge_idx=edge_idx, flock=flock,
-                error=str(e)
+                url=url,
+                tier=tier,
+                method="browser",
+                status=0,
+                bytes=0,
+                sha256="",
+                raw_path=Path(""),
+                fetched_at=fetched_at,
+                edge_idx=edge_idx,
+                flock=flock,
+                error=str(e),
             )
         self._log_fetch(result)
         return result
 
-    async def fetch_archive(self, url: str, tier: str = "C",
-                             edge_idx: Optional[int] = None,
-                             flock: Optional[str] = None) -> FetchResult:
+    async def fetch_archive(
+        self,
+        url: str,
+        tier: str = "C",
+        edge_idx: Optional[int] = None,
+        flock: Optional[str] = None,
+    ) -> FetchResult:
         """Tier 4: Wayback/Archive.today replay."""
         archive_urls = [
             f"https://webcache.googleusercontent.com/search?q={urllib.parse.quote(url)}",
@@ -362,16 +448,26 @@ class BCCFetchEngine:
                 return result
 
         return FetchResult(
-            url=url, tier=tier, method="archive", status=0,
-            bytes=0, sha256="", raw_path=Path(""),
+            url=url,
+            tier=tier,
+            method="archive",
+            status=0,
+            bytes=0,
+            sha256="",
+            raw_path=Path(""),
             fetched_at=time.strftime("%Y-%m-%dT%H:%M:%S"),
-            edge_idx=edge_idx, flock=flock,
-            error="All archive sources failed"
+            edge_idx=edge_idx,
+            flock=flock,
+            error="All archive sources failed",
         )
 
-    async def fetch_with_bypass(self, url: str, tier: str = "C",
-                                 edge_idx: Optional[int] = None,
-                                 flock: Optional[str] = None) -> FetchResult:
+    async def fetch_with_bypass(
+        self,
+        url: str,
+        tier: str = "C",
+        edge_idx: Optional[int] = None,
+        flock: Optional[str] = None,
+    ) -> FetchResult:
         """Run the full bypass chain until success."""
         # Try HTTP first (fastest)
         result = await self.fetch_http(url, tier, edge_idx, flock)
@@ -396,6 +492,7 @@ class BCCFetchEngine:
 # ──────────────────────────────────────────────────────────────────────────────
 # BCC EDGE PROCESSOR
 # ──────────────────────────────────────────────────────────────────────────────
+
 
 class BCCEdgeProcessor:
     """Process BCC edges with ultra-loose source rules."""
@@ -470,16 +567,27 @@ class BCCEdgeProcessor:
         domain = urllib.parse.urlparse(url).netloc.lower()
 
         tier_a = [
-            "ujsportal.pacourts.us", "docket.pacourts.us",
-            "dos.pa.gov", "phila.gov", "alleghenycounty.us",
-            "irs.gov", "sec.gov", "fec.gov", "opensecrets.org",
-            "projects.propublica.org", "www.courtlistener.com",
-            "web.archive.org", "archive.today",
+            "ujsportal.pacourts.us",
+            "docket.pacourts.us",
+            "dos.pa.gov",
+            "phila.gov",
+            "alleghenycounty.us",
+            "irs.gov",
+            "sec.gov",
+            "fec.gov",
+            "opensecrets.org",
+            "projects.propublica.org",
+            "www.courtlistener.com",
+            "web.archive.org",
+            "archive.today",
         ]
 
         tier_b = [
-            "pacourts.us", "pa.gov", "state.pa.us",
-            "guidestar.org", "charitynavigator.org",
+            "pacourts.us",
+            "pa.gov",
+            "state.pa.us",
+            "guidestar.org",
+            "charitynavigator.org",
         ]
 
         if any(d in domain for d in tier_a):
@@ -510,30 +618,42 @@ class BCCEdgeProcessor:
     def _proof_state(self, edge: BCCEdge) -> str:
         """Generate proof_state string."""
         tiers = sorted(set(ev.tier for ev in edge.evidence))
-        return f"tiers={','.join(tiers)} evidence={len(edge.evidence)} grade={edge.grade}"
+        return (
+            f"tiers={','.join(tiers)} evidence={len(edge.evidence)} grade={edge.grade}"
+        )
 
 
 # ──────────────────────────────────────────────────────────────────────────────
 # CLI
 # ──────────────────────────────────────────────────────────────────────────────
 
+
 async def main():
     import argparse
 
     parser = argparse.ArgumentParser(
         prog="bcc_bypass",
-        description="BCC re-investigation web bypass + ultra-loose source processor"
+        description="BCC re-investigation web bypass + ultra-loose source processor",
     )
     parser.add_argument("--url", help="Single URL to fetch with bypass chain")
-    parser.add_argument("--tier", default="C", choices=["A", "B", "C", "D"],
-                        help="Source tier for this fetch")
+    parser.add_argument(
+        "--tier",
+        default="C",
+        choices=["A", "B", "C", "D"],
+        help="Source tier for this fetch",
+    )
     parser.add_argument("--edge-idx", type=int, help="Edge index for logging")
-    parser.add_argument("--flock", choices=list(FLOCK_DEFINITIONS.keys()),
-                        help="Flock for this fetch")
-    parser.add_argument("--process-edge", action="store_true",
-                        help="Process a BCC edge from stdin (JSON)")
-    parser.add_argument("--demo", action="store_true",
-                        help="Run demo: fetch a known BCC source")
+    parser.add_argument(
+        "--flock", choices=list(FLOCK_DEFINITIONS.keys()), help="Flock for this fetch"
+    )
+    parser.add_argument(
+        "--process-edge",
+        action="store_true",
+        help="Process a BCC edge from stdin (JSON)",
+    )
+    parser.add_argument(
+        "--demo", action="store_true", help="Run demo: fetch a known BCC source"
+    )
 
     args = parser.parse_args()
 
@@ -546,50 +666,73 @@ async def main():
         result = await engine.fetch_with_bypass(
             demo_url, tier="A", edge_idx=999, flock="COURT"
         )
-        print(json.dumps({
-            "url": result.url,
-            "status": result.status,
-            "bytes": result.bytes,
-            "sha256": result.sha256[:16] + "...",
-            "method": result.method,
-            "tier": result.tier,
-            "error": result.error,
-        }, indent=2))
+        print(
+            json.dumps(
+                {
+                    "url": result.url,
+                    "status": result.status,
+                    "bytes": result.bytes,
+                    "sha256": result.sha256[:16] + "...",
+                    "method": result.method,
+                    "tier": result.tier,
+                    "error": result.error,
+                },
+                indent=2,
+            )
+        )
         return
 
     if args.url:
         result = await engine.fetch_with_bypass(
             args.url, tier=args.tier, edge_idx=args.edge_idx, flock=args.flock
         )
-        print(json.dumps({
-            "url": result.url,
-            "status": result.status,
-            "bytes": result.bytes,
-            "sha256": result.sha256,
-            "method": result.method,
-            "tier": result.tier,
-            "raw_path": str(result.raw_path),
-            "error": result.error,
-        }, indent=2, default=str))
+        print(
+            json.dumps(
+                {
+                    "url": result.url,
+                    "status": result.status,
+                    "bytes": result.bytes,
+                    "sha256": result.sha256,
+                    "method": result.method,
+                    "tier": result.tier,
+                    "raw_path": str(result.raw_path),
+                    "error": result.error,
+                },
+                indent=2,
+                default=str,
+            )
+        )
         return
 
     if args.process_edge:
         import sys
+
         edge_data = json.load(sys.stdin)
         edge = BCCEdge(**edge_data)
         processor = BCCEdgeProcessor(engine)
         processed = await processor.process_edge(edge)
-        print(json.dumps({
-            "edge_idx": processed.edge_idx,
-            "flock": processed.flock,
-            "grade": processed.grade,
-            "proof_state": processed.proof_state,
-            "evidence_count": len(processed.evidence),
-            "evidence": [{
-                "url": ev.url, "tier": ev.tier, "method": ev.method,
-                "status": ev.status, "bytes": ev.bytes
-            } for ev in processed.evidence]
-        }, indent=2))
+        print(
+            json.dumps(
+                {
+                    "edge_idx": processed.edge_idx,
+                    "flock": processed.flock,
+                    "grade": processed.grade,
+                    "proof_state": processed.proof_state,
+                    "evidence_count": len(processed.evidence),
+                    "evidence": [
+                        {
+                            "url": ev.url,
+                            "tier": ev.tier,
+                            "method": ev.method,
+                            "status": ev.status,
+                            "bytes": ev.bytes,
+                        }
+                        for ev in processed.evidence
+                    ],
+                },
+                indent=2,
+            )
+        )
         return
 
     parser.print_help()

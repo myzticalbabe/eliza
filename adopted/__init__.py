@@ -16,4 +16,5 @@ The stub in `shards/` keeps the provenance (`SHARD_ID`, `SOURCE_MODULE`,
 still answer "where did this come from". `shards/WIRED.json` records the test
 that proves it.
 """
+
 from __future__ import annotations

@@ -27,6 +27,7 @@ drift):
 Everything else -- the pattern syntax, the history cap, the pipeline's
 WORKFLOW_FAILED event, the priority values -- matches the source.
 """
+
 from __future__ import annotations
 
 import threading
@@ -34,7 +35,7 @@ import uuid
 from collections import defaultdict
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Any, Callable, Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional
 
 
 class EventPriority:
@@ -130,7 +131,7 @@ class EventBus:
         with self._lock:
             self._history.append(event)
             if len(self._history) > self._max_history:
-                self._history = self._history[-self._max_history:]
+                self._history = self._history[-self._max_history :]
             targets: List[Callable[[AOEvent], Any]] = []
             for pattern, callbacks in self._subscribers.items():
                 if self._match_pattern(pattern, event.event_type):
@@ -140,7 +141,7 @@ class EventBus:
             try:
                 callback(event)
                 delivered += 1
-            except Exception as exc:          # isolated, counted, never silent
+            except Exception as exc:  # isolated, counted, never silent
                 self.failed_deliveries += 1
                 self.last_failure = exc
         return delivered
@@ -153,12 +154,17 @@ class EventBus:
         with self._lock:
             if pattern in self._subscribers:
                 self._subscribers[pattern] = [
-                    existing for existing in self._subscribers[pattern]
+                    existing
+                    for existing in self._subscribers[pattern]
                     if existing != callback
                 ]
 
-    def get_history(self, event_type: Optional[str] = None,
-                    source_arm: Optional[str] = None, limit: int = 100) -> List[AOEvent]:
+    def get_history(
+        self,
+        event_type: Optional[str] = None,
+        source_arm: Optional[str] = None,
+        limit: int = 100,
+    ) -> List[AOEvent]:
         with self._lock:
             found = list(self._history)
         if event_type:
@@ -169,8 +175,11 @@ class EventBus:
 
     def get_correlated_events(self, correlation_id: str) -> List[AOEvent]:
         with self._lock:
-            return [event for event in self._history
-                    if event.correlation_id == correlation_id]
+            return [
+                event
+                for event in self._history
+                if event.correlation_id == correlation_id
+            ]
 
     def clear_history(self) -> None:
         with self._lock:
@@ -224,13 +233,15 @@ class EventPipeline:
                 results.append(following)
                 current = following
             except Exception as exc:
-                results.append(AOEvent(
-                    event_type=AOEventType.WORKFLOW_FAILED,
-                    source_arm="pipeline." + self.name,
-                    payload={"step": index, "error": str(exc)},
-                    correlation_id=initial.correlation_id,
-                    priority=EventPriority.CRITICAL,
-                ))
+                results.append(
+                    AOEvent(
+                        event_type=AOEventType.WORKFLOW_FAILED,
+                        source_arm="pipeline." + self.name,
+                        payload={"step": index, "error": str(exc)},
+                        correlation_id=initial.correlation_id,
+                        priority=EventPriority.CRITICAL,
+                    )
+                )
                 break
         return results
 

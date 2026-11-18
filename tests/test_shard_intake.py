@@ -8,6 +8,7 @@ here are mostly negative -- change one thing in a stub and assert the check
 refuses it -- plus a real-atlas run, because a gate that only ever sees fixtures
 has never met the tree it describes.
 """
+
 from __future__ import annotations
 
 import importlib.util
@@ -36,7 +37,8 @@ ATLAS = intake.DEFAULT_ATLAS
 needs_atlas = pytest.mark.skipif(
     not ATLAS.is_file(),
     reason="the Kali atlas is not on this host (%s); the surface cannot be checked "
-           "against the tree it describes" % ATLAS)
+    "against the tree it describes" % ATLAS,
+)
 
 
 def test_an_absent_census_is_exit_2_not_drift(tmp_path, capsys):
@@ -72,8 +74,10 @@ def test_the_surface_is_clean_against_the_real_atlas():
 def test_every_unit_in_the_atlas_has_a_stub():
     atlas = intake.read_atlas(ATLAS)
     entries = intake.units(atlas)
-    indexed = {entry["shard_id"] for entry in
-               json.loads(intake.INDEX.read_text(encoding="utf-8"))["shards"]}
+    indexed = {
+        entry["shard_id"]
+        for entry in json.loads(intake.INDEX.read_text(encoding="utf-8"))["shards"]
+    }
     assert {entry["shard_id"] for entry in entries} == indexed
     for entry in entries[:50]:
         assert (intake.REPO / entry["path"]).is_file(), entry["path"]
@@ -91,8 +95,10 @@ def test_every_class_the_atlas_counts_is_reachable_through_a_shard():
     entries = intake.units(atlas)
     named = sum(1 for entry in entries if entry["kind"] == "class")
     residual = sum(entry["unnamed"] for entry in entries if entry["kind"] == "module")
-    declared = sum(int(module.get("classes") or 0)
-                   for module in (atlas.get("modules") or {}).values())
+    declared = sum(
+        int(module.get("classes") or 0)
+        for module in (atlas.get("modules") or {}).values()
+    )
     assert named + residual == declared, (named, residual, declared)
 
 
@@ -122,8 +128,10 @@ def test_a_stub_that_returns_instead_of_raising_is_refused(tmp_path):
     fake = tmp_path / "fake.py"
     fake.write_text(
         "WIRED = False\nSHARD_ID = %r\nCLASS_NAME = %r\n\n"
-        "def load(*a, **k):\n    return 'pretend'\n" % (entry["shard_id"], entry["class"]),
-        encoding="utf-8")
+        "def load(*a, **k):\n    return 'pretend'\n"
+        % (entry["shard_id"], entry["class"]),
+        encoding="utf-8",
+    )
     problems = intake._stub_problems(fake, entry)
     assert any("does not raise" in problem for problem in problems), problems
 
@@ -135,7 +143,9 @@ def test_a_stub_that_claims_to_be_wired_is_refused(tmp_path):
     fake.write_text(
         "WIRED = True\nSHARD_ID = %r\nCLASS_NAME = %r\n\n"
         "def load(*a, **k):\n    raise NotImplementedError('x')\n"
-        % (entry["shard_id"], entry["class"]), encoding="utf-8")
+        % (entry["shard_id"], entry["class"]),
+        encoding="utf-8",
+    )
     problems = intake._stub_problems(fake, entry)
     assert any("WIRED = False" in problem for problem in problems), problems
 
@@ -147,7 +157,9 @@ def test_a_stub_that_drags_a_dependency_is_refused(tmp_path):
     fake.write_text(
         "import requests\nWIRED = False\nSHARD_ID = %r\nCLASS_NAME = %r\n\n"
         "def load(*a, **k):\n    raise NotImplementedError('x')\n"
-        % (entry["shard_id"], entry["class"]), encoding="utf-8")
+        % (entry["shard_id"], entry["class"]),
+        encoding="utf-8",
+    )
     problems = intake._stub_problems(fake, entry)
     assert any("imports" in problem for problem in problems), problems
 
@@ -165,14 +177,17 @@ def test_a_wired_shard_is_allowed_to_return(tmp_path):
     fake.write_text(
         "WIRED = True\nSHARD_ID = %r\nCLASS_NAME = %r\n\n"
         "def load(*a, **k):\n    return 'the real thing'\n"
-        % (entry["shard_id"], entry["class"]), encoding="utf-8")
+        % (entry["shard_id"], entry["class"]),
+        encoding="utf-8",
+    )
     problems = intake._stub_problems(
-        fake, entry, {"test": "tests/test_shard_intake.py", "commit": "0" * 7})
-    assert not [p for p in problems
-                if "does not raise" in p or "WIRED = False" in p], problems
+        fake, entry, {"test": "tests/test_shard_intake.py", "commit": "0" * 7}
+    )
+    assert not [
+        p for p in problems if "does not raise" in p or "WIRED = False" in p
+    ], problems
     # ...and the same file with no adoption claim is a fake.
-    assert any("does not raise" in p
-               for p in intake._stub_problems(fake, entry))
+    assert any("does not raise" in p for p in intake._stub_problems(fake, entry))
 
 
 @needs_atlas
@@ -191,11 +206,13 @@ def test_a_wired_shard_may_import_the_module_it_points_at(tmp_path):
         "WIRED = True\nSHARD_ID = %r\nCLASS_NAME = %r\n\n"
         "def load(*a, **k):\n"
         "    from eliza.psyche import affect\n"
-        "    return affect\n" % (entry["shard_id"], entry["class"]))
+        "    return affect\n" % (entry["shard_id"], entry["class"])
+    )
     fake.write_text(source, encoding="utf-8")
 
     wired = intake._stub_problems(
-        fake, entry, {"test": "tests/test_shard_intake.py", "commit": "0" * 7})
+        fake, entry, {"test": "tests/test_shard_intake.py", "commit": "0" * 7}
+    )
     assert not [p for p in wired if "imports" in p], wired
 
     # ...and the identical file with no ledger claim is still a stub, so the
@@ -212,11 +229,15 @@ def test_an_unknown_shard_is_refused_and_close_names_are_offered(capsys):
 @needs_atlas
 def test_the_registry_describes_a_shard_without_importing_it():
     import sys
+
     sys.path.insert(0, str(ELIZA))
     import shards
+
     entries = shards.index()
     assert len(entries) > 1000
-    unwired = [e for e in entries if not shards.describe(e["shard_id"]).get("wired", False)]
+    unwired = [
+        e for e in entries if not shards.describe(e["shard_id"]).get("wired", False)
+    ]
     assert unwired, "no unwired shards to test"
     described = shards.describe(unwired[0]["shard_id"])
     assert described["wired"] is False
@@ -232,8 +253,10 @@ def test_the_registry_describes_a_shard_without_importing_it():
 @needs_atlas
 def test_the_registry_counts_trees_not_just_shards():
     import sys
+
     sys.path.insert(0, str(ELIZA))
     import shards
+
     counts = shards.trees()
     assert counts, "no trees"
     assert sum(counts.values()) == len(shards.index())

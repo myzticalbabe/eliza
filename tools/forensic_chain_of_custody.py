@@ -32,12 +32,11 @@ from __future__ import annotations
 import hashlib
 import hmac
 import json
-import secrets
 import sqlite3
 import threading
 import uuid
 from contextlib import contextmanager
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
 from pathlib import Path
@@ -49,7 +48,6 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import (
     Ed25519PrivateKey,
     Ed25519PublicKey,
 )
-
 
 # ──────────────────────────────────────────────────────────────────────────────
 # RECOVERED FRAGMENT (evidence, preserved byte-exact)
@@ -89,6 +87,7 @@ def recovered_fragment() -> str:
 # ENUMS
 # ──────────────────────────────────────────────────────────────────────────────
 
+
 class ActorRole(Enum):
     EVIDENCE_CUSTODIAN = "evidence_custodian"
     ANALYST = "analyst"
@@ -113,14 +112,17 @@ class CustodyAction(Enum):
 # DATA CLASSES
 # ──────────────────────────────────────────────────────────────────────────────
 
+
 @dataclass
 class DigitalSignature:
     """Detached signature over the custody record's canonical form."""
+
     algorithm: str = "Ed25519"
     signature: str = ""
     public_key_pem: str = ""
     signed_at: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat())
+        default_factory=lambda: datetime.now(timezone.utc).isoformat()
+    )
     signed_by: str = ""
 
 
@@ -132,6 +134,7 @@ class CustodyRecord:
     fields + previous_record_hash). Tampering with any stored field breaks
     both the recomputed hash and the digital signature.
     """
+
     id: str = field(default_factory=lambda: str(uuid.uuid4()))
     evidence_id: str = ""
     sequence: int = 0
@@ -139,7 +142,8 @@ class CustodyRecord:
     actor_role: ActorRole = ActorRole.EVIDENCE_CUSTODIAN
     action: CustodyAction = CustodyAction.COLLECTED
     timestamp: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat())
+        default_factory=lambda: datetime.now(timezone.utc).isoformat()
+    )
     description: str = ""
     location: str = ""
     notes: Dict[str, Any] = field(default_factory=dict)
@@ -162,13 +166,15 @@ class CustodyRecord:
             "notes": self.notes,
             "previous_record_hash": self.previous_record_hash,
         }
-        return json.dumps(data, sort_keys=True, separators=(",", ":"),
-                          ensure_ascii=False).encode("utf-8")
+        return json.dumps(
+            data, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+        ).encode("utf-8")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
 # SIGNING
 # ──────────────────────────────────────────────────────────────────────────────
+
 
 class CustodySigner:
     """Ed25519 signer for custody records.
@@ -183,8 +189,10 @@ class CustodySigner:
         self._private: Ed25519PrivateKey = Ed25519PrivateKey.generate()
         self._public_pem = (
             self._private.public_key()
-            .public_bytes(serialization.Encoding.PEM,
-                          serialization.PublicFormat.SubjectPublicKeyInfo)
+            .public_bytes(
+                serialization.Encoding.PEM,
+                serialization.PublicFormat.SubjectPublicKeyInfo,
+            )
             .decode("utf-8")
         )
 
@@ -195,12 +203,13 @@ class CustodySigner:
     def sign_bytes(self, data: bytes) -> str:
         """Raw Ed25519 over data, base64-encoded (64-byte ed521-free signature)."""
         import base64
+
         return base64.b64encode(self._private.sign(data)).decode("ascii")
 
-    def verify_bytes(self, data: bytes, public_key_pem: str,
-                     signature: str) -> bool:
+    def verify_bytes(self, data: bytes, public_key_pem: str, signature: str) -> bool:
         """Verify with a given public PEM — the tamper path."""
         import base64
+
         try:
             pub = serialization.load_pem_public_key(public_key_pem.encode("utf-8"))
             if not isinstance(pub, Ed25519PublicKey):
@@ -214,6 +223,7 @@ class CustodySigner:
 # ──────────────────────────────────────────────────────────────────────────────
 # TRANSACTION HELPER (named by the recovered fragment)
 # ──────────────────────────────────────────────────────────────────────────────
+
 
 @contextmanager
 def get_db_transaction(db_path: Path) -> Iterator[sqlite3.Connection]:
@@ -241,6 +251,7 @@ def get_db_transaction(db_path: Path) -> Iterator[sqlite3.Connection]:
 # CHAIN OF CUSTODY
 # ──────────────────────────────────────────────────────────────────────────────
 
+
 class ChainOfCustody:
     """Tamper-evident, per-evidence chain of custody.
 
@@ -250,7 +261,9 @@ class ChainOfCustody:
     fact is reported, not silently accepted.
     """
 
-    def __init__(self, db_path = Path("custody.db"), signer: Optional[CustodySigner] = None):
+    def __init__(
+        self, db_path=Path("custody.db"), signer: Optional[CustodySigner] = None
+    ):
         self.db_path = Path(db_path)
         self.signer = signer or CustodySigner()
         self._lock = threading.RLock()
@@ -263,8 +276,7 @@ class ChainOfCustody:
         try:
             conn.execute("PRAGMA journal_mode=WAL")
             conn.execute("PRAGMA foreign_keys=ON")
-            conn.executescript(
-                """
+            conn.executescript("""
                     CREATE TABLE IF NOT EXISTS custody_records (
                         id TEXT PRIMARY KEY,
                         evidence_id TEXT NOT NULL,
@@ -312,8 +324,7 @@ class ChainOfCustody:
                         ON custody_records(evidence_id, sequence);
                     CREATE INDEX IF NOT EXISTS idx_custody_sig_record
                         ON digital_signatures(record_id);
-                """
-            )
+                """)
             conn.commit()
         finally:
             conn.close()
@@ -350,34 +361,56 @@ class ChainOfCustody:
             record.digital_signature = signature
 
             with get_db_transaction(self.db_path) as conn:
-                conn.execute("""
+                conn.execute(
+                    """
                     INSERT INTO custody_records (id, evidence_id, sequence,
                         actor_id, actor_role, action, timestamp, description,
                         location, notes, previous_record_hash, record_hash)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (
-                    record.id, record.evidence_id, record.sequence,
-                    record.actor_id, record.actor_role.value, record.action.value,
-                    record.timestamp, record.description or "",
-                    record.location or "", json.dumps(record.notes),
-                    record.previous_record_hash, record.record_hash,
-                ))
-                conn.execute("""
+                """,
+                    (
+                        record.id,
+                        record.evidence_id,
+                        record.sequence,
+                        record.actor_id,
+                        record.actor_role.value,
+                        record.action.value,
+                        record.timestamp,
+                        record.description or "",
+                        record.location or "",
+                        json.dumps(record.notes),
+                        record.previous_record_hash,
+                        record.record_hash,
+                    ),
+                )
+                conn.execute(
+                    """
                     INSERT INTO digital_signatures (id, record_id, algorithm, signature,
                         public_key_pem, signed_at, signed_by, verified, verified_at)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (
-                    str(uuid.uuid4()), record.id, signature.algorithm,
-                    signature.signature, signature.public_key_pem,
-                    signature.signed_at, signature.signed_by,
-                    0, None
-                ))
+                """,
+                    (
+                        str(uuid.uuid4()),
+                        record.id,
+                        signature.algorithm,
+                        signature.signature,
+                        signature.public_key_pem,
+                        signature.signed_at,
+                        signature.signed_by,
+                        0,
+                        None,
+                    ),
+                )
                 conn.commit()
 
         # Log audit entry
-        self._log_audit(record.evidence_id, record.actor_id, record.actor_role.value,
-                        f"custody_record_{record.action.value.lower()}",
-                        f"Added custody record: {record.description}")
+        self._log_audit(
+            record.evidence_id,
+            record.actor_id,
+            record.actor_role.value,
+            f"custody_record_{record.action.value.lower()}",
+            f"Added custody record: {record.description}",
+        )
 
         return record
 
@@ -386,7 +419,7 @@ class ChainOfCustody:
             row = conn.execute(
                 "SELECT record_hash FROM custody_records "
                 "WHERE evidence_id = ? ORDER BY sequence DESC LIMIT 1",
-                (evidence_id,)
+                (evidence_id,),
             ).fetchone()
             return row[0] if row else ""
 
@@ -398,8 +431,9 @@ class ChainOfCustody:
             ).fetchone()
             return (row[0] or 0) + 1
 
-    def _log_audit(self, evidence_id: str, actor_id: str, actor_role: str,
-                   event: str, details: str) -> None:
+    def _log_audit(
+        self, evidence_id: str, actor_id: str, actor_role: str, event: str, details: str
+    ) -> None:
         """Local audit row with its own tamper-evident digest (closure hash)."""
         with get_db_transaction(self.db_path) as conn:
             row = conn.execute(
@@ -409,7 +443,9 @@ class ChainOfCustody:
                 (evidence_id,),
             ).fetchone()
             previous = row[0] if row else ""
-            payload = f"{evidence_id}|{actor_id}|{actor_role}|{event}|{details}|{previous}"
+            payload = (
+                f"{evidence_id}|{actor_id}|{actor_role}|{event}|{details}|{previous}"
+            )
             event_hash = hashlib.sha256(payload.encode("utf-8")).hexdigest()
             conn.execute(
                 "INSERT INTO custody_audit (evidence_id, actor_id, actor_role, "
@@ -436,7 +472,9 @@ class ChainOfCustody:
         )
         return rec
 
-    def records_for_evidence(self, evidence_id: str, with_signatures: bool = False) -> List[CustodyRecord]:
+    def records_for_evidence(
+        self, evidence_id: str, with_signatures: bool = False
+    ) -> List[CustodyRecord]:
         """Custody records for one evidence_id, in chain order.
 
         `with_signatures=True` also attaches each record's DigitalSignature,
@@ -447,7 +485,7 @@ class ChainOfCustody:
             rows = conn.execute(
                 "SELECT * FROM custody_records WHERE evidence_id = ? "
                 "ORDER BY sequence",
-                (evidence_id,)
+                (evidence_id,),
             ).fetchall()
             records = [self._row_to_record(r) for r in rows]
         if with_signatures:
@@ -504,20 +542,28 @@ class ChainOfCustody:
         prev_hash = ""
         for i, rec in enumerate(records):
             if rec.sequence != i + 1:
-                errors.append(f"record {rec.id}: sequence {rec.sequence} "
-                              f"expected {i+1} (chain gap)")
+                errors.append(
+                    f"record {rec.id}: sequence {rec.sequence} "
+                    f"expected {i+1} (chain gap)"
+                )
             if i == 0:
                 if rec.previous_record_hash != "":
-                    errors.append(f"record {rec.id}: genesis previous_record_hash "
-                                  f"must be empty, got {rec.previous_record_hash!r}")
+                    errors.append(
+                        f"record {rec.id}: genesis previous_record_hash "
+                        f"must be empty, got {rec.previous_record_hash!r}"
+                    )
             else:
                 if rec.previous_record_hash != prev_hash:
-                    errors.append(f"record {rec.id}: previous_record_hash does "
-                                  f"not link to record {prev_hash}")
+                    errors.append(
+                        f"record {rec.id}: previous_record_hash does "
+                        f"not link to record {prev_hash}"
+                    )
             recomputed = self._recompute_hash(rec)
             if not hmac.compare_digest(recomputed, rec.record_hash):
-                errors.append(f"record {rec.id}: record_hash recomputed to "
-                              f"{recomputed} but stored {rec.record_hash}")
+                errors.append(
+                    f"record {rec.id}: record_hash recomputed to "
+                    f"{recomputed} but stored {rec.record_hash}"
+                )
             sig_row = self._signature_row(rec.id)
             if sig_row is None:
                 errors.append(f"record {rec.id}: digital signature missing")
@@ -533,8 +579,10 @@ class ChainOfCustody:
                 with_sig.digital_signature = sig
                 with_sig.digital_signature = sig
                 if not self.verify_signature(with_sig):
-                    errors.append(f"record {rec.id}: signature does not verify "
-                                  f"against record canonical bytes")
+                    errors.append(
+                        f"record {rec.id}: signature does not verify "
+                        f"against record canonical bytes"
+                    )
             if sig_row is None and rec.record_hash == "":
                 errors.append(f"record {rec.id}: empty record_hash and no signature")
             prev_hash = rec.record_hash
@@ -552,20 +600,25 @@ class ChainOfCustody:
         if not ok:
             raise ValueError(f"cannot mark verified: {errors}")
         with get_db_transaction(self.db_path) as conn:
-            conn.execute("""
+            conn.execute(
+                """
                 UPDATE digital_signatures SET verified = 1, verified_at = ?
                 WHERE record_id IN (
                     SELECT id FROM custody_records WHERE evidence_id = ?
                 )
-            """, (datetime.now(timezone.utc).isoformat(), evidence_id))
+            """,
+                (datetime.now(timezone.utc).isoformat(), evidence_id),
+            )
 
 
 # ──────────────────────────────────────────────────────────────────────────────
 # CONVENIENCE
 # ──────────────────────────────────────────────────────────────────────────────
 
-def create_chain_of_custody(db_path = Path("custody.db"),
-                            signer: Optional[CustodySigner] = None) -> ChainOfCustody:
+
+def create_chain_of_custody(
+    db_path=Path("custody.db"), signer: Optional[CustodySigner] = None
+) -> ChainOfCustody:
     return ChainOfCustody(db_path=db_path, signer=signer)
 
 
@@ -573,11 +626,13 @@ def create_chain_of_custody(db_path = Path("custody.db"),
 # SELF-TEST (0B-C: positive + negative controls)
 # ──────────────────────────────────────────────────────────────────────────────
 
+
 def selftest() -> Tuple[int, List[str]]:
     """Self-test of the chain-of-custody module. Positive controls: a real
     chain verifies; signatures verify. Negative controls: a tampered record
     and an inserted forged record are both reported, never accepted."""
     import tempfile
+
     lines: List[str] = []
     failures = 0
 
@@ -588,21 +643,32 @@ def selftest() -> Tuple[int, List[str]]:
 
         ev = "EVD-TEST-001"
         records = [
-            CustodyRecord(evidence_id=ev, actor_id="clint",
-                          actor_role=ActorRole.EVIDENCE_CUSTODIAN,
-                          action=CustodyAction.COLLECTED,
-                          description="Evidence collected from workstation_1",
-                          location="workstation_1", notes={"hash": "abc123"}),
-            CustodyRecord(evidence_id=ev, actor_id="jane",
-                          actor_role=ActorRole.ANALYST,
-                          action=CustodyAction.ANALYZED,
-                          description="Disk image analysed",
-                          location="lab_a", notes={"tool": "volatility"}),
-            CustodyRecord(evidence_id=ev, actor_id="jane",
-                          actor_role=ActorRole.EVIDENCE_CUSTODIAN,
-                          action=CustodyAction.TRANSFERRED,
-                          description="Custody transferred back to vault",
-                          location="vault"),
+            CustodyRecord(
+                evidence_id=ev,
+                actor_id="clint",
+                actor_role=ActorRole.EVIDENCE_CUSTODIAN,
+                action=CustodyAction.COLLECTED,
+                description="Evidence collected from workstation_1",
+                location="workstation_1",
+                notes={"hash": "abc123"},
+            ),
+            CustodyRecord(
+                evidence_id=ev,
+                actor_id="jane",
+                actor_role=ActorRole.ANALYST,
+                action=CustodyAction.ANALYZED,
+                description="Disk image analysed",
+                location="lab_a",
+                notes={"tool": "volatility"},
+            ),
+            CustodyRecord(
+                evidence_id=ev,
+                actor_id="jane",
+                actor_role=ActorRole.EVIDENCE_CUSTODIAN,
+                action=CustodyAction.TRANSFERRED,
+                description="Custody transferred back to vault",
+                location="vault",
+            ),
         ]
         for rec in records:
             coc.add_custody_record(rec)
@@ -624,8 +690,11 @@ def selftest() -> Tuple[int, List[str]]:
 
         # Negative 0B-C #1: tamper the middle record's description in the DB
         with get_db_transaction(coc.db_path) as conn:
-            conn.execute("UPDATE custody_records SET description = 'tampered' "
-                         "WHERE sequence = 2 AND evidence_id = ?", (ev,))
+            conn.execute(
+                "UPDATE custody_records SET description = 'tampered' "
+                "WHERE sequence = 2 AND evidence_id = ?",
+                (ev,),
+            )
         ok2, errors2 = coc.verify_custody_chain(ev)
         if not ok2:
             lines.append("PASS: tampered description detected in chain verify")
@@ -635,14 +704,17 @@ def selftest() -> Tuple[int, List[str]]:
 
         # Negative 0B-C #2: a record inserted without going through
         # add_custody_record has no signature → must be reported.
-        forged = CustodyRecord(evidence_id="EVD-FORGED",
-                               actor_id="attacker",
-                               action=CustodyAction.RELEASED,
-                               description="forged release")
+        forged = CustodyRecord(
+            evidence_id="EVD-FORGED",
+            actor_id="attacker",
+            action=CustodyAction.RELEASED,
+            description="forged release",
+        )
         coc.add_custody_record(forged)
         with get_db_transaction(coc.db_path) as conn:
-            conn.execute("DELETE FROM digital_signatures WHERE record_id = ?",
-                         (forged.id,))
+            conn.execute(
+                "DELETE FROM digital_signatures WHERE record_id = ?", (forged.id,)
+            )
         ok3, errors3 = coc.verify_custody_chain("EVD-FORGED")
         if not ok3 and any("signature" in e for e in errors3):
             lines.append("PASS: forged record without signature is reported")
@@ -651,14 +723,17 @@ def selftest() -> Tuple[int, List[str]]:
             lines.append(f"FAIL: forged record not caught: {errors3}")
 
         # Honest-skip state — the marker the old stub used to report.
-        lines.append(f"recovered+rebuilt: module now owns the custody chain "
-                     f"(t-0002 closed 2026-11-03)")
+        lines.append(
+            "recovered+rebuilt: module now owns the custody chain "
+            "(t-0002 closed 2026-11-03)"
+        )
 
     return failures, lines
 
 
 if __name__ == "__main__":
     import sys
+
     failures, lines = selftest()
     for line in lines:
         print(line)
